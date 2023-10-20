@@ -12,7 +12,7 @@
 		--background-tertiary: 233 35% 13%;
 
 		--primary: 259 71% 64%;
-    --border:233, 31%, 25%;
+		--border: 233, 31%, 25%;
 
 		--radius: 0.3rem;
 	}
@@ -87,6 +87,7 @@
 	position: absolute;
 	z-index: 1;
 	width: 100%;
+	min-width: 786px;
 	top: 80%;
 	left: 50%;
 	transform: translate(-50%, -50%);
@@ -97,10 +98,11 @@
 	opacity: 0.6;
 	background-image: linear-gradient(
 		to bottom,
-    hsl(var(--background-tertiary)),
+		hsl(var(--background-tertiary)),
 		10%,
 		transparent
 	);
+	border-top: 3px solid hsl(var(--primary));
 }
 
 .main:before {
@@ -111,16 +113,18 @@
 	transform: translate(-50%, -50%);
 	z-index: 1;
 	width: 80%;
+	min-width: 640px;
 	aspect-ratio: 1/1;
 	backdrop-filter: blur(10px);
 	opacity: 0.2;
 	background-image: linear-gradient(
-    to bottom,
-    hsl(var(--background-secondary)),
+		to bottom,
+		hsl(var(--background-secondary)),
 		10%,
 		transparent
 	);
 	border-radius: 50%;
+	border-top: 3px solid hsl(var(--primary));
 }
 
 .card-container {

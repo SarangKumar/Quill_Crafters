@@ -1,5 +1,5 @@
 import Features from '@/components/Features';
-import { Button } from '@/components/ui/Button';
+import Button  from '@/components/ui/Button';
 import Container from '@/components/ui/Container';
 import React from 'react';
 
