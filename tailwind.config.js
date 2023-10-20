@@ -26,6 +26,15 @@ module.exports = {
 			fontFamily: {
 				sans: ['var(--font-sans)', ...fontFamily.sans],
 			},
+			keyframes: {
+				'spin-delayed': {
+					'0%': { transform: 'rotate(0deg)' },
+					'100%': { transform: 'rotate(360deg)'},
+				},
+			},
+			animation: {
+				'spin-delayed': 'spin-delayed 3s linear infinite',
+			},
 		},
 	},
 	plugins: [],

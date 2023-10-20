@@ -1,5 +1,5 @@
 import React from 'react';
-import { Cloud, Rotate3D } from 'lucide-react';
+import { Atom, BellDot, Cloud, Rotate3D } from 'lucide-react';
 
 import FeatureCard from './ui/FeatureCard';
 import Container from './ui/Container';
@@ -16,17 +16,17 @@ const Features = () => {
 				</FeatureCard>
 				<FeatureCard>
 					<Badge variant="animate" size="icon-rounded-large">
-						<Cloud />
+						<Rotate3D />
 					</Badge>
 				</FeatureCard>
 				<FeatureCard>
 					<Badge variant="animate" size="icon-rounded-large">
-						<Cloud />
+						<BellDot />
 					</Badge>
 				</FeatureCard>
 				<FeatureCard>
 					<Badge variant="animate" size="icon-rounded-large">
-						<Cloud />
+						<Atom />
 					</Badge>
 				</FeatureCard>
 			</div>
