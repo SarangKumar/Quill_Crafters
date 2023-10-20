@@ -4,6 +4,7 @@ import { Atom, BellDot, Cloud, Rotate3D } from 'lucide-react';
 import FeatureCard from './ui/FeatureCard';
 import Container from './ui/Container';
 import Badge from './ui/Badge';
+import Avatar from './ui/Avatar';
 
 const Features = () => {
 	return (
@@ -30,10 +31,15 @@ const Features = () => {
 					</Badge>
 				</FeatureCard>
 			</div>
+			<div>
+
+
+			<Avatar name="Sarang Kumar Sahu"/>
+			<Avatar name="Tejasvi Kumar"/>
+			<Avatar name="Sarang"/>
+			</div>
 		
-			{/* <Badge variant="animate">
-				<Cloud />
-			</Badge>
+		
 			<div className="flex gap-4">
 				<Badge
 					size="icon-rounded"
@@ -63,11 +69,9 @@ const Features = () => {
 					Button badge
 				</Badge>
 				<Badge size="sm">Something</Badge>
-			</div> */}
+			</div>
 		</Container>
 	);
 };
 
 export default Features;
-
-//  before:bg-[conic-gradient(#04b011_20deg)]

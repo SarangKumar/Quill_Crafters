@@ -12,7 +12,6 @@ const FeatureCard = ({ children }) => {
 			<p className="text-foreground-secondary text-sm ">
 				Gradients fade out to transparent by default, without requiring
 			</p>
-			{/* </div> */}
 		</div>
 	);
 };
