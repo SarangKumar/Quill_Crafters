@@ -6,13 +6,13 @@ import React from 'react';
 const TestPage = () => {
 	return (
 		<>
-			<Container>
+			{/* <Container> */}
 				<Button>TestPage</Button>
 
 				<div className="main">
 					<Features />
 				</div>
-			</Container>
+			{/* </Container> */}
 		</>
 	);
 };

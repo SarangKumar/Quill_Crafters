@@ -2,7 +2,7 @@ import React from 'react';
 
 const Container = ({ children }) => {
 	return (
-		<main className="grid place-items-center md:mx-auto mx-4 md:max-w-6xl">
+		<main className="mx-2 md:mx-auto md:max-w-6xl">
 			{children}
 		</main>
 	);

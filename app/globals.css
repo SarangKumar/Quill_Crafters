@@ -78,7 +78,7 @@
 .main {
 	background-color: var(--background);
 	position: relative;
-	/* top: 40%; */
+	overflow: hidden;
 	height: 100vh;
 }
 
@@ -102,6 +102,7 @@
 		10%,
 		transparent
 	);
+	overflow: hidden;
 	border-top: 3px solid hsl(var(--primary));
 }
 
@@ -125,10 +126,5 @@
 	);
 	border-radius: 50%;
 	border-top: 3px solid hsl(var(--primary));
-}
-
-.card-container {
-	width: 100%;
-	height: 100%;
-	/* background-color: red; */
+	overflow: hidden;
 }
