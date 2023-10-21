@@ -1,5 +1,6 @@
 import { cn } from '@/lib/utils';
-import React from 'react';
+import Image from 'next/image';
+import React, { Suspense } from 'react';
 
 function extractInitials(input) {
 	// Split the input into words
@@ -17,20 +18,34 @@ function extractInitials(input) {
 	}
 }
 
-const Avatar = ({ name, className }) => {
-	// name=name||'Avatar';
+const LoadingAvatar = ({ name, children }) => {
+	name = name || 'Guest User';
 	name = extractInitials(name);
+	return (
+		<span className="text-foreground absolute inset-[1px] bg-black rounded-full font-medium text-xs inline-flex justify-center items-center">
+			{name}
+		</span>
+	);
+};
 
+const Avatar = ({ name, className, src = '' }) => {
 	return (
 		<span
 			className={cn(
-				'w-7 h-7 relative rounded-full flex-shrink-0 inline-flex items-center justify-center bg-gradient-to-tr from-black from-50% to-white',
+				'w-8 h-8 relative rounded-full inline-flex items-center justify-center bg-gradient-to-tr from-black from-50% to-white',
 				className
 			)}
 		>
-			<span className="text-foreground absolute inset-[1px] bg-black rounded-full font-medium text-xs inline-flex justify-center items-center">
-				{name}
-			</span>
+			{/* <Suspense fallback={<LoadingAvatar name={name} />}>
+				<Image
+					src={src}
+					alt={`${name}-avatar`}
+					width="100"
+					height="100"
+					className="rounded-full bg-cover"
+				/>
+			</Suspense> */}
+			<LoadingAvatar name={name} />
 		</span>
 	);
 };

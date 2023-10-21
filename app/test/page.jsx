@@ -1,13 +1,15 @@
 import Features from '@/components/Features';
 import Button  from '@/components/ui/Button';
 import Container from '@/components/ui/Container';
-import React from 'react';
+import Input from '@/components/ui/Input';
 
 const TestPage = () => {
 	return (
 		<>
 			{/* <Container> */}
 				<Button>TestPage</Button>
+				{/* <Input /> */}
+				
 
 				<div className="main">
 					<Features />
