@@ -19,7 +19,7 @@ const ComicCover = ({
 					height={450}
 					width={300}
 					alt={name}
-					className="object-cover overflow-hidden rounded-xl"
+					className="object-cover overflow-hidden rounded-xl w-full h-full"
 				/>
 			</button>
 			<div className="text-sm p-2 flex gap-x-1 bg-background-tertiary/5 left-0 right-0 w-full top-0 absolute">

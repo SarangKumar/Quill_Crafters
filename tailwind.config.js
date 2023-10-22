@@ -26,6 +26,9 @@ module.exports = {
 			fontFamily: {
 				sans: ['var(--font-sans)', ...fontFamily.sans],
 			},
+			gridTemplateColumns: {
+				cards: 'repeat(auto-fill, minmax(250px, 1fr))',
+			},
 			keyframes: {
 				'spin-delayed': {
 					'0%': { transform: 'rotate(0deg)' },
