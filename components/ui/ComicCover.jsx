@@ -6,7 +6,7 @@ import Badge from './Badge';
 const ComicCover = ({
 	name = 'Comic Name',
 	author = 'Author Name',
-	coverUrl = '/images/comic-thumbnail/comic-1.jpg',
+	coverUrl = '/images/comic-thumbnail/comic-3.jpg',
 	likes = 100,
 	chapters = 3,
 	category = 'Fantacy',

@@ -5,9 +5,13 @@ import Avatar from './Avatar';
 import { PlusIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { allNovels } from '@/constants';
+import { useSession } from 'next-auth/react';
 
 const Input = ({ placeholder = 'Search', children, className }) => {
+	const { data: session } = useSession();
 	const [searchQuery, setSearchQuery] = useState('');
+
+	console.log(session);
 
 	const handleQueryChange = (e) => {
 		setSearchQuery(e.target.value);
@@ -47,7 +51,7 @@ const Input = ({ placeholder = 'Search', children, className }) => {
 					className="flex items-center gap-x-2 w-full"
 					htmlFor="search"
 				>
-					<Avatar className="w-6 h-6 text-[10px]" />
+					{session && <Avatar name={session?.user.name} className="w-6 h-6 text-[8px]" />}
 					<input
 						type="text"
 						id="search"

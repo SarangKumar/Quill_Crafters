@@ -15,7 +15,7 @@ export const buttonVariants = cva(
 					'text-foreground-secondary rounded-full relative p-2 after:absolute after:rounded-full  after:from-white/[0.03] after:duration-500 after:content-[""] after:p-5 after:animate-spin-delayed after:to-white/30 after:bg-gradient-to-l before:absolute before:-inset-2 before:bg-gradient-to-r before:from-white/20 before:-z-10 before:rounded-full before:content-[""] before:animate-spin-delayed before:p-3 before:duration-1000 before:ease-in',
 				outline:
 					'border-2 border-background-secondary backdrop-blur text-white bg-transparent rounded-full',
-				ghost: 'text-foreground bg-transparent rounded-full hover:bg-background-secondary backdrop-blur-md',
+				ghost: 'text-foreground bg-transparent rounded-full hover:bg-background-secondary hover:backdrop-blur-md',
 			},
 			size: {
 				default: 'h-7 w-auto px-2 py-px ',
@@ -50,9 +50,9 @@ const Button = (
 	}
 	return (
 		<button
+			{...props}
 			className={cn(buttonVariants({ variant, size, className }))}
 			ref={ref}
-			{...props}
 		>
 			{children}
 		</button>
