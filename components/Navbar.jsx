@@ -66,7 +66,7 @@ const Navbar = () => {
 					<div className="h-full w-full flex flex-col items-end gap-2">
 						<button
 							onClick={() => setMenuIsOpen((prev) => !prev)}
-							className="z-50 flex justify-end"
+							className="z-50 flex justify-center items-center rounded hover:bg-background-tertiary/20 hover:ring hover:shadow-primary focus:ring-primary hover:shadow"
 						>
 							<PlusIcon
 								size={24}
