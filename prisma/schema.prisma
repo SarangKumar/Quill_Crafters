@@ -10,11 +10,91 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum PLAN {
+  BASIC
+  PRO
+  PREMIUM
+}
+
 model User {
   user_id   Int      @id @default(autoincrement())
   username  String
   email     String   @unique
-  password  String
+  avatar    String?
+  isAuthor  Boolean  @default(false)
   bio       String?
+  plan      PLAN     @default(BASIC)
   join_date DateTime @default(now())
+
+  comment   Comment[]
+  rating    Rating[]
+  favourite Favourite[]
+  novel     Novel[]
+}
+
+model Comment {
+  comment_id Int      @id @default(autoincrement())
+  user_id    Int
+  novel_id   Int
+  comment    String
+  created_at DateTime @default(now())
+
+  user  User  @relation(fields: [user_id], references: [user_id])
+  novel Novel @relation(fields: [novel_id], references: [novel_id])
+}
+
+model Favourite {
+  favourite_id Int      @id @default(autoincrement())
+  user_id      Int
+  novel_id     Int
+  created_at   DateTime @default(now())
+
+  user  User  @relation(fields: [user_id], references: [user_id])
+  novel Novel @relation(fields: [novel_id], references: [novel_id])
+}
+
+model Novel {
+  novel_id       Int      @id @default(autoincrement())
+  title          String
+  summary        String
+  cover          String
+  publication_at DateTime @default(now())
+  author_id      Int
+
+  comment   Comment[]
+  favourite Favourite[]
+  genere         Genere[]
+  chapter   Chapter[]
+  rating    Rating[]
+
+  author User @relation(fields: [author_id], references: [user_id])
+}
+
+
+model Genere {
+  gener_id Int     @id @default(autoincrement())
+  name     String
+  novel    Novel[]
+}
+
+model Chapter {
+  chapter_id     Int      @id @default(autoincrement())
+  novel_id       Int
+  chapter_number Int
+  chapter_title  String
+  content        String
+  created_at     DateTime @default(now())
+
+  novel Novel @relation(fields: [novel_id], references: [novel_id])
+}
+
+model Rating {
+  rating_id  Int      @id @default(autoincrement())
+  novel_id   Int
+  user_id    Int
+  rating     Int
+  created_at DateTime @default(now())
+
+  user  User  @relation(fields: [user_id], references: [user_id])
+  novel Novel @relation(fields: [novel_id], references: [novel_id])
 }

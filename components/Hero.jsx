@@ -18,7 +18,7 @@ const Hero = () => {
 					Think better with Quill
 				</h1>
 				<p className="text-foreground-secondary">
-					Never miss the latest Novels
+					Never miss any Best Seller
 				</p>
 			</div>
 		</Container>
