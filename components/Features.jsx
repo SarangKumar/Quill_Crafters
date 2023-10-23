@@ -9,83 +9,80 @@ import Input from './ui/Input';
 
 const Features = () => {
 	return (
-		<Container>
-		<Input />
-			<div className="grid md:gap-5 gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
-				<FeatureCard>
-					<Badge
-						variant="animate"
-						size="icon-rounded-large"
-					>
-						<Cloud />
-					</Badge>
-				</FeatureCard>
-				<FeatureCard>
-					<Badge
-						variant="animate"
-						size="icon-rounded-large"
-					>
-						<Rotate3D />
-					</Badge>
-				</FeatureCard>
-				<FeatureCard>
-					<Badge
-						variant="animate"
-						size="icon-rounded-large"
-					>
-						<BellDot />
-					</Badge>
-				</FeatureCard>
-				<FeatureCard>
-					<Badge
-						variant="animate"
-						size="icon-rounded-large"
-					>
-						<Atom />
-					</Badge>
-				</FeatureCard>
-			</div>
-			<div>
-				<Avatar
-					name="Sarang Kumar Sahu"
-					src='/images/user-thumbnails/profile1.png'
-				/>
-				<Avatar name="Tejasvi Kumar" />
-				<Avatar name="Sarang" />
-			</div>
-
-			<div className="flex gap-4">
+		<div className="grid md:gap-5 gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+			<FeatureCard>
 				<Badge
-					size="icon-rounded"
 					variant="animate"
-				>
-					<Rotate3D />
-				</Badge>
-				<Badge
 					size="icon-rounded-large"
+				>
+					<Cloud />
+				</Badge>
+			</FeatureCard>
+			<FeatureCard>
+				<Badge
 					variant="animate"
+					size="icon-rounded-large"
 				>
 					<Rotate3D />
 				</Badge>
-			</div>
-			<div className="flex gap-4 ">
-				<Badge size="lg">Something</Badge>
+			</FeatureCard>
+			<FeatureCard>
 				<Badge
-					size="lg"
-					variant="outline"
+					variant="animate"
+					size="icon-rounded-large"
 				>
-					Something
+					<BellDot />
 				</Badge>
+			</FeatureCard>
+			<FeatureCard>
 				<Badge
-					variant="ghost"
-					size="lg"
+					variant="animate"
+					size="icon-rounded-large"
 				>
-					Button badge
+					<Atom />
 				</Badge>
-				<Badge size="sm">Something</Badge>
-			</div>
-		</Container>
+			</FeatureCard>
+		</div>
 	);
 };
 
 export default Features;
+// <div>
+// 	<Avatar
+// 		name="Sarang Kumar Sahu"
+// 		src='/images/user-thumbnails/profile1.png'
+// 	/>
+// 	<Avatar name="Tejasvi Kumar" />
+// 	<Avatar name="Sarang" />
+// </div>
+
+// <div className="flex gap-4">
+// 	<Badge
+// 		size="icon-rounded"
+// 		variant="animate"
+// 	>
+// 		<Rotate3D />
+// 	</Badge>
+// 	<Badge
+// 		size="icon-rounded-large"
+// 		variant="animate"
+// 	>
+// 		<Rotate3D />
+// 	</Badge>
+// </div>
+// <div className="flex gap-4 ">
+// 	<Badge size="lg">Something</Badge>
+// 	<Badge
+// 		size="lg"
+// 		variant="outline"
+// 	>
+// 		Something
+// 	</Badge>
+// 	<Badge
+// 		variant="ghost"
+// 		size="lg"
+// 	>
+// 		Button badge
+// 	</Badge>
+// 	<Badge size="sm">Something</Badge>
+// </div>

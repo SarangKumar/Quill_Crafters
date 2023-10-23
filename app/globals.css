@@ -29,6 +29,7 @@
 .main:after {
 	content: '';
 	position: absolute;
+	/* background-color: red; */
 	z-index: 1;
 	width: 100%;
 	min-width: 786px;

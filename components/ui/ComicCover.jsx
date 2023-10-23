@@ -12,14 +12,14 @@ const ComicCover = ({
 	category = 'Fantacy',
 }) => {
 	return (
-		<div className="shadow-lg border-2 group text-white relative overflow-hidden border-border rounded-xl min-w-[250px] ring-2 transition-colors focus:ring-primary hover:shadow-primary">
+		<div className="shadow-md border group text-white relative overflow-hidden border-border rounded-xl min-w-[210px]  ring-2 transition-colors focus:ring-primary hover:shadow-primary">
 			<button className="group-focus:ring-primary group-focus:ring group-focus:ring-offset-2">
 				<Image
 					src={coverUrl}
 					height={450}
 					width={300}
 					alt={name}
-					className="object-cover overflow-hidden rounded-xl w-full h-full"
+					className="object-cover overflow-hidden w-full h-full"
 				/>
 			</button>
 			<div className="text-sm p-2 flex gap-x-1 bg-background-tertiary/5 left-0 right-0 w-full top-0 absolute">

@@ -1,3 +1,4 @@
+import ComicContainer from '@/components/ComicContainer';
 import Features from '@/components/Features';
 import Button from '@/components/ui/Button';
 import ComicCover from '@/components/ui/ComicCover';
@@ -8,7 +9,6 @@ import SubHeading from '@/components/ui/SubHeading';
 const TestPage = () => {
 	return (
 		<>
-			{/* <Container> */}
 			<Button>TestPage</Button>
 			{/* <Input /> */}
 			<SubHeading>Test Page</SubHeading>
@@ -16,23 +16,9 @@ const TestPage = () => {
 			<div className="main">
 				<Features />
 			</div>
-			<Container>
-				<main className="grid grid-cols-cards gap-5 ">
-					<ComicCover />
-					<ComicCover />
-					<ComicCover />
-					<ComicCover />
-					<ComicCover />
-					<ComicCover />
-					<ComicCover />
-					<ComicCover />
-					<ComicCover />
-					<ComicCover />
-					<ComicCover />
-					<ComicCover />
-				</main>
-			</Container>
-			{/* </Container> */}
+
+			<ComicContainer />
+
 		</>
 	);
 };
