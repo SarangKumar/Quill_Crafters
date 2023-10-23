@@ -1,5 +1,6 @@
 import ComicContainer from '@/components/ComicContainer';
 import Features from '@/components/Features';
+import Hero from '@/components/Hero';
 import Container from '@/components/ui/Container';
 import Input from '@/components/ui/Input';
 import SubHeading from '@/components/ui/SubHeading';
@@ -13,6 +14,7 @@ const Home = () => {
 	
 	return (
 		<Container>
+		<Hero />
 			<div className="main">
 				<SubHeading>Features</SubHeading>
 				<Features />

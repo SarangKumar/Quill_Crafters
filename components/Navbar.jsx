@@ -21,7 +21,7 @@ const Navbar = () => {
 							className="text-foreground-secondary hover:text-foreground"
 							href="/"
 						>
-							Home
+							About
 						</Link>
 					</li>
 					<li>
@@ -29,7 +29,7 @@ const Navbar = () => {
 							className="text-foreground-secondary hover:text-foreground"
 							href="/"
 						>
-							Home
+							All Novels
 						</Link>
 					</li>
 					<li>
