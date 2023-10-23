@@ -34,7 +34,7 @@ export const buttonVariants = cva(
 );
 
 const Button = (
-	{ className, children, href, variant, size, ...props },
+	{ className, children, href, onClick, variant, size, ...props },
 	ref
 ) => {
 	if (href) {
@@ -51,6 +51,7 @@ const Button = (
 	return (
 		<button
 			{...props}
+			onClick={onClick}
 			className={cn(buttonVariants({ variant, size, className }))}
 			ref={ref}
 		>

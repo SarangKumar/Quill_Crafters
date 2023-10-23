@@ -11,7 +11,6 @@ const Input = ({ placeholder = 'Search', children, className }) => {
 	const { data: session } = useSession();
 	const [searchQuery, setSearchQuery] = useState('');
 
-	console.log(session);
 
 	const handleQueryChange = (e) => {
 		setSearchQuery(e.target.value);
@@ -36,7 +35,6 @@ const Input = ({ placeholder = 'Search', children, className }) => {
 					: filteredNovels;
 
 			setNovels(slicedNovels);
-			console.log(slicedNovels);
 		}
 	}, [searchQuery]);
 	return (

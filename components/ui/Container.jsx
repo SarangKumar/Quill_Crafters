@@ -5,7 +5,7 @@ const Container = ({ children, className }) => {
 	return (
 		<main
 			className={cn(
-				'mx-4 space-y-10 sm:mx-10 md:mx-auto md:max-w-6xl',
+				'mx-5 space-y-10 sm:mx-10 md:mx-auto md:max-w-6xl',
 				className
 			)}
 		>

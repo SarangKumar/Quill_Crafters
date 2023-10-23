@@ -6,7 +6,7 @@ import Badge from './Badge';
 const ComicCover = ({
 	name = 'Comic Name',
 	author = 'Author Name',
-	coverUrl = '/images/comic-thumbnail/comic-3.jpg',
+	coverUrl = '',
 	likes = 100,
 	chapters = 3,
 	category = 'Fantacy',
@@ -17,7 +17,7 @@ const ComicCover = ({
 }) => {
 	bookmarked = true;
 	return (
-		<div className="shadow-md group border group text-white relative overflow-hidden border-border rounded-lg bg-background-secondary ring-offset-0 transition-colors focus:ring-primary hover:shadow-primary hover:ring-2 hover:ring-primary ">
+		<div className="shadow-md group border group text-white relative overflow-hidden border-border rounded-lg bg-background-secondary ring-offset-0 transition-colors focus:ring-primary hover:shadow-primary hover:ring-2 hover:ring-primary">
 			<button className="group-focus:ring-primary group-focus:ring group-focus:ring-offset-2 h-full w-full">
 				<Image
 					src={coverUrl}

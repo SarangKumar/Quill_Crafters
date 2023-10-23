@@ -1,19 +1,23 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import Avatar from './ui/Avatar';
-import  { buttonVariants } from './ui/Button';
+import Button, { buttonVariants } from './ui/Button';
 import { signOut, signIn, useSession } from 'next-auth/react';
 import { cn } from '@/lib/utils';
 import Badge from './ui/Badge';
+import { AlignJustify, PlusIcon } from 'lucide-react';
 
 const Navbar = () => {
 	const { data: session } = useSession();
+	const [menuIsOpen, setMenuIsOpen] = useState(false);
 
 	return (
 		<nav className="text-white bg-white/5 z-50 w-full backdrop-blur-[1px] sticky top-0 h-14 flex justify-center items-center ">
-			<main className="flex items-center justify-between mx-4 md:max-w-6xl sm:mx-10 md:mx-auto w-full">
+			<main className="flex items-center justify-between mx-5 md:max-w-6xl sm:mx-10 md:mx-auto w-full">
 				<h1 className="text-lg font-medium">Quill Crafters</h1>
-				<ul className="flex items-center justify-center gap-x-3 text-xs font-medium">
+
+				{/* Desktop View */}
+				<ul className=" hidden md:flex items-center justify-center gap-x-3 text-xs font-medium">
 					<li>
 						<Badge
 							variant="ghost"
@@ -25,15 +29,6 @@ const Navbar = () => {
 					</li>
 					<li>
 						<Badge
-							variant="ghost"
-							className="text-foreground-secondary hover:text-foreground"
-							href="/"
-						>
-							About
-						</Badge>
-					</li>
-					<li>
-						<Badge
 							href="/"
 							variant="ghost"
 							className="text-foreground-secondary hover:text-foreground"
@@ -41,32 +36,68 @@ const Navbar = () => {
 							All Novels
 						</Badge>
 					</li>
-
-					{session ? (
-						<li className='flex items-center gap-x-3'>
+					<li className="flex items-center gap-x-3">
+						{session ? (
 							<Avatar name={session?.user.name} />
+						) : (
 							<button
-								className={cn(
-									buttonVariants('default', 'default', '')
-								)}
-								onClick={() => signOut()}
-							>
-								Sign Out
-							</button>
-						</li>
-					) : (
-						<li className='flex items-center gap-x-3'>
-							<button
-								className={cn(
-									buttonVariants('default', 'default', '')
-								)}
+								className="text-foreground-secondary hover:text-foreground"
 								onClick={() => signIn()}
 							>
 								Sign In
 							</button>
-						</li>
-					)}
+						)}
+					</li>
+
 				</ul>
+					{/* Mobile */}
+					<button
+						onClick={() => setMenuIsOpen((prev) => !prev)}
+						className="z-50 h-8 w-8 rounded"
+					>
+						{!menuIsOpen && <AlignJustify size={24} />}
+					</button>
+
+				<aside
+					className={`absolute top-0 bottom-0 right-0 bg-background-secondary h-[100svh] p-6 ${
+						menuIsOpen ? 'w-80 ' : 'hidden w-0 translate-x-0'
+					}`}
+				>
+					<div className="h-full w-full flex flex-col items-end gap-2">
+						<button
+							onClick={() => setMenuIsOpen((prev) => !prev)}
+							className="z-50 flex justify-end"
+						>
+							<PlusIcon
+								size={24}
+								className="rotate-45"
+							/>
+						</button>
+
+						<ul>
+							<li>
+								{session ? (
+									<>
+										{/* <Avatar name={session?.user.name} /> */}
+										<button
+											className="rounded text-foreground hover:text-foreground-secondary border-2 border-border bg-background-tertiary hover:ring hover:shadow-primary focus:ring-primary hover:shadow h-9 px-4"
+											onClick={() => signOut()}
+										>
+											Sign Out
+										</button>
+									</>
+								) : (
+									<button
+										className="text-foreground-secondary hover:text-foreground"
+										onClick={() => signIn()}
+									>
+										Sign In
+									</button>
+								)}
+							</li>
+						</ul>
+					</div>
+				</aside>
 			</main>
 		</nav>
 	);

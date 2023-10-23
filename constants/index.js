@@ -6,6 +6,7 @@ export const allNovels = [
 		likes: 100,
 		category: 'Classic',
 		author: 'Harper Lee',
+		coverUrl: '/images/comic-thumbnail/comic-1.jpg',
 	},
 	{
 		id: 2,
@@ -13,6 +14,7 @@ export const allNovels = [
 		chapters: 18,
 		likes: 80,
 		category: 'Dystopian',
+		coverUrl: '/images/comic-thumbnail/comic-2.jpg',
 		author: 'George Orwell',
 	},
 	{
@@ -22,6 +24,7 @@ export const allNovels = [
 		likes: 120,
 		category: 'Romance',
 		author: 'Jane Austen',
+		coverUrl: '/images/comic-thumbnail/comic-3.jpg',
 	},
 	{
 		id: 4,
@@ -30,6 +33,7 @@ export const allNovels = [
 		likes: 90,
 		category: 'Classic',
 		author: 'F. Scott Fitzgerald',
+		coverUrl: '/images/comic-thumbnail/comic-2.jpg',
 	},
 	{
 		id: 5,
@@ -38,6 +42,7 @@ export const allNovels = [
 		likes: 110,
 		category: 'Coming-of-Age',
 		author: 'J.D. Salinger',
+		coverUrl: '/images/comic-thumbnail/comic-1.jpg',
 	},
 	{
 		id: 6,
@@ -46,6 +51,7 @@ export const allNovels = [
 		likes: 70,
 		category: 'Adventure',
 		author: 'Herman Melville',
+		coverUrl: '/images/comic-thumbnail/comic-2.jpg',
 	},
 	{
 		id: 7,
@@ -54,6 +60,7 @@ export const allNovels = [
 		likes: 150,
 		category: 'Historical Fiction',
 		author: 'Leo Tolstoy',
+		coverUrl: '/images/comic-thumbnail/comic-2.jpg',
 	},
 	{
 		id: 8,
@@ -62,6 +69,7 @@ export const allNovels = [
 		likes: 200,
 		category: 'Fantasy',
 		author: 'J.R.R. Tolkien',
+		coverUrl: '/images/comic-thumbnail/comic-3.jpg',
 	},
 	{
 		id: 9,
@@ -70,6 +78,7 @@ export const allNovels = [
 		likes: 60,
 		category: 'Modernist',
 		author: 'Virginia Woolf',
+		coverUrl: '/images/comic-thumbnail/comic-3.jpg',
 	},
 	{
 		id: 10,
@@ -78,6 +87,7 @@ export const allNovels = [
 		likes: 80,
 		category: 'Epic',
 		author: 'Homer',
+		coverUrl: '/images/comic-thumbnail/comic-1.jpg',
 	},
 	{
 		id: 11,
@@ -86,6 +96,7 @@ export const allNovels = [
 		likes: 130,
 		category: 'Adventure',
 		author: 'Miguel de Cervantes',
+		coverUrl: '/images/comic-thumbnail/comic-2.jpg',
 	},
 	{
 		id: 12,
@@ -94,6 +105,7 @@ export const allNovels = [
 		likes: 90,
 		category: 'Classic',
 		author: 'Fyodor Dostoevsky',
+		coverUrl: '/images/comic-thumbnail/comic-2.jpg',
 	},
 	{
 		id: 13,
@@ -102,6 +114,7 @@ export const allNovels = [
 		likes: 70,
 		category: 'Gothic',
 		author: 'Mary Shelley',
+		coverUrl: '/images/comic-thumbnail/comic-1.jpg',
 	},
 	{
 		id: 14,
@@ -110,6 +123,7 @@ export const allNovels = [
 		likes: 120,
 		category: 'Social Commentary',
 		author: 'John Steinbeck',
+		coverUrl: '/images/comic-thumbnail/comic-2.jpg',
 	},
 	{
 		id: 15,
@@ -118,6 +132,7 @@ export const allNovels = [
 		likes: 150,
 		category: 'Magical Realism',
 		author: 'Gabriel García Márquez',
+		coverUrl: '/images/comic-thumbnail/comic-1.jpg',
 	},
 	{
 		id: 16,
@@ -126,6 +141,7 @@ export const allNovels = [
 		likes: 100,
 		category: 'Dystopian',
 		author: 'Aldous Huxley',
+		coverUrl: '/images/comic-thumbnail/comic-1.jpg',
 	},
 	{
 		id: 17,
@@ -134,6 +150,7 @@ export const allNovels = [
 		likes: 110,
 		category: 'Fantasy',
 		author: 'J.R.R. Tolkien',
+		coverUrl: '/images/comic-thumbnail/comic-1.jpg',
 	},
 	{
 		id: 18,
@@ -142,6 +159,7 @@ export const allNovels = [
 		likes: 140,
 		category: 'Adventure',
 		author: 'Paulo Coelho',
+		coverUrl: '/images/comic-thumbnail/comic-1.jpg',
 	},
 	{
 		id: 19,
@@ -150,6 +168,7 @@ export const allNovels = [
 		likes: 80,
 		category: 'Horror',
 		author: 'Stephen King',
+		coverUrl: '/images/comic-thumbnail/comic-2.jpg',
 	},
 	{
 		id: 20,
@@ -158,6 +177,7 @@ export const allNovels = [
 		likes: 90,
 		category: 'Fantasy',
 		author: 'Lewis Carroll',
+		coverUrl: '/images/comic-thumbnail/comic-3.jpg',
 	},
 	{
 		id: 21,
@@ -166,6 +186,7 @@ export const allNovels = [
 		likes: 70,
 		category: 'Adventure',
 		author: 'Ernest Hemingway',
+		coverUrl: '/images/comic-thumbnail/comic-3.jpg',
 	},
 	{
 		id: 22,
@@ -174,6 +195,7 @@ export const allNovels = [
 		likes: 150,
 		category: 'Epic',
 		author: 'Dante Alighieri',
+		coverUrl: '/images/comic-thumbnail/comic-3.jpg',
 	},
 	{
 		id: 23,
@@ -182,6 +204,7 @@ export const allNovels = [
 		likes: 160,
 		category: 'Historical Fiction',
 		author: 'Victor Hugo',
+		coverUrl: '/images/comic-thumbnail/comic-2.jpg',
 	},
 	{
 		id: 24,
@@ -190,6 +213,7 @@ export const allNovels = [
 		likes: 110,
 		category: 'Psychological Fiction',
 		author: 'Fyodor Dostoevsky',
+		coverUrl: '/images/comic-thumbnail/comic-1.jpg',
 	},
 	{
 		id: 25,
@@ -198,6 +222,7 @@ export const allNovels = [
 		likes: 130,
 		category: 'Historical Romance',
 		author: 'Margaret Mitchell',
+		coverUrl: '/images/comic-thumbnail/comic-1.jpg',
 	},
 	{
 		id: 26,
@@ -206,6 +231,7 @@ export const allNovels = [
 		likes: 70,
 		category: 'Adventure',
 		author: 'William Golding',
+		coverUrl: '/images/comic-thumbnail/comic-2.jpg',
 	},
 	{
 		id: 27,
@@ -214,6 +240,7 @@ export const allNovels = [
 		likes: 80,
 		category: 'Gothic',
 		author: 'Oscar Wilde',
+		coverUrl: '/images/comic-thumbnail/comic-3.jpg',
 	},
 	{
 		id: 28,
@@ -222,6 +249,7 @@ export const allNovels = [
 		likes: 120,
 		category: 'Historical Fiction',
 		author: 'Charles Dickens',
+		coverUrl: '/images/comic-thumbnail/comic-2.jpg',
 	},
 	{
 		id: 29,
@@ -230,6 +258,7 @@ export const allNovels = [
 		likes: 100,
 		category: 'Gothic',
 		author: 'Bram Stoker',
+		coverUrl: '/images/comic-thumbnail/comic-1.jpg',
 	},
 	{
 		id: 30,
@@ -238,6 +267,7 @@ export const allNovels = [
 		likes: 70,
 		category: 'Romance',
 		author: 'Nathaniel Hawthorne',
+		coverUrl: '/images/comic-thumbnail/comic-1.jpg',
 	},
 	{
 		id: 31,
@@ -246,6 +276,7 @@ export const allNovels = [
 		likes: 60,
 		category: 'Post-Apocalyptic',
 		author: 'Cormac McCarthy',
+		coverUrl: '/images/comic-thumbnail/comic-1.jpg',
 	},
 	{
 		id: 32,
@@ -254,6 +285,7 @@ export const allNovels = [
 		likes: 80,
 		category: 'Lost Generation',
 		author: 'Ernest Hemingway',
+		coverUrl: '/images/comic-thumbnail/comic-3.jpg',
 	},
 	{
 		id: 33,
@@ -262,6 +294,7 @@ export const allNovels = [
 		likes: 90,
 		category: 'Social Commentary',
 		author: 'Upton Sinclair',
+		coverUrl: '/images/comic-thumbnail/comic-2.jpg',
 	},
 	{
 		id: 34,
@@ -270,6 +303,7 @@ export const allNovels = [
 		likes: 100,
 		category: 'Dystopian',
 		author: 'Ray Bradbury',
+		coverUrl: '/images/comic-thumbnail/comic-3.jpg',
 	},
 	{
 		id: 35,
@@ -278,6 +312,7 @@ export const allNovels = [
 		likes: 110,
 		category: 'Science Fiction',
 		author: 'Douglas Adams',
+		coverUrl: '/images/comic-thumbnail/comic-2.jpg',
 	},
 	{
 		id: 36,
@@ -286,6 +321,7 @@ export const allNovels = [
 		likes: 90,
 		category: 'Fantasy',
 		author: 'William Goldman',
+		coverUrl: '/images/comic-thumbnail/comic-3.jpg',
 	},
 	{
 		id: 37,
@@ -294,6 +330,7 @@ export const allNovels = [
 		likes: 70,
 		category: "Children's",
 		author: 'Frances Hodgson Burnett',
+		coverUrl: '/images/comic-thumbnail/comic-3.jpg',
 	},
 	{
 		id: 38,
@@ -302,6 +339,7 @@ export const allNovels = [
 		likes: 80,
 		category: 'Gothic',
 		author: 'Emily Brontë',
+		coverUrl: '/images/comic-thumbnail/comic-2.jpg',
 	},
 	{
 		id: 39,
@@ -310,6 +348,7 @@ export const allNovels = [
 		likes: 100,
 		category: 'Dystopian',
 		author: 'Margaret Atwood',
+		coverUrl: '/images/comic-thumbnail/comic-2.jpg',
 	},
 	{
 		id: 40,
@@ -318,6 +357,7 @@ export const allNovels = [
 		likes: 80,
 		category: "Children's",
 		author: 'Antoine de Saint-Exupéry',
+		coverUrl: '/images/comic-thumbnail/comic-3.jpg',
 	},
 	{
 		id: 41,
@@ -326,6 +366,7 @@ export const allNovels = [
 		likes: 40,
 		category: 'Poetry',
 		author: 'Robert Frost',
+		coverUrl: '/images/comic-thumbnail/comic-1.jpg',
 	},
 	{
 		id: 42,
@@ -334,6 +375,7 @@ export const allNovels = [
 		likes: 110,
 		category: 'Science Fiction',
 		author: 'Andy Weir',
+		coverUrl: '/images/comic-thumbnail/comic-3.jpg',
 	},
 	{
 		id: 43,
@@ -342,6 +384,7 @@ export const allNovels = [
 		likes: 120,
 		category: 'Dystopian',
 		author: 'Suzanne Collins',
+		coverUrl: '/images/comic-thumbnail/comic-1.jpg',
 	},
 	{
 		id: 44,
@@ -350,6 +393,7 @@ export const allNovels = [
 		likes: 100,
 		category: 'Dystopian',
 		author: 'Lois Lowry',
+		coverUrl: '/images/comic-thumbnail/comic-3.jpg',
 	},
 	{
 		id: 45,
@@ -358,6 +402,7 @@ export const allNovels = [
 		likes: 70,
 		category: 'Young Adult',
 		author: 'S.E. Hinton',
+		coverUrl: '/images/comic-thumbnail/comic-1.jpg',
 	},
 	{
 		id: 46,
@@ -366,6 +411,7 @@ export const allNovels = [
 		likes: 150,
 		category: 'Fantasy',
 		author: 'C.S. Lewis',
+		coverUrl: '/images/comic-thumbnail/comic-1.jpg',
 	},
 	{
 		id: 47,
@@ -374,6 +420,7 @@ export const allNovels = [
 		likes: 120,
 		category: 'Fantasy',
 		author: 'Patrick Rothfuss',
+		coverUrl: '/images/comic-thumbnail/comic-1.jpg',
 	},
 	{
 		id: 48,
@@ -382,6 +429,7 @@ export const allNovels = [
 		likes: 110,
 		category: 'Mystery',
 		author: 'Stieg Larsson',
+		coverUrl: '/images/comic-thumbnail/comic-3.jpg',
 	},
 	{
 		id: 49,
@@ -390,6 +438,7 @@ export const allNovels = [
 		likes: 160,
 		category: 'Horror',
 		author: 'Stephen King',
+		coverUrl: '/images/comic-thumbnail/comic-2.jpg',
 	},
 	{
 		id: 50,
@@ -398,5 +447,6 @@ export const allNovels = [
 		likes: 80,
 		category: "Children's",
 		author: 'Kenneth Grahame',
+		coverUrl: '/images/comic-thumbnail/comic-3.jpg',
 	},
 ];
