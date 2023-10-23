@@ -19,8 +19,6 @@ function extractInitials(input) {
 }
 
 const LoadingAvatar = ({ name, children }) => {
-	name = name || 'Guest User';
-	name = extractInitials(name);
 	return (
 		<span className="text-foreground absolute inset-[1px] bg-black rounded-full font-medium text-xs inline-flex justify-center items-center">
 			{name}
@@ -29,6 +27,8 @@ const LoadingAvatar = ({ name, children }) => {
 };
 
 const Avatar = ({ name, className, src = '' }) => {
+	name = name || 'Guest User';
+	name = extractInitials(name);
 	return (
 		<span
 			className={cn(
@@ -36,16 +36,10 @@ const Avatar = ({ name, className, src = '' }) => {
 				className
 			)}
 		>
-			{/* <Suspense fallback={<LoadingAvatar name={name} />}>
-				<Image
-					src={src}
-					alt={`${name}-avatar`}
-					width="100"
-					height="100"
-					className="rounded-full bg-cover"
-				/>
-			</Suspense> */}
-			<LoadingAvatar name={name} />
+			<span className="text-foreground absolute inset-[1px] bg-black rounded-full font-medium text-xs inline-flex justify-center items-center">
+				{name}
+			</span>
+			{/* <LoadingAvatar name={name} /> */}
 		</span>
 	);
 };
