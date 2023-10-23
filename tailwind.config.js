@@ -27,7 +27,7 @@ module.exports = {
 				sans: ['var(--font-sans)', ...fontFamily.sans],
 			},
 			gridTemplateColumns: {
-				cards: 'repeat(auto-fill, minmax(210px, 1fr))',
+				cards: 'repeat(auto-fill, minmax(170px, 1fr))',
 			},
 			keyframes: {
 				'spin-delayed': {

@@ -42,7 +42,7 @@ const Input = ({ placeholder = 'Search', children, className }) => {
 				className
 			)}
 		>
-			<form className="flex rounded-lg border-border border-2 p-1.5 focus-within:ring focus-within:ring-primary items-center text-sm gap-x-1 bg-gradient-to-t from-background-secondary/40 from-10% to-transparent space-y-2 before:absolute before:bg-gradient-to-r backdrop-blur-[2px] before:from-transparent before:to-background-secondary/40 before:from-10% before:inset-0 caret-primary">
+			<form className="flex rounded-lg border-border border-2 p-1.5 focus-within:ring focus-within:ring-primary items-center text-sm gap-x-1 bg-gradient-to-t from-background-secondary/40 from-10% to-transparent space-y-2 before:absolute before:bg-gradient-to-r backdrop-blur-[2px] before:from-transparent before:to-background-secondary/40 before:from-10% before:-z-10 before:inset-0 caret-primary">
 				<label
 					className="flex items-center gap-x-2 w-full"
 					htmlFor="search"
