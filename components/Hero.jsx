@@ -14,7 +14,7 @@ const Hero = () => {
 				<span>Getting all the best sellers</span>
 			</Badge>
 			<div className="text-center space-y-2">
-				<h1 className="text-foreground text-5xl font-semibold tracking-tight">
+				<h1 className="text-foreground text-5xl font-semibold tracking-tighter">
 					Think better with Quill
 				</h1>
 				<p className="text-foreground-secondary">

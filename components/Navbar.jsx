@@ -1,8 +1,13 @@
+'use client';
 import React from 'react';
 import Link from 'next/link';
 import Avatar from './ui/Avatar';
+import Button from './ui/Button';
+import { signOut, signIn, useSession } from 'next-auth/react';
 
 const Navbar = () => {
+	const { data: session } = useSession();
+
 	return (
 		<nav className="text-white bg-white/5 z-50 w-full backdrop-blur-[1px] sticky top-0 h-14 flex justify-center items-center ">
 			<main className="flex items-center justify-between mx-4 md:max-w-6xl sm:mx-10 md:mx-auto w-full">
@@ -32,9 +37,18 @@ const Navbar = () => {
 							All Novels
 						</Link>
 					</li>
-					<li>
-						<Avatar name="Sarang Kumar" />
-					</li>
+					{/* <li>
+					</li> */}
+					{session ? (
+						<>
+							<Avatar name={session?.user.name} />
+							<button onClick={() => signOut()}>Sign Out</button>
+						</>
+					) : (
+						<>
+							<button onClick={() => signIn()}>Sign In</button>
+						</>
+					)}
 				</ul>
 			</main>
 		</nav>

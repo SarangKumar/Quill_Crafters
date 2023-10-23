@@ -33,7 +33,6 @@ export const buttonVariants = cva(
 	}
 );
 
-
 const Button = (
 	{ className, children, href, variant, size, ...props },
 	ref
@@ -41,6 +40,7 @@ const Button = (
 	if (href) {
 		return (
 			<Link
+				{...props}
 				href={href}
 				className={cn(buttonVariants({ variant, size, className }))}
 			>
