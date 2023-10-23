@@ -23,7 +23,7 @@
 	background-color: var(--background);
 	position: relative;
 	overflow: hidden;
-	height: 100vh;
+	/* height: 100vh; */
 }
 
 .main:after {
@@ -35,7 +35,7 @@
 	min-width: 786px;
 	top: 80%;
 	left: 50%;
-	transform: translate(-50%, -50%);
+	transform: translate(-50%, -30%);
 	border-radius: 50%;
 	aspect-ratio: 1/1;
 	z-index: -1;
@@ -56,7 +56,7 @@
 	position: absolute;
 	left: 50%;
 	top: 80%;
-	transform: translate(-50%, -50%);
+	transform: translate(-50%, -25%);
 	z-index: 1;
 	width: 80%;
 	min-width: 640px;

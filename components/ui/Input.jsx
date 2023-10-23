@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Avatar from './Avatar';
 import { PlusIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { allNovels } from '@/constants';
 
 const Input = ({ placeholder = 'Search', children, className }) => {
 	const [searchQuery, setSearchQuery] = useState('');
@@ -12,58 +13,6 @@ const Input = ({ placeholder = 'Search', children, className }) => {
 		setSearchQuery(e.target.value);
 	};
 
-	const allNovels = [
-		{ id: 1, name: 'To Kill a Mockingbird' },
-		{ id: 2, name: '1984' },
-		{ id: 3, name: 'Pride and Prejudice' },
-		{ id: 4, name: 'The Great Gatsby' },
-		{ id: 5, name: 'The Catcher in the Rye' },
-		{ id: 6, name: 'Moby-Dick' },
-		{ id: 7, name: 'War and Peace' },
-		{ id: 8, name: 'The Lord of the Rings' },
-		{ id: 9, name: 'To the Lighthouse' },
-		{ id: 10, name: 'The Odyssey' },
-		{ id: 11, name: 'Don Quixote' },
-		{ id: 12, name: 'The Brothers Karamazov' },
-		{ id: 13, name: 'Frankenstein' },
-		{ id: 14, name: 'The Grapes of Wrath' },
-		{ id: 15, name: 'One Hundred Years of Solitude' },
-		{ id: 16, name: 'Brave New World' },
-		{ id: 17, name: 'The Hobbit' },
-		{ id: 18, name: 'The Alchemist' },
-		{ id: 19, name: 'The Shining' },
-		{ id: 20, name: "Alice's Adventures in Wonderland" },
-		{ id: 21, name: 'The Old Man and the Sea' },
-		{ id: 22, name: 'The Divine Comedy' },
-		{ id: 23, name: 'Les Misérables' },
-		{ id: 24, name: 'Crime and Punishment' },
-		{ id: 25, name: 'Gone with the Wind' },
-		{ id: 26, name: 'Lord of the Flies' },
-		{ id: 27, name: 'The Picture of Dorian Gray' },
-		{ id: 28, name: 'A Tale of Two Cities' },
-		{ id: 29, name: 'Dracula' },
-		{ id: 30, name: 'The Scarlet Letter' },
-		{ id: 31, name: 'The Road' },
-		{ id: 32, name: 'The Sun Also Rises' },
-		{ id: 33, name: 'The Jungle' },
-		{ id: 34, name: 'Fahrenheit 451' },
-		{ id: 35, name: "The Hitchhiker's Guide to the Galaxy" },
-		{ id: 36, name: 'The Princess Bride' },
-		{ id: 37, name: 'The Secret Garden' },
-		{ id: 38, name: 'Wuthering Heights' },
-		{ id: 39, name: "The Handmaid's Tale" },
-		{ id: 40, name: 'The Little Prince' },
-		{ id: 41, name: 'The Road Not Taken' },
-		{ id: 42, name: 'The Martian' },
-		{ id: 43, name: 'The Hunger Games' },
-		{ id: 44, name: 'The Giver' },
-		{ id: 45, name: 'The Outsiders' },
-		{ id: 46, name: 'The Chronicles of Narnia' },
-		{ id: 47, name: 'The Name of the Wind' },
-		{ id: 48, name: 'The Girl with the Dragon Tattoo' },
-		{ id: 49, name: 'The Stand' },
-		{ id: 50, name: 'The Wind in the Willows' },
-	];
 	const [novels, setNovels] = useState(allNovels);
 	const allNovelNames = allNovels.map((novel) =>
 		novel.name.toLocaleLowerCase()

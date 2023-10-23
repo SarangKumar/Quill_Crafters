@@ -5,20 +5,19 @@ import ComicCover from '@/components/ui/ComicCover';
 import Container from '@/components/ui/Container';
 import Input from '@/components/ui/Input';
 import SubHeading from '@/components/ui/SubHeading';
+import { allNovels } from '@/constants';
 
 const TestPage = () => {
 	return (
 		<>
 			<Button>TestPage</Button>
-			{/* <Input /> */}
 			<SubHeading>Test Page</SubHeading>
 
 			<div className="main">
 				<Features />
 			</div>
 
-			<ComicContainer />
-
+			<ComicContainer novels={allNovels.slice(0, 16)} />
 		</>
 	);
 };
