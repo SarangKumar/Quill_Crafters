@@ -10,6 +10,10 @@ import { AlignJustify, PlusIcon } from 'lucide-react';
 const Navbar = () => {
 	const { data: session } = useSession();
 	const [menuIsOpen, setMenuIsOpen] = useState(false);
+	if(session){
+		console.log(session)
+		console.log('from nav')
+	}
 
 	return (
 		<nav className="text-white bg-white/5 z-50 w-full backdrop-blur-[1px] sticky top-0 h-14 flex justify-center items-center ">
@@ -17,8 +21,8 @@ const Navbar = () => {
 				<h1 className="text-lg font-medium">Quill Crafters</h1>
 
 				{/* Desktop View */}
-				<ul className=" hidden md:flex items-center justify-center gap-x-3 text-xs font-medium">
-					<li>
+				<ul className="flex items-center justify-center gap-x-3 text-xs font-medium">
+					<li className='hidden md:visible'>
 						<Badge
 							variant="ghost"
 							className="text-foreground-secondary hover:text-foreground"
@@ -27,7 +31,7 @@ const Navbar = () => {
 							Home
 						</Badge>
 					</li>
-					<li>
+					<li className='hidden md:visible'>
 						<Badge
 							href="/"
 							variant="ghost"
@@ -36,7 +40,7 @@ const Navbar = () => {
 							All Novels
 						</Badge>
 					</li>
-					<li className="flex items-center gap-x-3">
+					<li className="items-center gap-x-3 hidden md:flex">
 						{session ? (
 							<Avatar name={session?.user.name} />
 						) : (
@@ -50,10 +54,10 @@ const Navbar = () => {
 					</li>
 
 				</ul>
-					{/* Mobile */}
+				
 					<button
 						onClick={() => setMenuIsOpen((prev) => !prev)}
-						className="z-50 h-8 w-8 rounded"
+						className="z-50 h-8 w-8 rounded "
 					>
 						{!menuIsOpen && <AlignJustify size={24} />}
 					</button>
@@ -81,7 +85,7 @@ const Navbar = () => {
 										{/* <Avatar name={session?.user.name} /> */}
 										<button
 											className="rounded text-foreground hover:text-foreground-secondary border-2 border-border bg-background-tertiary hover:ring hover:shadow-primary focus:ring-primary hover:shadow h-9 px-4"
-											onClick={() => signOut()}
+											onClick={() => signOut("google")}
 										>
 											Sign Out
 										</button>
@@ -89,7 +93,7 @@ const Navbar = () => {
 								) : (
 									<button
 										className="text-foreground-secondary hover:text-foreground"
-										onClick={() => signIn()}
+										onClick={() => signIn("google")}
 									>
 										Sign In
 									</button>
