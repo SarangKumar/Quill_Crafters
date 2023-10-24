@@ -14,8 +14,8 @@ export async function POST(request) {
 			},
 		],
 		mode: 'subscription',
-		success_url: 'http://localhost:3000',
-		cancel_url: 'http://localhost:3000',
+		success_url: process.env.NEXTAUTH_URL,
+		cancel_url: process.env.NEXTAUTH_URL,
 	});
 
 	return NextResponse.json(session.url);
