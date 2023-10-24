@@ -10,12 +10,12 @@ const Author = ({ username, email, bio, novels }) => {
 			<div className="flex gap-2">
 				<Avatar name={username} className="sm:h-9 sm:w-9 md:h-10 md:w-10" />
 				<div>
-					<h2 className="text-sm">{username}</h2>
-					<p className="text-foreground-secondary">{email}</p>
+					<h2 className="text-sm font-medium">{username}</h2>
+					<p className="text-foreground-secondary font-medium">{email}</p>
 				</div>
 			</div>
 			<div>
-				<p className="text-foreground">{bio}</p>
+				<p className="text-foreground font-light">{bio}</p>
 			</div>
 			<div className='flex gap-1 flex-wrap'>
 				{novels.map((novel, i) => (
