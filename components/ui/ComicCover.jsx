@@ -1,7 +1,15 @@
+'use client';
 import { Bookmark, LibraryBig, Star } from 'lucide-react';
 import Image from 'next/image';
 import React from 'react';
 import Badge from './Badge';
+import { useSession } from 'next-auth/react';
+import { buttonVariants } from './Button';
+import { cn } from '@/lib/utils';
+
+const handleBookmark = () => {
+	console.log('bookmarked')
+}
 
 const ComicCover = ({
 	name = 'Comic Name',
@@ -15,6 +23,7 @@ const ComicCover = ({
 	createdAt = new Date(),
 	updatedAt = new Date(),
 }) => {
+	const { data: session } = useSession();
 	bookmarked = true;
 	return (
 		<div className="shadow-md group border group text-white relative overflow-hidden border-border rounded-lg bg-background-secondary ring-offset-0 transition-colors focus:ring-primary hover:shadow-primary hover:ring-2 hover:ring-primary">
@@ -30,55 +39,78 @@ const ComicCover = ({
 			<div className=" transition-all flex items-cente flex-col text-xs p-2 -gap-1 left-0 right-0 w-full top-0 absolute">
 				<div className="flex items-center -gap-1 justify-between">
 					<div className="space-x-1">
-						<Badge
-							variant="subtle"
-							className="h-6 text-white px-2 space-x-1.5 -py-1"
+						<span
+							className={cn(
+								buttonVariants({
+									variant: 'subtle',
+									className:
+										'h-6 text-white px-2 space-x-1.5 -py-1',
+								})
+							)}
 						>
 							<LibraryBig
 								size={14}
 								className="text-primary h-6"
 							/>
 							<span className="text-[10px]">{chapters}</span>
-						</Badge>
-						<Badge
-							variant="subtle"
-							className="h-6 text-white px-2 space-x-1.5"
+						</span>
+						<span
+							className={cn(
+								buttonVariants({
+									variant: 'subtle',
+									className:
+										'h-6 text-white px-2 space-x-1.5 -py-1',
+								})
+							)}
 						>
 							<Star
 								size={14}
 								className="text-primary h-6"
 							/>
 							<span className="text-[10px]">{likes}</span>
-						</Badge>
+						</span>
 					</div>
-					<Badge
-						size="icon"
-						variant="subtle"
-					>
-						<Bookmark
-							className={`${
-								bookmarked ? 'text-transparent' : 'text-white'
-							} h-6`}
-							fill={bookmarked && `#D4AF37`}
-							size={16}
-						/>
-					</Badge>
+					{session?.user && (
+						<button
+						onClick={handleBookmark}
+							className={cn(
+								buttonVariants({
+									variant: 'subtle',
+									size: 'icon',
+								})
+							)}
+						>
+							<Bookmark
+								className={`${
+									bookmarked
+										? 'text-transparent'
+										: 'text-white'
+								} h-6`}
+								fill={bookmarked && `#D4AF37`}
+								size={16}
+							/>
+						</button>
+					)}
 				</div>
 				<div className="flex items-center">
-					<Badge
-						variant="subtle"
-						className="text-white h-6"
+					<span
+						className={cn(
+							buttonVariants({
+								variant: 'subtle',
+								className: 'text-white h-6',
+							})
+						)}
 					>
 						<span className="text-[10px]  whitespace-nowrap">
 							{category}
 						</span>
-					</Badge>
+					</span>
 				</div>
 			</div>
 			<div className="p-3 bg-foreground/10 backdrop-blur-[1px] left-0 right-0 w-full bottom-0 absolute">
 				<div className="">
 					<h2 className="text-white font-medium drop-shadow-md text-xs line-clamp-2">
-						{name} 
+						{name}
 					</h2>
 					<h3 className="drop-shadow-md line-clamp-1 text-[10px] text-foreground">
 						{author}

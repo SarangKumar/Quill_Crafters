@@ -49,13 +49,13 @@ const Avatar = ({ name, className, src = '', plan }) => {
 				{name}
 			</span>
 			<span className="absolute text-white right-0 bottom-0">
-				{plan !== 'BASIC' && (
+				{/* {plan !== 'BASIC' && (
 					<ZapIcon
 						// size={10}
 						className="bg-primary rounded-full p-0.5 w-2.5 h-2.5"
 						fill="hsl(259 71% 64%)"
 					/>
-				)}
+				)} */}
 			</span>
 		</span>
 	);
