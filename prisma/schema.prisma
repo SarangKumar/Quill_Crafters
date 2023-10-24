@@ -6,8 +6,9 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
 }
 
 enum PLAN {
@@ -41,6 +42,9 @@ model Comment {
 
   user  User  @relation(fields: [user_id], references: [user_id])
   novel Novel @relation(fields: [novel_id], references: [novel_id])
+
+  @@index([user_id])
+  @@index([novel_id])
 }
 
 model Favourite {
@@ -51,6 +55,9 @@ model Favourite {
 
   user  User  @relation(fields: [user_id], references: [user_id])
   novel Novel @relation(fields: [novel_id], references: [novel_id])
+
+  @@index([user_id])
+  @@index([novel_id])
 }
 
 model Novel {
@@ -63,13 +70,14 @@ model Novel {
 
   comment   Comment[]
   favourite Favourite[]
-  genere         Genere[]
+  genere    Genere[]
   chapter   Chapter[]
   rating    Rating[]
 
   author User @relation(fields: [author_id], references: [user_id])
-}
 
+  @@index([author_id])
+}
 
 model Genere {
   gener_id Int     @id @default(autoincrement())
@@ -86,6 +94,8 @@ model Chapter {
   created_at     DateTime @default(now())
 
   novel Novel @relation(fields: [novel_id], references: [novel_id])
+
+  @@index([novel_id])
 }
 
 model Rating {
@@ -97,4 +107,7 @@ model Rating {
 
   user  User  @relation(fields: [user_id], references: [user_id])
   novel Novel @relation(fields: [novel_id], references: [novel_id])
+
+  @@index([novel_id])
+  @@index([user_id])
 }

@@ -10,9 +10,8 @@ import { AlignJustify, PlusIcon } from 'lucide-react';
 const Navbar = () => {
 	const { data: session } = useSession();
 	const [menuIsOpen, setMenuIsOpen] = useState(false);
-	if(session){
-		console.log(session)
-		console.log('from nav')
+	if (session) {
+
 	}
 
 	return (
@@ -21,8 +20,8 @@ const Navbar = () => {
 				<h1 className="text-lg font-medium">Quill Crafters</h1>
 
 				{/* Desktop View */}
-				<ul className="flex items-center justify-center gap-x-3 text-xs font-medium">
-					<li className='hidden md:visible'>
+				<ul className="hidden md:flex items-center justify-center gap-x-3 text-xs font-medium">
+					<li className="">
 						<Badge
 							variant="ghost"
 							className="text-foreground-secondary hover:text-foreground"
@@ -31,7 +30,7 @@ const Navbar = () => {
 							Home
 						</Badge>
 					</li>
-					<li className='hidden md:visible'>
+					<li className="">
 						<Badge
 							href="/"
 							variant="ghost"
@@ -42,25 +41,30 @@ const Navbar = () => {
 					</li>
 					<li className="items-center gap-x-3 hidden md:flex">
 						{session ? (
-							<Avatar name={session?.user.name} />
+							<>
+
+							<Avatar name={session?.user.username} />
+							<span className="">{session?.user.plan !== 'BASIC' && session?.user.plan}</span>
+							</>
 						) : (
 							<button
-								className="text-foreground-secondary hover:text-foreground"
+								className={cn(
+									buttonVariants({ variant: 'outline'})
+								)}
 								onClick={() => signIn()}
 							>
 								Sign In
 							</button>
 						)}
 					</li>
-
 				</ul>
-				
-					<button
-						onClick={() => setMenuIsOpen((prev) => !prev)}
-						className="z-50 h-8 w-8 rounded "
-					>
-						{!menuIsOpen && <AlignJustify size={24} />}
-					</button>
+
+				<button
+					onClick={() => setMenuIsOpen((prev) => !prev)}
+					className="z-50 h-8 w-8 rounded md:hidden"
+				>
+					{!menuIsOpen && <AlignJustify size={24} />}
+				</button>
 
 				<aside
 					className={`absolute top-0 bottom-0 right-0 bg-background-secondary h-[100svh] p-6 ${
@@ -85,7 +89,7 @@ const Navbar = () => {
 										{/* <Avatar name={session?.user.name} /> */}
 										<button
 											className="rounded text-foreground hover:text-foreground-secondary border-2 border-border bg-background-tertiary hover:ring hover:shadow-primary focus:ring-primary hover:shadow h-9 px-4"
-											onClick={() => signOut("google")}
+											onClick={() => signOut('google')}
 										>
 											Sign Out
 										</button>
@@ -93,7 +97,7 @@ const Navbar = () => {
 								) : (
 									<button
 										className="text-foreground-secondary hover:text-foreground"
-										onClick={() => signIn("google")}
+										onClick={() => signIn('google')}
 									>
 										Sign In
 									</button>

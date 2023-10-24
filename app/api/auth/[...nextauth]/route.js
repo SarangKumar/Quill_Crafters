@@ -13,7 +13,7 @@ const handler = NextAuth({
 	callbacks: {
 		async signIn({ account, profile }) {
 			if (account.provider === 'google') {
-				console.log({ profile, account });
+				// console.log({ profile, account });
 				try {
 					await prisma.$connect();
 					const userExists = await prisma.user.findUnique({
@@ -40,12 +40,16 @@ const handler = NextAuth({
 		},
 		async session({ session }) {
 			try {
+				if (!session) {
+					return false;
+				}
 				await prisma.$connect();
 				const user = await prisma.user.findUnique({
 					where: { email: session.user.email },
 				});
-				console.log({ user });
+				// console.log({ user });
 				session.user = user;
+				// console.log(session)
 				return session;
 			} catch (error) {
 				console.log(error);
