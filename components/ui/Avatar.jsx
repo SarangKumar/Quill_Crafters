@@ -1,4 +1,5 @@
 import { cn } from '@/lib/utils';
+import { Check, CheckCircle2Icon, ZapIcon } from 'lucide-react';
 import Image from 'next/image';
 import React, { Suspense } from 'react';
 
@@ -26,7 +27,7 @@ const LoadingAvatar = ({ name, children }) => {
 	);
 };
 
-const Avatar = ({ name, className, src = '' }) => {
+const Avatar = ({ name, className, src = '', plan }) => {
 	name = name || 'Guest User';
 	name = extractInitials(name);
 	return (
@@ -36,10 +37,26 @@ const Avatar = ({ name, className, src = '' }) => {
 				className
 			)}
 		>
-			<span className="text-foreground absolute inset-[1px] bg-black rounded-full font-medium text-xs inline-flex justify-center items-center">
+			<span
+				className={`text-foreground absolute inset-[1px] ${
+					plan === 'PREMIUM'
+						? 'bg-black'
+						: plan === 'PRO'
+						? 'bg-black'
+						: 'bg-black'
+				}  rounded-full font-medium text-xs inline-flex justify-center items-center`}
+			>
 				{name}
 			</span>
-			{/* <LoadingAvatar name={name} /> */}
+			<span className="absolute text-white right-0 bottom-0">
+				{plan !== 'BASIC' && (
+					<ZapIcon
+						// size={10}
+						className="bg-primary rounded-full p-0.5 w-2.5 h-2.5"
+						fill="hsl(259 71% 64%)"
+					/>
+				)}
+			</span>
 		</span>
 	);
 };

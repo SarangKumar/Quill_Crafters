@@ -49,7 +49,7 @@ const Input = ({ placeholder = 'Search', children, className }) => {
 					className="flex items-center gap-x-2 w-full"
 					htmlFor="search"
 				>
-					{session && <Avatar name={session?.user.name} className="w-6 h-6 text-[8px]" />}
+					{session && <Avatar name={session?.user.username} className="w-7 h-7 text-[8px]" />}
 					<input
 						type="text"
 						id="search"

@@ -16,6 +16,7 @@ export const buttonVariants = cva(
 				outline:
 					'border-2 border-background-secondary backdrop-blur text-white bg-transparent rounded-full',
 				ghost: 'text-foreground bg-transparent rounded-full hover:bg-background-secondary hover:backdrop-blur-md',
+				glow: 'text-white/80 bg-primary/60 rounded hover:bg-primary/80',
 			},
 			size: {
 				default: 'h-7 w-auto px-2 py-px ',

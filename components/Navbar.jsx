@@ -5,13 +5,18 @@ import Button, { buttonVariants } from './ui/Button';
 import { signOut, signIn, useSession } from 'next-auth/react';
 import { cn } from '@/lib/utils';
 import Badge from './ui/Badge';
-import { AlignJustify, PlusIcon } from 'lucide-react';
+import {
+	AlignJustify,
+	Bot,
+	CheckCircle2Icon,
+	PlusIcon,
+	Ticket,
+} from 'lucide-react';
 
 const Navbar = () => {
 	const { data: session } = useSession();
 	const [menuIsOpen, setMenuIsOpen] = useState(false);
 	if (session) {
-
 	}
 
 	return (
@@ -39,32 +44,77 @@ const Navbar = () => {
 							All Novels
 						</Badge>
 					</li>
-					<li className="items-center gap-x-3 hidden md:flex">
-						{session ? (
-							<>
-
-							<Avatar name={session?.user.username} />
-							<span className="">{session?.user.plan !== 'BASIC' && session?.user.plan}</span>
-							</>
-						) : (
+					{session ? (
+						<>
+							<li className="items-center gap-x-3 hidden md:flex">
+								<Avatar name={session?.user.username} />
+								<span
+									className={cn(
+										buttonVariants({ variant: 'glow', className:"h-auto py-0.5" })
+									)}
+								>
+									{session?.user.plan !== 'BASIC' &&
+										session?.user.plan}
+								</span>
+							</li>
+							<li>
+								<button
+									className={cn(
+										buttonVariants({ variant: 'outline' })
+									)}
+									onClick={() => signOut("google")}
+								>
+									Sign Out
+								</button>
+							</li>
+						</>
+					) : (
+						<li>
 							<button
 								className={cn(
-									buttonVariants({ variant: 'outline'})
+									buttonVariants({ variant: 'outline' })
 								)}
-								onClick={() => signIn()}
+								onClick={() => signIn("google")}
 							>
 								Sign In
 							</button>
-						)}
-					</li>
+						</li>
+					)}
 				</ul>
 
-				<button
-					onClick={() => setMenuIsOpen((prev) => !prev)}
-					className="z-50 h-8 w-8 rounded md:hidden"
-				>
-					{!menuIsOpen && <AlignJustify size={24} />}
-				</button>
+				<div className="flex gap-x-5 items-center md:hidden ">
+					{session && (
+						<div className="flex gap-x-2 items-center">
+							<Avatar
+								name={session?.user.username}
+								plan={session?.user.plan}
+							/>
+							<span
+								className={cn(
+									buttonVariants({
+										variant: 'glow',
+										className: ' p-1 h-auto',
+									})
+								)}
+							>
+								{session?.user.plan === 'PREMIUM' ? (
+									<Bot size={14} />
+								) : session?.user.plan === 'PRO' ? (
+									<></>
+								) : (
+									<></>
+								)}
+							</span>
+						</div>
+					)}
+
+					<button
+						onClick={() => setMenuIsOpen((prev) => !prev)}
+						className="z-50 rounded flex gap-x-3 items-center"
+					>
+						{!menuIsOpen && <AlignJustify size={24} />}
+					</button>
+				</div>
 
 				<aside
 					className={`absolute top-0 bottom-0 right-0 bg-background-secondary h-[100svh] p-6 ${
@@ -86,7 +136,6 @@ const Navbar = () => {
 							<li>
 								{session ? (
 									<>
-										{/* <Avatar name={session?.user.name} /> */}
 										<button
 											className="rounded text-foreground hover:text-foreground-secondary border-2 border-border bg-background-tertiary hover:ring hover:shadow-primary focus:ring-primary hover:shadow h-9 px-4"
 											onClick={() => signOut('google')}
