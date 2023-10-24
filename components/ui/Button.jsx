@@ -9,7 +9,7 @@ export const buttonVariants = cva(
 		variants: {
 			variant: {
 				default:
-					'border-2 relative border-border rounded-full text-white from-background-secondary to-background-tertiary bg-gradient-to-r backdrop-blur-md after:absolute after:-z-10 after:bg-gradient-to-r after:inset-1 after:rounded-full after:from-background-secondary after:to-transparent after:backdrop-blur-md after:opacity-50 after:from-10% after:to-100% after:inset-0 after:-z-10',
+					'border-2 relative border-border rounded-full text-white from-background-secondary to-background-tertiary bg-gradient-to-r backdrop-blur-md after:absolute after:bg-gradient-to-r after:inset-1 after:rounded-full after:from-background-secondary after:to-transparent after:backdrop-blur-md after:opacity-50 after:from-10% after:to-100% after:inset-0 after:-z-10',
 				subtle: 'bg-background-tertiary text-foreground-secondary rounded-full hover:bg-background-secondary/80',
 				animate:
 					'text-foreground-secondary rounded-full relative p-2 after:absolute after:rounded-full  after:from-white/[0.03] after:duration-500 after:content-[""] after:p-5 after:animate-spin-delayed after:to-white/30 after:bg-gradient-to-l before:absolute before:-inset-2 before:bg-gradient-to-r before:from-white/20 before:-z-10 before:rounded-full before:content-[""] before:animate-spin-delayed before:p-3 before:duration-1000 before:ease-in',

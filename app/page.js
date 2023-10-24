@@ -1,3 +1,4 @@
+import AuthorContainer from '@/components/AuthorContainer';
 import ComicContainer from '@/components/ComicContainer';
 import Features from '@/components/Features';
 import Hero from '@/components/Hero';
@@ -35,8 +36,9 @@ const Home = () => {
 			</div>
 			<div>
 				<SubHeading>Popular Authors</SubHeading>
-				{/* <ComicContainer novels={allNovels.slice(0, 10)} /> */}
+				<AuthorContainer />
 			</div>
+
 		</Container>
 	);
 };
