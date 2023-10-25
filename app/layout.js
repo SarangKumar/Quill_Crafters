@@ -5,11 +5,19 @@ import Provider from '@/components/ui/Provider';
 
 const poppins = Poppins({ subsets: ['latin'], weight: ['400', '700'] });
 
-export const metadata = {
-	title: 'Quill Crafters - Creative Writing and More',
-	description:
-		'Explore a world of creative writing, novels, poetry, and more at Quill Crafters. Join our community of writers and readers today.',
-};
+export const metadata = [
+	{
+		title: 'Quill Crafters - Creative Writing and More',
+		description:
+			'Explore a world of creative writing, novels, poetry, and more at Quill Crafters. Join our community of writers and readers today.',
+	},
+	{
+		name: 'google-adsense-account',
+		content: 'ca-pub-9615068362549302',
+	},
+];
+
+
 
 export default function RootLayout({ children }) {
 	return (
