@@ -3,12 +3,12 @@ import Avatar from './Avatar';
 import Badge from './Badge';
 import { Star } from 'lucide-react';
 
-const Author = ({ username, email, bio, novels, plan }) => {
+const Author = ({ username, email, bio, novels, plan, isAuthor }) => {
 	// from-background-secondary to-background-tertiary bg-gradient-to-r
 	return (
 		<div className="transition-all break-inside-avoid border-2 flex flex-col gap-3 relative border-border px-5 py-3 rounded-md text-xs text-white backdrop-blur-md after:absolute after:bg-gradient-to-br after:rounded-md after:from-background-secondary after:to-transparent after:backdrop-blur-md after:transition-all after:opacity-50 after:from-10% after:to-80% after:inset-0 after:-z-10 hover:after:from-20%">
 			<div className="flex gap-2">
-				<Avatar name={username} plan={plan} className="sm:h-9 sm:w-9 md:h-10 md:w-10" />
+				<Avatar name={username} plan={plan} isAuthor={isAuthor} className="sm:h-9 sm:w-9 md:h-10 md:w-10" />
 				<div>
 					<h2 className="text-sm font-medium">{username}</h2>
 					<p className="text-foreground-secondary font-medium">{email}</p>
