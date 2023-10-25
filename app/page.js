@@ -2,6 +2,7 @@ import AuthorContainer from '@/components/AuthorContainer';
 import ComicContainer from '@/components/ComicContainer';
 import Features from '@/components/Features';
 import Hero from '@/components/Hero';
+import AdSence from '@/components/ui/AdSence';
 import Button from '@/components/ui/Button';
 import Container from '@/components/ui/Container';
 import Input from '@/components/ui/Input';
@@ -75,6 +76,7 @@ const Home = () => {
 				</SubHeading>
 				<AuthorContainer />
 			</div>
+			<AdSence />
 		</Container>
 	);
 };

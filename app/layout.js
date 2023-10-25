@@ -2,6 +2,7 @@ import Navbar from '@/components/Navbar';
 import './globals.css';
 import { Poppins } from 'next/font/google';
 import Provider from '@/components/ui/Provider';
+import { Analytics } from '@vercel/analytics/react';
 
 const poppins = Poppins({ subsets: ['latin'], weight: ['400', '700'] });
 
@@ -41,6 +42,7 @@ export default function RootLayout({ children }) {
 					<Navbar />
 					{children}
 				</Provider>
+				<Analytics />
 			</body>
 		</html>
 	);
