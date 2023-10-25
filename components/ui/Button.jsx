@@ -34,6 +34,25 @@ export const buttonVariants = cva(
 	}
 );
 
+export const planVariant = cva(' rounded-full border px-2.5 py-px flex items-center justify-center', {
+	variants: {
+		variant: {
+			default: 'text-gray-100 bg-gray-900/50 border-gray-300 ',
+			basic: 'text-primary border-primary bg-primary/10',
+			pro: 'text-teal-100 bg-teal-900/50 border-teal-300',
+			premium: 'text-amber-100 bg-amber-900/50 border-amber-300',
+		},
+		size: {
+			default: '',
+			icon: 'h-6 w-6 sm:h-7 sm:w-7 p-1 rounded'
+		}
+	},
+	defaultVariants: {
+		variant: 'default',
+		size: 'default'
+	},
+});
+
 const Button = (
 	{ className, children, href, onClick, variant, size, ...props },
 	ref

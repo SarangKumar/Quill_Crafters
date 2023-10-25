@@ -12,20 +12,22 @@ datasource db {
 }
 
 enum PLAN {
+  FREE
   BASIC
   PRO
   PREMIUM
 }
 
 model User {
-  user_id   Int      @id @default(autoincrement())
-  username  String
-  email     String   @unique
-  avatar    String?
-  isAuthor  Boolean  @default(false)
-  bio       String?
-  plan      PLAN     @default(BASIC)
-  join_date DateTime @default(now())
+  user_id      Int      @id @default(autoincrement())
+  username     String
+  email        String   @unique
+  avatar       String?
+  isAuthor     Boolean  @default(false)
+  bio          String?
+  plan         PLAN     @default(FREE)
+  join_date    DateTime @default(now())
+  updated_date DateTime @updatedAt
 
   comment   Comment[]
   rating    Rating[]

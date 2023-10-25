@@ -1,16 +1,16 @@
 'use client';
 import React, { useState } from 'react';
 import Avatar from './ui/Avatar';
-import Button, { buttonVariants } from './ui/Button';
+import Button, { buttonVariants, planVariant } from './ui/Button';
 import { signOut, signIn, useSession } from 'next-auth/react';
 import { cn } from '@/lib/utils';
 import Badge from './ui/Badge';
 import {
 	AlignJustify,
+	BirdIcon,
 	Bot,
-	CheckCircle2Icon,
 	PlusIcon,
-	Ticket,
+	Webhook,
 } from 'lucide-react';
 
 const Navbar = () => {
@@ -60,20 +60,24 @@ const Navbar = () => {
 					</li>
 					{session ? (
 						<>
+							{/* {session?.user.plan !== 'FREE' && ( */}
 							<li className="items-center gap-x-3 hidden md:flex">
-								<Avatar name={session?.user.username} />
+								<Avatar
+									name={session?.user.username}
+									plan={session?.user.plan}
+								/>
 								<span
 									className={cn(
-										buttonVariants({
-											variant: 'glow',
-											className: 'h-auto py-0.5',
+										planVariant({
+											variant:
+												session?.user.plan.toLowerCase(),
 										})
 									)}
 								>
-									{session?.user.plan !== 'BASIC' &&
-										session?.user.plan}
+									{session?.user.plan}
 								</span>
 							</li>
+							{/* )} */}
 							<li>
 								<button
 									className={cn(
@@ -108,19 +112,19 @@ const Navbar = () => {
 							/>
 							<span
 								className={cn(
-									buttonVariants({
-										variant: 'glow',
-										className: ' p-1 h-auto',
+									planVariant({
+										variant: session?.user.plan.toLowerCase(),
+										size: "icon"
 									})
 								)}
 							>
 								{session?.user.plan === 'PREMIUM' ? (
-									<Bot size={14} />
+									<Bot  size={16} />
 								) : session?.user.plan === 'PRO' ? (
-									<></>
-								) : (
-									<></>
-								)}
+									<BirdIcon size={16} />
+								) : session?.user.plan === 'BASIC' ? (
+									<Webhook size={16} />
+								): <></>}
 							</span>
 						</div>
 					)}

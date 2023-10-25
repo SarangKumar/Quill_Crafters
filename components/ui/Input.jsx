@@ -56,7 +56,6 @@ const Input = ({ placeholder = 'Search', children, className }) => {
 						name="search"
 						onChange={handleQueryChange}
 						value={searchQuery}
-						autoFocus
 						className="bg-transparent placeholder:text-foreground-secondary focus:outline-none text-foreground flex-1 w-full py-1 flex-grow"
 						placeholder={placeholder}
 					/>

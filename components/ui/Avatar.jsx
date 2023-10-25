@@ -2,6 +2,7 @@ import { cn } from '@/lib/utils';
 import { Check, CheckCircle2Icon, ZapIcon } from 'lucide-react';
 import Image from 'next/image';
 import React, { Suspense } from 'react';
+import { planVariant } from './Button';
 
 function extractInitials(input) {
 	// Split the input into words
@@ -27,9 +28,10 @@ const LoadingAvatar = ({ name, children }) => {
 	);
 };
 
-const Avatar = ({ name, className, src = '', plan }) => {
+const Avatar = ({ name, className, src = '', plan = 'free' }) => {
 	name = name || 'Guest User';
 	name = extractInitials(name);
+	plan = plan.toLowerCase();
 	return (
 		<span
 			className={cn(
@@ -38,25 +40,28 @@ const Avatar = ({ name, className, src = '', plan }) => {
 			)}
 		>
 			<span
-				className={`text-foreground absolute inset-[1px] ${
-					plan === 'PREMIUM'
-						? 'bg-black'
-						: plan === 'PRO'
-						? 'bg-black'
-						: 'bg-black'
-				}  rounded-full font-medium text-xs inline-flex justify-center items-center`}
+				// className={cn(
+				// 	planVariant({
+				// 		variant: plan,
+				// 		className:
+				// 			'absolute border-0 inset-[1px] rounded-full font-medium text-xs inline-flex justify-center items-center',
+				// 	})
+				// )}
+				className='absolute bg-black border-0 inset-[1px] rounded-full font-medium text-xs inline-flex justify-center items-center'
 			>
 				{name}
 			</span>
-			<span className="absolute text-white right-0 bottom-0">
-				{/* {plan !== 'BASIC' && (
-					<ZapIcon
-						// size={10}
-						className="bg-primary rounded-full p-0.5 w-2.5 h-2.5"
-						fill="hsl(259 71% 64%)"
-					/>
-				)} */}
-			</span>
+			{plan.toLowerCase() !== 'free' && (
+				<span
+					className={cn(
+						planVariant({
+							variant: plan,
+							// size: 'icon',
+							className: 'absolute rounded-full p-1 right-0 bottom-0'
+						})
+					)}
+				></span>
+			)}
 		</span>
 	);
 };
