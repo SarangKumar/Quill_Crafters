@@ -6,10 +6,8 @@ import { useSession } from 'next-auth/react';
 
 const PricingCard = ({ price }) => {
 	const { data: session } = useSession();
-	console.log(session);
 	const currentPlan = session?.user?.plan?.toLowerCase();
 
-	// POST request
 	const handleSubscription = async (e) => {
 		e.preventDefault();
 		const { data } = await axios.post(
@@ -240,11 +238,8 @@ const PricingCard = ({ price }) => {
 		<div className="border border-border py-6 rounded-lg px-4 text-foreground max-w-xs w-full">
 			<div>{dynamicIcon(price)}</div>
 			<div className="flex items-center flex-col my-3">
-				{/* <h3 className="">
-				</h3> */}
 				{dynamicSubTitle(price)}
 				<p className="text-sm md:text-base">per month</p>
-				{/* <p>{currentPlan}</p> */}
 				<h1 className="text-5xl font-bold mt-6 mb-3">
 					{(price.unit_amount / 100).toLocaleString('en-IN', {
 						style: 'currency',

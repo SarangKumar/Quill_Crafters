@@ -38,7 +38,7 @@ export const planVariant = cva(' rounded-full border px-2.5 py-px flex items-cen
 	variants: {
 		variant: {
 			default: 'text-gray-100 bg-gray-900/50 border-gray-300 ',
-			basic: 'text-primary border-primary bg-primary/10',
+			basic: 'text-indigo-100 bg-indigo-900/50 border-indigo-300',
 			pro: 'text-teal-100 bg-teal-900/50 border-teal-300',
 			premium: 'text-amber-100 bg-amber-900/50 border-amber-300',
 		},

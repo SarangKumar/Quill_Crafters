@@ -5,7 +5,9 @@ const authorDetails = [
 	{
 		username: 'Sarang Kumar',
 		email: 'sarangkumar@example.com',
+		plan: 'PREMIUM',
 		bio: 'laboris',
+		isAuthor : 1,
 		novels: [
 			{
 				name: 'Novel 1',
@@ -28,6 +30,8 @@ const authorDetails = [
 	{
 		username: 'Aryan',
 		email: 'aryan@example.com',
+		plan: 'PRO',
+		isAuthor : 1,
 		bio: 'laborat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 		novels: [
 			{
@@ -38,8 +42,10 @@ const authorDetails = [
 	},
 	{
 		username: 'Karthik Kavish',
+		plan: 'PRO',
 		email: 'kavishkarthik44@example.com',
 		bio: 'laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehend.',
+		isAuthor : 1,
 		novels: [
 			{
 				name: 'Novel 1',
@@ -50,7 +56,9 @@ const authorDetails = [
 	{
 		username: 'Seemakurthi Vasanth',
 		email: 'sarangkumar@example.com',
+		plan: 'BASIC',
 		bio: 'laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+		isAuthor : 1,
 		novels: [
 			{
 				name: 'Novel 1',
@@ -60,8 +68,10 @@ const authorDetails = [
 	},
 	{
 		username: 'Sujan',
+		plan: 'FREE',
 		email: 'sujan@example.com',
 		bio: 'laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat.',
+		isAuthor : 1,
 		novels: [
 			{
 				name: 'Novel 1',

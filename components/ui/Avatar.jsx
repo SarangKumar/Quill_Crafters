@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils';
-import { Check, CheckCircle2Icon, ZapIcon } from 'lucide-react';
+import { Check, CheckCircle2Icon, Star, ZapIcon } from 'lucide-react';
 import Image from 'next/image';
 import React, { Suspense } from 'react';
 import { planVariant } from './Button';
@@ -28,39 +28,48 @@ const LoadingAvatar = ({ name, children }) => {
 	);
 };
 
-const Avatar = ({ name, className, src = '', plan = 'free' }) => {
-	name = name || 'Guest User';
+const Avatar = ({
+	name = 'Guest User',
+	className,
+	src = '',
+	plan = 'free',
+	isAuthor = 0,
+}) => {
 	name = extractInitials(name);
 	plan = plan.toLowerCase();
 	return (
 		<span
 			className={cn(
-				'w-8 h-8 relative rounded-full inline-flex items-center justify-center bg-gradient-to-tr from-black from-50% to-white',
+				'w-9 h-9 relative rounded-full inline-flex items-center justify-center bg-gradient-to-tr from-black from-50% to-white',
 				className
 			)}
 		>
-			<span
-				// className={cn(
-				// 	planVariant({
-				// 		variant: plan,
-				// 		className:
-				// 			'absolute border-0 inset-[1px] rounded-full font-medium text-xs inline-flex justify-center items-center',
-				// 	})
-				// )}
-				className='absolute bg-black border-0 inset-[1px] rounded-full font-medium text-xs inline-flex justify-center items-center'
-			>
+			<span className="absolute bg-black border-0 inset-[1px] rounded-full font-medium text-xs inline-flex justify-center items-center">
 				{name}
 			</span>
-			{plan.toLowerCase() !== 'free' && (
+			{plan.toLowerCase() !== 'free' && isAuthor === 0 && (
 				<span
 					className={cn(
 						planVariant({
 							variant: plan,
-							// size: 'icon',
-							className: 'absolute rounded-full p-1 right-0 bottom-0'
+							className:
+								'absolute rounded-full p-1 right-0 bottom-0',
 						})
 					)}
 				></span>
+			)}
+			{plan.toLowerCase() !== 'free' && isAuthor === 1 && (
+				<Star
+
+					className={cn(
+						planVariant({
+							variant: plan,
+							// size: 'icon',
+							className:
+								'absolute rounded-full p-0.5 h-[14px] w-[14px] aspect-square right-0 bottom-0',
+						})
+					)}
+				></Star>
 			)}
 		</span>
 	);
