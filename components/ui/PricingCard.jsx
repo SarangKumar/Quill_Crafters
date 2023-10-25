@@ -1,208 +1,15 @@
+'use client';
+import { cn } from '@/lib/utils';
 import axios from 'axios';
-import Link from 'next/link';
-import { AiFillCheckCircle } from 'react-icons/ai';
+import Button, { buttonVariants, planVariant } from './Button';
+import { Bird, Bot, CheckCircle2, Webhook } from 'lucide-react';
 
 const PricingCard = ({ price }) => {
-	const dynamicSubTitle = (price) => {
-        console.log(price.nickname)
-		if (price.nickname === 'Premium plan per month') {
-			return <p className="text-[#f1592a] mt-1">3-day rental</p>;
-		} else if (price.nickname === 'Pro plan per month') {
-			return <p className="text-[#f1592a] mt-1">3-day rental</p>;
-		} else if (price.nickname === '10-Yard Dumpster') {
-			return <p className="text-[#f1592a] mt-1">Weekend Special</p>;
-		} else if (price.nickname === '24-Hour Special: 15-Yard Dumpster') {
-			return <p className="text-[#f1592a] mt-1">3-day rental</p>;
-		}
-	};
-
-	const dynamicDescription = (price) => {
-		if (price.nickname === '20-Yard Dumpster') {
-			return (
-				<div className="mt-6 space-y-4">
-					<div className="flex space-x-3">
-						<AiFillCheckCircle
-							className="h-5 w-5 flex-shrink-0 text-green-500 ml-2"
-							aria-hidden="true"
-						/>
-						<h2 className="text-sm text-gray-500">
-							$25 per day after 3 days
-						</h2>
-					</div>
-					<div className="border" />
-					<div className="flex space-x-3">
-						<AiFillCheckCircle
-							className="h-5 w-5 flex-shrink-0 text-green-500 ml-2"
-							aria-hidden="true"
-						/>
-						<h2 className="text-sm text-gray-500">
-							Neighborhood & HOA Friendly
-						</h2>
-					</div>
-					<div className="border" />
-					<div className="flex space-x-3">
-						<AiFillCheckCircle
-							className="h-5 w-5 flex-shrink-0 text-green-500 ml-2"
-							aria-hidden="true"
-						/>
-						<h2 className="text-sm text-gray-500">
-							Eco-Friendly Waste Management
-						</h2>
-					</div>
-					<div className="border" />
-					<div className="flex space-x-3">
-						<AiFillCheckCircle
-							className="h-5 w-5 flex-shrink-0 text-green-500 ml-2"
-							aria-hidden="true"
-						/>
-						<h2 className="text-sm text-gray-500">
-							Driveway Protection
-						</h2>
-					</div>
-					<div className="border" />
-				</div>
-			);
-		} else if (price.nickname === '15-Yard Dumpster') {
-			return (
-				<div className="mt-6 space-y-4">
-					<div className="flex space-x-3">
-						<AiFillCheckCircle
-							className="h-5 w-5 flex-shrink-0 text-green-500 ml-2"
-							aria-hidden="true"
-						/>
-						<p className="text-sm text-gray-500">
-							$25 per day after 3 days
-						</p>
-					</div>
-					<div className="border" />
-					<div className="flex space-x-3">
-						<AiFillCheckCircle
-							className="h-5 w-5 flex-shrink-0 text-green-500 ml-2"
-							aria-hidden="true"
-						/>
-						<p className="text-sm text-gray-500">
-							Neighborhood & HOA Friendly
-						</p>
-					</div>
-					<div className="border" />
-					<div className="flex space-x-3">
-						<AiFillCheckCircle
-							className="h-5 w-5 flex-shrink-0 text-green-500 ml-2"
-							aria-hidden="true"
-						/>
-						<p className="text-sm text-gray-500">
-							Eco-Friendly Waste Management
-						</p>
-					</div>
-					<div className="border" />
-					<div className="flex space-x-3">
-						<AiFillCheckCircle
-							className="h-5 w-5 flex-shrink-0 text-green-500 ml-2"
-							aria-hidden="true"
-						/>
-						<p className="text-sm text-gray-500">
-							Driveway Protection
-						</p>
-					</div>
-					<div className="border" />
-				</div>
-			);
-		} else if (price.nickname === '10-Yard Dumpster') {
-			return (
-				<div className="mt-6 space-y-4">
-					<div className="flex space-x-3">
-						<AiFillCheckCircle
-							className="h-5 w-5 flex-shrink-0 text-green-500 ml-2"
-							aria-hidden="true"
-						/>
-						<p className="text-sm text-gray-500">
-							$25 per day after 3 days
-						</p>
-					</div>
-					<div className="border" />
-					<div className="flex space-x-3">
-						<AiFillCheckCircle
-							className="h-5 w-5 flex-shrink-0 text-green-500 ml-2"
-							aria-hidden="true"
-						/>
-						<p className="text-sm text-gray-500">
-							Neighborhood & HOA Friendly
-						</p>
-					</div>
-					<div className="border" />
-					<div className="flex space-x-3">
-						<AiFillCheckCircle
-							className="h-5 w-5 flex-shrink-0 text-green-500 ml-2"
-							aria-hidden="true"
-						/>
-						<p className="text-sm text-gray-500">
-							Eco-Friendly Waste Management
-						</p>
-					</div>
-					<div className="border" />
-					<div className="flex space-x-3">
-						<AiFillCheckCircle
-							className="h-5 w-5 flex-shrink-0 text-green-500 ml-2"
-							aria-hidden="true"
-						/>
-						<p className="text-sm text-gray-500">
-							Driveway Protection
-						</p>
-					</div>
-					<div className="border" />
-				</div>
-			);
-		} else if (price.nickname === '24-Hour Special: 15-Yard Dumpster') {
-			return (
-				<div className="mt-6 space-y-4">
-					<div className="flex space-x-3">
-						<AiFillCheckCircle
-							className="h-5 w-5 flex-shrink-0 text-green-500 ml-2"
-							aria-hidden="true"
-						/>
-						<p className="text-sm text-gray-500">
-							$25 per day after 3 days
-						</p>
-					</div>
-					<div className="border" />
-					<div className="flex space-x-3">
-						<AiFillCheckCircle
-							className="h-5 w-5 flex-shrink-0 text-green-500 ml-2"
-							aria-hidden="true"
-						/>
-						<p className="text-sm text-gray-500">
-							Neighborhood & HOA Friendly
-						</p>
-					</div>
-					<div className="border" />
-					<div className="flex space-x-3">
-						<AiFillCheckCircle
-							className="h-5 w-5 flex-shrink-0 text-green-500 ml-2"
-							aria-hidden="true"
-						/>
-						<p className="text-sm text-gray-500">
-							Eco-Friendly Waste Management
-						</p>
-					</div>
-					<div className="border" />
-					<div className="flex space-x-3">
-						<AiFillCheckCircle
-							className="h-5 w-5 flex-shrink-0 text-green-500 ml-2"
-							aria-hidden="true"
-						/>
-						<p className="text-sm text-gray-500">
-							Driveway Protection
-						</p>
-					</div>
-					<div className="border" />
-				</div>
-			);
-		}
-	};
+	console.log(price);
 
 	// POST request
 	const handleSubscription = async (e) => {
-        console.log("button")
+		console.log('button');
 		e.preventDefault();
 		const { data } = await axios.post(
 			'/api/payment',
@@ -218,36 +25,187 @@ const PricingCard = ({ price }) => {
 		window.location.assign(data);
 	};
 
-	return (
-		<div className="border-gray-100 shadow-2xl border-4 text-center mt-10 max-w-[1040px]">
-			<div>
-				<div className="bg-gray-100 h-28 items-center font-bold">
-					<h4 className="text-3xl">{price.nickname}</h4>
-					<p>{dynamicSubTitle(price)}</p>
-					<h3>First 2,000lbs Included</h3>
-				</div>
-				<div>
-					<div className="flex flex-col items-center justify-center pt-4">
-						<h1 className="text-5xl font-bold">
-							{(price.unit_amount / 100).toLocaleString('en-US', {
-								style: 'currency',
-								currency: 'USD',
-							})}
-						</h1>
-						<h3>Additional weight just $.05 / lb</h3>
-					</div>
-					<ul className="flex justify-center">
-						<li className="text-xl font-bold">
-							{dynamicDescription(price)}
+	const dynamicSubTitle = (price) => {
+		// console.log(price.nickname);
+		if (price.nickname === 'Premium plan per month') {
+			return <p className="text-amber-500">Premium</p>;
+		} else if (price.nickname === 'Pro plan per month') {
+			return <p className="text-teal-500">Pro</p>;
+		} else if (price.nickname === 'Basic plan per month') {
+			return <p className="text-gray-300">Basic</p>;
+		}
+	};
+
+	const dynamicDescription = (price) => {
+		if (price.nickname === 'Premium plan per month') {
+			return (
+				<div className="flex flex-col gap-2">
+					<ul className="flex justify-center items-start gap-x-3">
+						<li>
+							<CheckCircle2 className="w-5 h-5 sm:h-6 sm:w-6 md:h-5 md:w-5" />
 						</li>
+						<li className="flex-1 text-xs">Premium Features </li>
 					</ul>
-					<button
-						className="mt-8 flex w-full justify-center rounded-md border border-transparent bg-[#f1592a] py-2 px-4 text-sm font-medium text-white shadow-sm"
-						onClick={handleSubscription}
-					>
-						Rent This Dumpster
-					</button>
+					<ul className="flex justify-center items-start gap-x-3">
+						<li>
+							<CheckCircle2 className="w-5 h-5 sm:h-6 sm:w-6 md:h-5 md:w-5" />
+						</li>
+						<li className="flex-1 text-xs">Premium Features 2</li>
+					</ul>
+					<ul className="flex justify-center items-start gap-x-3">
+						<li>
+							<CheckCircle2 className="w-5 h-5 sm:h-6 sm:w-6 md:h-5 md:w-5" />
+						</li>
+						<li className="flex-1 text-xs">Premium Features 3</li>
+					</ul>
+					<ul className="flex justify-center items-start gap-x-3">
+						<li>
+							<CheckCircle2 className="w-5 h-5 sm:h-6 sm:w-6 md:h-5 md:w-5" />
+						</li>
+						<li className="flex-1 text-xs">Premium Features 4</li>
+					</ul>
 				</div>
+			);
+		} else if (price.nickname === 'Pro plan per month') {
+			return (
+				<div className="flex flex-col gap-2">
+					<ul className="flex justify-center items-start gap-x-3">
+						<li>
+							<CheckCircle2 className="w-5 h-5 sm:h-6 sm:w-6 md:h-5 md:w-5" />
+						</li>
+						<li className="flex-1 text-xs">Pro Features </li>
+					</ul>
+					<ul className="flex justify-center items-start gap-x-3">
+						<li>
+							<CheckCircle2 className="w-5 h-5 sm:h-6 sm:w-6 md:h-5 md:w-5" />
+						</li>
+						<li className="flex-1 text-xs">Pro Features 2</li>
+					</ul>
+					<ul className="flex justify-center items-start gap-x-3">
+						<li>
+							<CheckCircle2 className="w-5 h-5 sm:h-6 sm:w-6 md:h-5 md:w-5" />
+						</li>
+						<li className="flex-1 text-xs">Pro Features 3</li>
+					</ul>
+					<ul className="flex justify-center items-start gap-x-3">
+						<li>
+							<CheckCircle2 className="w-5 h-5 sm:h-6 sm:w-6 md:h-5 md:w-5" />
+						</li>
+						<li className="flex-1 text-xs">Pro Features 4</li>
+					</ul>
+				</div>
+			);
+		} else if (price.nickname === 'Basic plan per month') {
+			return (
+				<div className="flex flex-col gap-2">
+					<ul className="flex justify-center items-start gap-x-3">
+						<li>
+							<CheckCircle2 className="w-5 h-5 sm:h-6 sm:w-6 md:h-5 md:w-5" />
+						</li>
+						<li className="flex-1 text-xs">Basic Features </li>
+					</ul>
+					<ul className="flex justify-center items-start gap-x-3">
+						<li>
+							<CheckCircle2 className="w-5 h-5 sm:h-6 sm:w-6 md:h-5 md:w-5" />
+						</li>
+						<li className="flex-1 text-xs">Basic Features 2</li>
+					</ul>
+					<ul className="flex justify-center items-start gap-x-3">
+						<li>
+							<CheckCircle2 className="w-5 h-5 sm:h-6 sm:w-6 md:h-5 md:w-5" />
+						</li>
+						<li className="flex-1 text-xs">Basic Features 3</li>
+					</ul>
+					<ul className="flex justify-center items-start gap-x-3">
+						<li>
+							<CheckCircle2 className="w-5 h-5 sm:h-6 sm:w-6 md:h-5 md:w-5" />
+						</li>
+						<li className="flex-1 text-xs">Basic Features 4</li>
+					</ul>
+				</div>
+			);
+		}
+	};
+
+	const dynamicIcon = (price) => {
+		if (price.nickname === 'Premium plan per month') {
+			return (
+				<div className="flex items-center justify-center">
+					<div
+						className={cn(
+							planVariant({
+								variant: 'premium',
+								className: 'rounded-full w-auto',
+							})
+						)}
+					>
+						<Bot className="w-20 h-24 p-3" />
+					</div>
+				</div>
+			);
+		} else if (price.nickname === 'Pro plan per month') {
+			return (
+				<div className="flex items-center justify-center">
+					<div
+						className={cn(
+							planVariant({
+								variant: 'pro',
+								className: 'rounded-full w-auto',
+							})
+						)}
+					>
+						<Bird className="w-20 h-24 p-3" />
+					</div>
+				</div>
+			);
+		} else if (price.nickname === 'Basic plan per month') {
+			return (
+				<div className="flex items-center justify-center">
+					<div
+						className={cn(
+							planVariant({
+								variant: 'basic',
+								className: 'rounded-full w-auto',
+							})
+						)}
+					>
+						<Webhook className="w-20 h-24 p-3" />
+					</div>
+				</div>
+			);
+		}
+	};
+
+	return (
+		<div className="border border-border py-6 rounded-lg px-4 text-foreground max-w-xs w-full">
+			<div>{dynamicIcon(price)}</div>
+			<div className="flex items-center flex-col my-3">
+				<h3 className="text-xl md:text-3xl font-semibold">
+					{dynamicSubTitle(price)}
+				</h3>
+				<p className="text-sm md:text-base">per month</p>
+				<h1 className="text-5xl font-bold mt-6 mb-3">
+					{(price.unit_amount / 100).toLocaleString('en-IN', {
+						style: 'currency',
+						currency: 'INR',
+					})}
+				</h1>
+				<div className="w-[60%] sm:w-full md:w-[90%] my-4 ">
+					{dynamicDescription(price)}
+				</div>
+				<button
+					className={cn(
+						buttonVariants({
+							variant: 'glow',
+							size: 'lg',
+							className:
+								'rounded-full mt-5 text-sm  bg-primary/90 text-foreground',
+						})
+					)}
+					onClick={handleSubscription}
+				>
+					Get Subscription
+				</button>
 			</div>
 		</div>
 	);

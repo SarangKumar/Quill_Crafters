@@ -30,22 +30,25 @@ const Home = () => {
 				<SubHeading>Search</SubHeading>
 				<div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
 					<Input className="md:col-span-2" />
-					<div className="flex gap-2">
+					<div className="flex gap-2 text-[10px] sm:text-xs text-center">
 						<Button
 							size="sm"
 							href="#most-liked"
+							className="text-[10px] md:text-xs px-2 h-7 md:h-9 sm:px-3 md:px-4"
 						>
 							Most Liked
 						</Button>
 						<Button
 							size="sm"
 							href="#quick-reads"
+							className="text-[10px] md:text-xs px-2 h-7 md:h-9 sm:px-3 md:px-4"
 						>
 							Quick Reads
 						</Button>
 						<Button
 							size="sm"
 							href="#popular-authors"
+							className="text-[10px] md:text-xs px-2 h-7 md:h-9 sm:px-3 md:px-4"
 						>
 							Popular Authors
 						</Button>
