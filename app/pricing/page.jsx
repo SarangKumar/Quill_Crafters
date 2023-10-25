@@ -2,11 +2,13 @@
 import Container from '@/components/ui/Container';
 import PricingCard from '@/components/ui/PricingCard';
 import axios from 'axios';
+import { useSession } from 'next-auth/react';
 import { useState, useEffect } from 'react';
-// import PricingCard from '../components/PricingCard';
+
 
 const Pricing = () => {
 	const [prices, setPrices] = useState([]);
+	const {data: session} = useSession();
 
 	useEffect(() => {
 		fetchPrices();

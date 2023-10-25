@@ -1,20 +1,22 @@
-'use client';
 import { cn } from '@/lib/utils';
 import axios from 'axios';
 import Button, { buttonVariants, planVariant } from './Button';
 import { Bird, Bot, CheckCircle2, Webhook } from 'lucide-react';
+import { useSession } from 'next-auth/react';
 
 const PricingCard = ({ price }) => {
-	console.log(price);
+	const { data: session } = useSession();
+	console.log(session);
+	const currentPlan = session?.user?.plan?.toLowerCase();
 
 	// POST request
 	const handleSubscription = async (e) => {
-		console.log('button');
 		e.preventDefault();
 		const { data } = await axios.post(
 			'/api/payment',
-			{
+		{
 				priceId: price.id,
+				user: session?.user
 			},
 			{
 				headers: {
@@ -26,13 +28,71 @@ const PricingCard = ({ price }) => {
 	};
 
 	const dynamicSubTitle = (price) => {
-		// console.log(price.nickname);
 		if (price.nickname === 'Premium plan per month') {
-			return <p className="text-amber-500">Premium</p>;
+			const isPremium = currentPlan === 'premium';
+
+			return (
+				<div className="flex flex-col items-center justify-center gap-y-1">
+					{isPremium && (
+						<span
+							className={cn(
+								planVariant({
+									variant: 'premium',
+									className: 'text-[10px]',
+								})
+							)}
+						>
+							Current Plan
+						</span>
+					)}
+					<h2 className="text-amber-500 text-xl md:text-3xl font-semibold">
+						Premium
+					</h2>
+				</div>
+			);
 		} else if (price.nickname === 'Pro plan per month') {
-			return <p className="text-teal-500">Pro</p>;
+			const isPro = currentPlan === 'pro';
+
+			return (
+				<div className="flex flex-col items-center justify-center gap-y-1">
+					{isPro && (
+						<span
+							className={cn(
+								planVariant({
+									variant: 'pro',
+									className: 'text-[10px]',
+								})
+							)}
+						>
+							Current Plan
+						</span>
+					)}
+					<h2 className="text-teal-500 text-xl md:text-3xl font-semibold">
+						Pro
+					</h2>
+				</div>
+			);
 		} else if (price.nickname === 'Basic plan per month') {
-			return <p className="text-gray-300">Basic</p>;
+			const isBasic = currentPlan === 'basic';
+			return (
+				<div className="flex flex-col items-center justify-center gap-y-1">
+					{isBasic && (
+						<span
+							className={cn(
+								planVariant({
+									variant: 'basic',
+									className: 'text-[10px]',
+								})
+							)}
+						>
+							Current Plan
+						</span>
+					)}
+					<h2 className="text-gray-300 text-xl md:text-3xl font-semibold">
+						Basic
+					</h2>
+				</div>
+			);
 		}
 	};
 
@@ -180,10 +240,11 @@ const PricingCard = ({ price }) => {
 		<div className="border border-border py-6 rounded-lg px-4 text-foreground max-w-xs w-full">
 			<div>{dynamicIcon(price)}</div>
 			<div className="flex items-center flex-col my-3">
-				<h3 className="text-xl md:text-3xl font-semibold">
-					{dynamicSubTitle(price)}
-				</h3>
+				{/* <h3 className="">
+				</h3> */}
+				{dynamicSubTitle(price)}
 				<p className="text-sm md:text-base">per month</p>
+				{/* <p>{currentPlan}</p> */}
 				<h1 className="text-5xl font-bold mt-6 mb-3">
 					{(price.unit_amount / 100).toLocaleString('en-IN', {
 						style: 'currency',
