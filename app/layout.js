@@ -21,7 +21,19 @@ export const metadata = [
 
 export default function RootLayout({ children }) {
 	return (
-		<html lang="en" className='scroll-smooth'>
+		<html
+			lang="en"
+			className="scroll-smooth"
+		>
+			<head>
+				{process.env.NODE_ENV === 'production' && (
+					<script
+						async
+						src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9615068362549302"
+						crossorigin="anonymous"
+					></script>
+				)}
+			</head>
 			<body
 				className={`${poppins.className} bg-background selection:text-primary selection:bg-primary/10 selection:backdrop-blur-sm`}
 			>
