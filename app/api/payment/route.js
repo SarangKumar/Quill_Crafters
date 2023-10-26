@@ -4,6 +4,7 @@ import prisma from '@/constants/prisma';
 
 export async function POST(request) {
 	// console.log("payment time")
+	let isTransactionDone = false;
 	try {
 		const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 		let data = await request.json();
@@ -30,17 +31,6 @@ export async function POST(request) {
 
 		if (!currentUser) return NextResponse.json({ message: 'Invalid user' });
 
-		if (currentUser) {
-			await prisma.user.update({
-				where: {
-					email: user.email,
-				},
-				data: {
-					plan: updatePlan.toUpperCase(),
-				},
-			});
-		}
-
 		const session = await stripe.checkout.sessions.create({
 			line_items: [
 				{
@@ -53,7 +43,23 @@ export async function POST(request) {
 			cancel_url: process.env.NEXTAUTH_URL,
 		});
 
-		return NextResponse.json(session.url);
+		isTransactionDone = true;
+
+		if (currentUser) {
+			await prisma.user.update({
+				where: {
+					email: user.email,
+				},
+				data: {
+					plan: updatePlan.toUpperCase(),
+				},
+			});
+			isTransactionDone = isTransactionDone && true;
+		}
+
+		if (isTransactionDone) {
+			return NextResponse.json(session.url);
+		}
 	} catch (error) {
 		console.log(error);
 		return NextResponse.error(error);
