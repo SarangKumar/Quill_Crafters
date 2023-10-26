@@ -5,10 +5,9 @@ import axios from 'axios';
 import { useSession } from 'next-auth/react';
 import { useState, useEffect } from 'react';
 
-
 const Pricing = () => {
 	const [prices, setPrices] = useState([]);
-	const {data: session} = useSession();
+	const { data: session } = useSession();
 
 	useEffect(() => {
 		fetchPrices();
@@ -24,11 +23,13 @@ const Pricing = () => {
 		<section className="w-full mb-20">
 			<Container>
 				<div className="mx-auto max-w-4xl text-center mt-10 items-center">
-					<h2 className="text-3xl md:text-4xl font-semibold leading-7 text-foreground">
-						Simple Plans, <span className="text-primary">Free</span>{' '}
-						To Try
+					<h2 className="text-3xl md:text-4xl font-semibold leading-8 text-foreground">
+						Simple Plans
+						<br className="md:hidden" />
+						<span className="md:inline-block hidden">,</span>{' '}
+						<span className="text-primary">Free</span> To Try
 					</h2>
-					<div className="mx-auto mt-6 max-w-2xl sm:text-center text-foreground-secondary">
+					<div className="mx-auto mt-6 text-sm md:text-base max-w-2xl sm:text-center text-foreground-secondary">
 						<p className="capitalize">
 							No, hidden fees, no games, no surprises.
 						</p>

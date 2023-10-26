@@ -34,6 +34,10 @@ export default function RootLayout({ children }) {
 						crossorigin="anonymous"
 					></script>
 				)}
+				<link
+					rel="manifest"
+					href="/manifest.json"
+				/>
 			</head>
 			<body
 				className={`${poppins.className} bg-background selection:text-primary selection:bg-primary/10 selection:backdrop-blur-sm`}

@@ -9,12 +9,24 @@
 /coverage
 /app/test
 
+# pwa
+/public/sw.js
+/public/workbox-*
+
+# sitemap
+/public/robots.txt
+/public/sitemap*.xml
+
 # next.js
 /.next/
 /out/
 
 # production
 /build
+
+# pages
+/app/demo
+/app/test
 
 # misc
 .DS_Store
@@ -35,3 +47,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# vas code
+.vscode
