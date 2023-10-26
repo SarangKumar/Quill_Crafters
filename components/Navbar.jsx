@@ -6,6 +6,7 @@ import { signOut, signIn, useSession } from 'next-auth/react';
 import { cn } from '@/lib/utils';
 import Badge from './ui/Badge';
 import { AlignJustify, BirdIcon, Bot, PlusIcon, Webhook } from 'lucide-react';
+import Image from 'next/image';
 
 const Navbar = () => {
 	const { data: session } = useSession();
@@ -17,7 +18,14 @@ const Navbar = () => {
 		<nav className="md:pt-5 text-white bg-background/40 z-50 w-full backdrop-blur-[1px] sticky top-0 h-14 flex justify-center items-center ">
 			<main className="flex items-center justify-between mx-5 md:max-w-6xl sm:mx-10 md:mx-auto w-full">
 				<h1 className="text-lg font-medium">
-					Quill Crafters
+					<span className="hidden sm:inline-block">Quill Crafters</span>
+					<Image
+						className="inline-block sm:hidden"
+						src="/quillcrafters.png"
+						width={30}
+						height={30}
+						alt="Quill Crafters"
+					/>
 					<span className="text-primary border-primary text-xs my-auto border rounded px-1 bg-primary/10 font-semibold ml-3">
 						Beta
 					</span>
