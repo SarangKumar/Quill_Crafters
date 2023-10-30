@@ -7,18 +7,28 @@ import { cn } from '@/lib/utils';
 import Badge from './ui/Badge';
 import { AlignJustify, BirdIcon, Bot, PlusIcon, Webhook } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
+import Container from './ui/Container';
 
 const Navbar = () => {
-	const { data: session } = useSession();
+	const { data: session, status } = useSession();
 	const [menuIsOpen, setMenuIsOpen] = useState(false);
-	if (session) {
-	}
+	// if (session) {
+	// }
 
+	const userProfileLink =
+		status === 'authenticated'
+			? session.user.username.split(' ').join('_').toLowerCase()
+			: 'Loading!';
+
+	// console.log(session, status, username);
 	return (
 		<nav className="md:pt-5 text-white bg-background/40 z-50 w-full backdrop-blur-[1px] sticky top-0 h-14 flex justify-center items-center ">
-			<main className="flex items-center justify-between mx-5 md:max-w-6xl sm:mx-10 md:mx-auto w-full">
+			<Container className="flex items-center justify-between w-full">
 				<h1 className="text-lg font-medium">
-					<span className="hidden sm:inline-block">Quill Crafters</span>
+					<span className="hidden sm:inline-block">
+						Quill Crafters
+					</span>
 					<Image
 						className="inline-block sm:hidden"
 						src="/quillcrafters.png"
@@ -33,15 +43,6 @@ const Navbar = () => {
 
 				{/* Desktop View */}
 				<ul className="hidden md:flex items-center justify-center gap-x-3 text-xs font-medium">
-					<li className="">
-						<Badge
-							variant="ghost"
-							className="text-foreground-secondary hover:text-foreground"
-							href="/"
-						>
-							Home
-						</Badge>
-					</li>
 					<li className="">
 						<Badge
 							href="/"
@@ -64,10 +65,12 @@ const Navbar = () => {
 						<>
 							{/* {session?.user.plan !== 'FREE' && ( */}
 							<li className="items-center gap-x-3 hidden md:flex">
-								<Avatar
-									name={session?.user.username}
-									plan={session?.user.plan}
-								/>
+								<Link href={`/${userProfileLink}`}>
+									<Avatar
+										name={session?.user.username}
+										plan={session?.user.plan}
+									/>
+								</Link>
 								<span
 									className={cn(
 										planVariant({
@@ -201,7 +204,7 @@ const Navbar = () => {
 						</ul>
 					</div>
 				</aside>
-			</main>
+			</Container>
 		</nav>
 	);
 };

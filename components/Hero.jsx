@@ -6,7 +6,7 @@ import {  BookOpen, Ghost } from 'lucide-react';
 const Hero = () => {
 	return (
 		<Container className="text-foreground flex justify-center items-center flex-col my-20">
-			<Badge className="space-x-1">
+			<Badge className="space-x-1 my-5">
 				<Ghost
 					size={16}
 					className="text-primary"
