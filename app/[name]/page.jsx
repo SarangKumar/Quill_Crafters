@@ -10,17 +10,10 @@ async function ProfilePage({ params }) {
 		? session.user.username.split(' ').join('_').toLowerCase()
 		: 'not signed in';
 
+	const authorized = trueUsername == params.name;
 
-        const authorized = trueUsername == params.name;
-
-		console.log(authorized);
-	return (
-		<ClientWrapper
-			authorized={authorized}
-			username={params.name}
-			trueUsername={trueUsername}
-		/>
-	);
+	console.log(authorized);
+	return <>main</>;
 }
 
 export default ProfilePage;
