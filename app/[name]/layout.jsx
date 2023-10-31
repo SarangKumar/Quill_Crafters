@@ -52,14 +52,14 @@ const ProfileMainCard = ({ session, trueUsername }) => {
 		<aside className="p-4 rounded space-y-3">
 			{/* {JSON.stringify(session)} */}
 			<Image
-				src={session.user.avatar}
+				src={session?.user.avatar}
 				quality={100}
 				width={100}
 				height={100}
 				alt="Profile Picture"
 				className="rounded-md"
 			/>
-			<h2 className="text-base font-semibold">{session.user.username}</h2>
+			<h2 className="text-base font-semibold">{session?.user.username}</h2>
 			<div>
 				<Link
 					href={`/${trueUsername}`}
@@ -67,7 +67,7 @@ const ProfileMainCard = ({ session, trueUsername }) => {
 				>
 					{trueUsername}
 				</Link>
-				<p>{session.user.email}</p>
+				<p>{session?.user.email}</p>
 			</div>
             <p>
                 {session?.user?.bio || 'No bio yet.'}
