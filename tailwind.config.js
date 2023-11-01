@@ -28,6 +28,7 @@ module.exports = {
 			},
 			gridTemplateColumns: {
 				cards: 'repeat(auto-fill, minmax(170px, 1fr))',
+				"cards-mobile": 'repeat(auto-fill, minmax(140px, 1fr))'
 			},
 			keyframes: {
 				'spin-delayed': {

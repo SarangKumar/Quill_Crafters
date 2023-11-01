@@ -16,6 +16,7 @@ async function ProfilePageLayout({ params, children }) {
 
 	const authorized = trueUsername == params.name;
 
+
 	// console.log(authorized);
 	return (
 		<>
