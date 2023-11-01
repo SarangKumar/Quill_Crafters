@@ -1,4 +1,3 @@
-import ClientWrapper from '@/components/ClientWrapper';
 import { planVariant } from '@/components/ui/Button';
 import Container from '@/components/ui/Container';
 import { AuthOptions, cn } from '@/lib/utils';
@@ -17,7 +16,7 @@ async function ProfilePageLayout({ params, children }) {
 
 	const authorized = trueUsername == params.name;
 
-	console.log(authorized);
+	// console.log(authorized);
 	return (
 		<>
 			{/* <ClientWrapper
@@ -27,7 +26,7 @@ async function ProfilePageLayout({ params, children }) {
 			trueUsername={trueUsername}
 		/>
         {children} */}
-			<Container className="text-foreground relative grid md:gap-5 gap-4 grid-cols-1 md:grid-cols-3 lg:grid-cols-4 overflow-hidden text-sm">
+			<Container className="text-foreground relative grid md:gap-5 gap-4 grid-cols-1 md:grid-cols-3 lg:grid-cols-4 overflow-hidden text-sm mb-20">
 				{/* Welcome to the page of {username}. <br />
 			{JSON.stringify(session)}
 			{authorized
@@ -62,17 +61,17 @@ const ProfileMainCard = ({ session, trueUsername }) => {
 				alt="Profile Picture"
 				className="rounded-md"
 			/>
-			<h2 className="text-base font-semibold">
+			<h2 className="text-base sm:text-lg md:text-2xl font-semibold">
 				{session?.user.username}
 			</h2>
 			<div>
 				<Link
 					href={`/${trueUsername}`}
-					className="text-sm font-medium text-primary hover:underline"
+					className="text-sm sm:test-base md:text-lg font-medium text-primary hover:underline"
 				>
 					{trueUsername}
 				</Link>
-				<p>{session?.user.email}</p>
+				<p className='md:text-base'>{session?.user.email}</p>
 			</div>
 
 			<div className="flex items-center gap-x-2">
@@ -132,7 +131,7 @@ const ProfileMainCard = ({ session, trueUsername }) => {
 
 const ProfileNav = ({ trueUsername }) => {
 	return (
-		<nav className="py-4 flex items-center gap-x-4">
+		<nav className="border-b border-primary/40 py-1 flex items-center gap-x-4">
 			<Link
 				className="hover:text-primary"
 				href={`/${trueUsername}`}

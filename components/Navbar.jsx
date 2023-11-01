@@ -23,7 +23,7 @@ const Navbar = () => {
 
 	// console.log(session, status, username);
 	return (
-		<nav className="md:py-5 mb-10 text-white bg-background/40 z-50 w-full backdrop-blur-[1px] sticky top-0 h-16 flex justify-center items-center ">
+		<nav className="md:py-5 mb-10 border-b border-primary/40 text-white bg-background/40 z-50 w-full backdrop-blur-[1px] sticky top-0 h-16 flex justify-center items-center ">
 			<Container className="flex items-center justify-between w-full">
 				<h1 className="text-lg font-medium">
 					<Link

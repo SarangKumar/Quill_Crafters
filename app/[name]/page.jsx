@@ -1,4 +1,6 @@
 import ClientWrapper from '@/components/ClientWrapper';
+import ComicCover from '@/components/ui/ComicCover';
+import { bookMark } from '@/constants';
 import { AuthOptions } from '@/lib/utils';
 
 const { getServerSession } = require('next-auth');
@@ -12,18 +14,37 @@ async function ProfilePage({ params }) {
 
 	const authorized = trueUsername == params.name;
 
-	console.log(authorized);
+	// console.log(authorized);
 	return (
 		<>
-			<div className="p-4 border border-primary/40 rounded ">main main</div>
-			<div className="p-4 border border-primary/40 rounded ">
-				sub main
+			<div>
+				<h2 className="my-2 text-base mt-2">main main</h2>
+				<div className="p-4 rounded border border-primary/40">
+					content
+				</div>
 			</div>
-			<div className="p-4 border border-primary/40 rounded ">
-				sub main
+			<div>
+				<h2 className="my-2 text-base mt-2 pb-1">main main</h2>
+				<div className="p-4 rounded border border-primary/40">
+					content
+				</div>
 			</div>
-			<div className="p-4 border border-primary/40 rounded ">
-				Bookmarks
+			<div>
+				<h2 className="my-2 text-base mt-2 pb-1">main main</h2>
+				<div className="p-4 rounded border border-primary/40">
+					content
+				</div>
+			</div>
+			<div>
+				<h2 className="my-2 text-base mt-2 pb-1">Bookmark</h2>
+				<div className="p-4 rounded border border-primary/40 grid grid-cols-cards sm:gap-4 md:gap-5 gap-3">
+					{bookMark.map((novel) => (
+						<ComicCover
+							key={novel.id}
+							{...novel}
+						/>
+					))}
+				</div>
 			</div>
 		</>
 	);

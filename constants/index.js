@@ -450,3 +450,61 @@ export const allNovels = [
 		coverUrl: '/images/comic-thumbnail/comic-3.jpg',
 	},
 ];
+
+
+export const bookMark = [
+	{
+		id: 1,
+		name: 'To Kill a Mockingbird',
+		chapters: 20,
+		likes: 100,
+		category: 'Classic',
+		author: 'Harper Lee',
+		coverUrl: '/images/comic-thumbnail/comic-1.jpg',
+	},
+	{
+		id: 2,
+		name: '1984',
+		chapters: 18,
+		likes: 80,
+		category: 'Dystopian',
+		coverUrl: '/images/comic-thumbnail/comic-2.jpg',
+		author: 'George Orwell',
+	},
+	{
+		id: 3,
+		name: 'Pride and Prejudice',
+		chapters: 24,
+		likes: 120,
+		category: 'Romance',
+		author: 'Jane Austen',
+		coverUrl: '/images/comic-thumbnail/comic-3.jpg',
+	},
+	{
+		id: 4,
+		name: 'The Great Gatsby',
+		chapters: 15,
+		likes: 90,
+		category: 'Classic',
+		author: 'F. Scott Fitzgerald',
+		coverUrl: '/images/comic-thumbnail/comic-2.jpg',
+	},
+	{
+		id: 5,
+		name: 'The Catcher in the Rye',
+		chapters: 26,
+		likes: 110,
+		category: 'Coming-of-Age',
+		author: 'J.D. Salinger',
+		coverUrl: '/images/comic-thumbnail/comic-1.jpg',
+	},
+	{
+		id: 6,
+		name: 'Moby-Dick',
+		chapters: 32,
+		likes: 70,
+		category: 'Adventure',
+		author: 'Herman Melville',
+		coverUrl: '/images/comic-thumbnail/comic-2.jpg',
+	},
+];
