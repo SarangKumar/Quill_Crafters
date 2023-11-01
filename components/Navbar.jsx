@@ -23,12 +23,15 @@ const Navbar = () => {
 
 	// console.log(session, status, username);
 	return (
-		<nav className="md:py-5 text-white bg-background/40 z-50 w-full backdrop-blur-[1px] sticky top-0 h-16 flex justify-center items-center ">
+		<nav className="md:py-5 mb-10 text-white bg-background/40 z-50 w-full backdrop-blur-[1px] sticky top-0 h-16 flex justify-center items-center ">
 			<Container className="flex items-center justify-between w-full">
 				<h1 className="text-lg font-medium">
-					<span className="hidden sm:inline-block">
+					<Link
+						href="/"
+						className="hidden sm:inline-block"
+					>
 						Quill Crafters
-					</span>
+					</Link>
 					<Image
 						className="inline-block sm:hidden"
 						src="/quillcrafters.png"
@@ -111,10 +114,12 @@ const Navbar = () => {
 				<div className="flex gap-x-5 items-center md:hidden ">
 					{session && (
 						<div className="flex gap-x-2 items-center">
-							<Avatar
-								name={session?.user.username}
-								plan={session?.user.plan}
-							/>
+							<Link href={`/${userProfileLink}`}>
+								<Avatar
+									name={session?.user.username}
+									plan={session?.user.plan}
+								/>
+							</Link>
 							{session?.user.plan === 'PREMIUM' ? (
 								<span
 									className={cn(

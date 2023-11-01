@@ -13,7 +13,20 @@ async function ProfilePage({ params }) {
 	const authorized = trueUsername == params.name;
 
 	console.log(authorized);
-	return <>main</>;
+	return (
+		<>
+			<div className="p-4 border border-primary/40 rounded ">main main</div>
+			<div className="p-4 border border-primary/40 rounded ">
+				sub main
+			</div>
+			<div className="p-4 border border-primary/40 rounded ">
+				sub main
+			</div>
+			<div className="p-4 border border-primary/40 rounded ">
+				Bookmarks
+			</div>
+		</>
+	);
 }
 
 export default ProfilePage;
