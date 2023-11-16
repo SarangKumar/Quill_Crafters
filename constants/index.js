@@ -451,7 +451,6 @@ export const allNovels = [
 	},
 ];
 
-
 export const bookMark = [
 	{
 		id: 1,
@@ -506,5 +505,33 @@ export const bookMark = [
 		category: 'Adventure',
 		author: 'Herman Melville',
 		coverUrl: '/images/comic-thumbnail/comic-2.jpg',
+	},
+];
+
+export const features = [
+	{
+		id: 1,
+		title: 'User Profiles and Author Page',
+		body: 'Personalized spaces for users to showcase their work and bio.',
+	},
+	{
+		id: 2,
+		title: 'Novel Writing Tools',
+		body: 'Built-in writing features with prompts and organization tools.',
+	},
+	{
+		id: 3,
+		title: 'Community Forums & Feedback',
+		body: 'Engaging forums for discussions, feedback, and reviews.',
+	},
+	{
+		id: 4,
+		title: 'Reading Customization',
+		body: 'Multiple reading modes and features like bookmarks and notes.',
+	},
+	{
+		id: 5,
+		title: 'Publication & Monetization',
+		body: 'Options to publish novels and monetize through subscriptions or ads.',
 	},
 ];
