@@ -80,48 +80,48 @@ const ProfileMainCard = ({ session, trueUsername }) => {
 				alt="Profile Picture"
 				className="rounded-md w-full h-full xs:h-32 xs:w-32 object-cover"
 			/>
-			<div className="space-y-3 flex-grow">
-				<h2 className="text-base sm:text-lg md:text-2xl font-semibold">
-					{profile.username}
+			<div className="space-y-3 flex-grow md:mt-4">
+				<h2 className="text-lg md:text-2xl font-semibold">
+					{profile?.username}
 				</h2>
 				<div>
 					<Link
 						href={`/${trueUsername}`}
-						className="text-xs sm:test-sm md:text-base font-medium text-primary hover:underline"
+						className="md:text-base lg:text-xs font-medium text-primary hover:underline"
 					>
 						{trueUsername}
 					</Link>
-					<p className="lg:text-sm">{profile.email}</p>
+					<p className="text-sm">{profile?.email}</p>
 				</div>
 
-				<div className="flex items-center gap-x-2">
-					{profile.plan === 'PREMIUM' ? (
+				<div className="flex items-center gap-x-2 md:mt-4">
+					{profile?.plan === 'PREMIUM' ? (
 						<span
 							className={cn(
 								planVariant({
-									variant: profile.plan.toLowerCase(),
+									variant: profile?.plan.toLowerCase(),
 									size: 'icon',
 								})
 							)}
 						>
 							<Bot size={16} />
 						</span>
-					) : profile.plan === 'PRO' ? (
+					) : profile?.plan === 'PRO' ? (
 						<span
 							className={cn(
 								planVariant({
-									variant: profile.plan.toLowerCase(),
+									variant: profile?.plan.toLowerCase(),
 									size: 'icon',
 								})
 							)}
 						>
 							<BirdIcon size={16} />
 						</span>
-					) : profile.plan === 'BASIC' ? (
+					) : profile?.plan === 'BASIC' ? (
 						<span
 							className={cn(
 								planVariant({
-									variant: profile.plan.toLowerCase(),
+									variant: profile?.plan.toLowerCase(),
 									size: 'icon',
 								})
 							)}
@@ -135,12 +135,12 @@ const ProfileMainCard = ({ session, trueUsername }) => {
 					<span
 						className={cn(
 							planVariant({
-								variant: profile.plan.toLowerCase(),
+								variant: profile?.plan.toLowerCase(),
 								className: 'w-full flex-1 rounded h-7',
 							})
 						)}
 					>
-						{profile.plan}
+						{profile?.plan}
 					</span>
 				</div>
 
@@ -200,7 +200,7 @@ const ProfileMainCard = ({ session, trueUsername }) => {
 				) : (
 					<>
 						<p className="text-xs">
-							{profile.bio || 'No bio yet.'}
+							{profile?.bio || 'No bio yet.'}
 						</p>
 
 						<button

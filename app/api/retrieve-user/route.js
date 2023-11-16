@@ -2,15 +2,17 @@ import prisma from "@/constants/prisma";
 import { NextResponse } from "next/server";
 
 export async function GET(){
+    // console.log('GET')
     try{
         await prisma.$connect()
         const allUsers = await prisma.user.findMany({
-			include: {
-				novels: true,
-				favourite: true,
-			},
+            where: {
+                isAuthor: false
+            }
 		});
+
         return NextResponse.json(allUsers, {status: 200})
+        // return NextResponse.json({message: 'message'}, {status: 200})
     }
     catch(error){
         console.log(error)

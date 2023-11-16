@@ -17,7 +17,6 @@ async function ProfilePageLayout({ params, children }) {
 
 	const authorized = trueUsername == params.name;
 
-
 	// console.log(authorized);
 	return (
 		<>
@@ -41,7 +40,11 @@ async function ProfilePageLayout({ params, children }) {
 					/>
 				</div>
 				<div className="space-y-5 md:col-span-2 lg:col-span-3">
-					<ProfileNav trueUsername={trueUsername} />
+					<ProfileNav
+						trueUsername={trueUsername}
+						plan={session?.user.plan}
+						isAuthor={session?.user.isAuthor}
+					/>
 					{children}
 				</div>
 			</Container>
@@ -50,7 +53,7 @@ async function ProfilePageLayout({ params, children }) {
 }
 
 export default ProfilePageLayout;
-const ProfileNav = ({ trueUsername }) => {
+const ProfileNav = ({ trueUsername, plan, isAuthor }) => {
 	return (
 		<nav className="border-b border-primary/40 py-1 flex items-center gap-x-4">
 			<Link
@@ -71,6 +74,14 @@ const ProfileNav = ({ trueUsername }) => {
 			>
 				Bookmark
 			</Link>
+			{isAuthor && (
+				<Link
+					className="hover:text-primary"
+					href={`/${trueUsername}/novels`}
+				>
+					Manage Novels
+				</Link>
+			)}
 		</nav>
 	);
 };
