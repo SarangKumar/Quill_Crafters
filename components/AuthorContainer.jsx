@@ -89,10 +89,13 @@ const authorDetails = [
 	},
 ];
 
-const AuthorContainer = () => {
+const AuthorContainer = async () => {
+	const res = await fetch('http://localhost:3000/api/retrieve-user');
+	const allUsers = await res.json();
+console.log(allUsers)
 	return (
-		<section className="xl:columns-4 lg:columns-3 columns-1 sm:columns-2 gap-4 mx-auto space-y-4 pb-28">
-			{authorDetails.map((author) => (
+		<section className="xl:columns-3 columns-1 md:columns-2 gap-4 mx-auto space-y-4 pb-28">
+			{allUsers.map((author) => (
 				<Author
 					key={author.email}
 					{...author}

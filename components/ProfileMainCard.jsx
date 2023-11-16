@@ -73,7 +73,7 @@ const ProfileMainCard = ({ session, trueUsername }) => {
 	return (
 		<aside className="p-4 rounded flex flex-col md:flex-row lg:flex-col gap-x-5">
 			<Image
-				src={profile.avatar}
+				src={profile?.avatar}
 				quality={100}
 				width={200}
 				height={200}

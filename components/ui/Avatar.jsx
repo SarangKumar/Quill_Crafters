@@ -32,7 +32,7 @@ const Avatar = ({
 	name = 'Guest User',
 	className,
 	src = '',
-	plan = 'free',
+	plan = 'FREE',
 	isAuthor = 0,
 }) => {
 	name = extractInitials(name);
@@ -44,10 +44,11 @@ const Avatar = ({
 				className
 			)}
 		>
+		
 			<span className="absolute bg-black border-0 inset-[1px] rounded-full font-medium text-xs inline-flex justify-center items-center">
 				{name}
 			</span>
-			{plan.toLowerCase() !== 'free' && isAuthor === 0 && (
+			{plan.toLowerCase() !== 'free' && isAuthor === false && (
 				<span
 					className={cn(
 						planVariant({
@@ -58,7 +59,7 @@ const Avatar = ({
 					)}
 				></span>
 			)}
-			{plan.toLowerCase() !== 'free' && isAuthor === 1 && (
+			{plan.toLowerCase() !== 'free' && isAuthor === true && (
 				<Star
 
 					className={cn(

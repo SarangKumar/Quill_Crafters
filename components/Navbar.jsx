@@ -13,6 +13,7 @@ import Container from './ui/Container';
 const Navbar = () => {
 	const { data: session, status } = useSession();
 	const [menuIsOpen, setMenuIsOpen] = useState(false);
+	const [loading, setLoading] = useState(false);
 	// if (session) {
 	// }
 

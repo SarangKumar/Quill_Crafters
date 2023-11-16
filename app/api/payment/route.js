@@ -19,6 +19,8 @@ export async function POST(request) {
 		else if (priceId === 'price_1O4mROSGdVUlhVDJUn6f1MLL')
 			updatePlan = 'pro';
 
+		console.log({message: 'it is from payment route', updatePlan})
+
 		if (!updatePlan)
 			return NextResponse.json({ message: 'Invalid priceId' });
 
@@ -46,7 +48,7 @@ export async function POST(request) {
 		isTransactionDone = true;
 
 		if (currentUser) {
-			await prisma.user.update({
+			const updatedPlan = await prisma.user.update({
 				where: {
 					email: user.email,
 				},
@@ -55,7 +57,9 @@ export async function POST(request) {
 				},
 			});
 			isTransactionDone = isTransactionDone && true;
+			console.log({updatedPlan,  message: 'payment route', isTransactionDone })
 		}
+
 
 		if (isTransactionDone) {
 			return NextResponse.json(session.url);
