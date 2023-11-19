@@ -73,7 +73,7 @@ const ProfileNav = ({ trueUsername, plan, isAuthor }) => {
 				className="hover:text-primary text-[10px] sm:text-xs text-center md:text-sm"
 				href={`/${trueUsername}/likes`}
 			>
-				Bookmark
+				Liked Novels
 			</Link>
 			{isAuthor && (
 				<Link

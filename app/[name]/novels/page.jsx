@@ -73,7 +73,7 @@ const ManageNovelsPage = () => {
 				}),
 			});
 
-			console.log(res.data);
+			// console.log(res.data);
 			setNewNovel({
 				title: '',
 				genre: '',
@@ -87,21 +87,24 @@ const ManageNovelsPage = () => {
 		}
 	};
 
-	if (session){}
+	if (session) {
+	}
 	const username = session?.user?.username.split(' ').join('_').toLowerCase();
 	return (
 		<>
 			<div>
 				<h2 className="my-2 text-base mt-2">My Novels</h2>
-				<div className="p-4 border border-primary/40 rounded space-y-2 grid grid-cols-cards sm:gap-4 md:gap-5 gap-3">
-					{loading.loadingNovelCover ? (
-						new Array(10)
-							.fill(0)
-							.map((_, i) => <ComicCardSkeleton key={i} />)
-					) : userOverview?.novel?.length === 0 ? (
-						<p>No novels</p>
-					) : (
-						userOverview?.novel?.map((novel) => (
+				{loading.loadingNovelCover ? (
+					<div className="p-4 border border-primary/40 rounded space-y-2 grid grid-cols-cards sm:gap-4 md:gap-5 gap-3">
+						{new Array(3).fill(0).map((_, i) => (
+							<ComicCardSkeleton key={i} />
+						))}
+					</div>
+				) : userOverview?.novel?.length === 0 ? (
+					<p>No novels</p>
+				) : (
+					<div className="p-4 border border-primary/40 rounded space-y-2 grid grid-cols-cards sm:gap-4 md:gap-5 gap-3">
+						{userOverview?.novel?.map((novel) => (
 							<Link
 								href={`/${username}/novels/${novel.novel_id}`}
 								key={novel.novel_id}
@@ -116,9 +119,9 @@ const ManageNovelsPage = () => {
 									category={novel.genre}
 								/>
 							</Link>
-						))
-					)}
-				</div>
+						))}
+					</div>
+				)}
 			</div>
 
 			<div>
@@ -127,9 +130,6 @@ const ManageNovelsPage = () => {
 					<form
 						className="flex flex-col gap-y-4"
 						onSubmit={handleCreateNovel}
-						// enctype="multipart/form-data"
-						// action="http://localhost:3000/api/uploads"
-						// method="post"
 					>
 						<input
 							maxLength={100}

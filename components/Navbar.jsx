@@ -31,17 +31,20 @@ const Navbar = () => {
 						href="/"
 						className="hidden sm:inline-block"
 					>
-						<>
-							Quill Crafters
-							<Image
-								className="inline-block sm:hidden"
-								src="/quillcrafters.png"
-								width={30}
-								height={30}
-								alt="Quill Crafters"
-							/>
-						</>
+						Quill Crafters
 					</Link>
+					<Link
+						href="/"
+						className="inline-block sm:hidden"
+					>
+						<Image
+							src="/quillcrafters.png"
+							width={30}
+							height={30}
+							alt="Quill Crafters"
+						/>
+					</Link>
+
 					<span className="text-primary border-primary text-xs my-auto border rounded px-1 bg-primary/10 font-semibold ml-3">
 						Beta
 					</span>
