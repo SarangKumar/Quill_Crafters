@@ -44,6 +44,7 @@ const ManageNovelsPage = () => {
 	const handleCreateNovel = async (e) => {
 		e.preventDefault();
 		setLoading(true);
+
 		// console.log(newNovel);
 		if (
 			!newNovel.genre ||
@@ -51,12 +52,14 @@ const ManageNovelsPage = () => {
 			!newNovel.summary ||
 			!newNovel.cover
 		) {
+			console.log('all fields are required')
+			setLoading(false);
 			return;
 		}
 
-		console.log(newNovel)
+		// console.log('hellooo', newNovel)
 		try {
-			const res = await fetch('/api/novel/create-novel', {
+			const res = await fetch('/api/novels/create-novel', {
 				method: 'POST',
 				body: JSON.stringify({ newNovel, user_id: session.user.user_id }),
 			});

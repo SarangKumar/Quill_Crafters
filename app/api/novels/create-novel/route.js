@@ -2,8 +2,11 @@ import { NextResponse } from 'next/server';
 import prisma from '@/constants/prisma';
 
 export async function POST(req, res) {
-	const { newNovel, user_id } = await req.json();
 	console.log('api is running')
+	const body = await req.json();
+	const { newNovel, user_id } = body;
+	console.log(body, 'from api')
+
 
 	try {
 		prisma.$connect();
