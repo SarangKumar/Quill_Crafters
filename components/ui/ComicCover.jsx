@@ -8,8 +8,8 @@ import { buttonVariants } from './Button';
 import { cn } from '@/lib/utils';
 
 const handleBookmark = () => {
-	console.log('bookmarked')
-}
+	console.log('bookmarked');
+};
 
 const ComicCover = ({
 	name = 'Comic Name',
@@ -24,7 +24,7 @@ const ComicCover = ({
 	updatedAt = new Date(),
 }) => {
 	const { data: session } = useSession();
-	bookmarked = true;
+
 	return (
 		<div className="shadow-md group border group text-white relative overflow-hidden border-border rounded-lg bg-background-secondary ring-offset-0 transition-colors focus:ring-primary hover:shadow-primary hover:ring-2 hover:ring-primary">
 			<button className="group-focus:ring-primary group-focus:ring group-focus:ring-offset-2 h-full w-full">
@@ -72,7 +72,7 @@ const ComicCover = ({
 					</div>
 					{session?.user && (
 						<button
-						onClick={handleBookmark}
+							onClick={handleBookmark}
 							className={cn(
 								buttonVariants({
 									variant: 'subtle',
@@ -92,19 +92,20 @@ const ComicCover = ({
 						</button>
 					)}
 				</div>
-				<div className="flex items-center">
-					<span
-						className={cn(
-							buttonVariants({
-								variant: 'subtle',
-								className: 'text-white h-6',
-							})
-						)}
-					>
-						<span className="text-[10px]  whitespace-nowrap">
-							{category}
+				<div className="flex items-center gap-x-1">
+					{category.split(' ').map((cate, i) => (
+						<span
+							className={cn(
+								buttonVariants({
+									variant: 'subtle',
+									className: 'text-white h-6 whitespace-wrap',
+								})
+							)}
+							key={i}
+						>
+							{cate}
 						</span>
-					</span>
+					))}
 				</div>
 			</div>
 			<div className="p-3 bg-foreground/10 backdrop-blur-[1px] left-0 right-0 w-full bottom-0 absolute">
