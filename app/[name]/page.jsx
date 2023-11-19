@@ -36,17 +36,6 @@ async function ProfilePage({ params }) {
 					{JSON.stringify(session)}
 				</div>
 			</div>
-			<div>
-				<h2 className="my-2 text-base mt-2 pb-1">Bookmark</h2>
-				<div className="p-2 md:p-4 rounded border border-primary/40 grid grid-cols-cards-mobile lg:grid-cols-cards sm:gap-4 md:gap-5 gap-3">
-					{bookMark.map((novel) => (
-						<ComicCover
-							key={novel.id}
-							{...novel}
-						/>
-					))}
-				</div>
-			</div>
 		</>
 	);
 }

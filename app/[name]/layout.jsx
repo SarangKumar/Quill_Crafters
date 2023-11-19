@@ -71,7 +71,7 @@ const ProfileNav = ({ trueUsername, plan, isAuthor }) => {
 			<br className="md:hidden" />
 			<Link
 				className="hover:text-primary text-[10px] sm:text-xs text-center md:text-sm"
-				href={`/${trueUsername}/bookmark`}
+				href={`/${trueUsername}/likes`}
 			>
 				Bookmark
 			</Link>

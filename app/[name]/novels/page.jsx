@@ -1,4 +1,5 @@
 'use client';
+import { ComicCardSkeleton } from '@/components/Skeleton';
 import { buttonVariants } from '@/components/ui/Button';
 import ComicCover from '@/components/ui/ComicCover';
 import { cn } from '@/lib/utils';
@@ -9,7 +10,10 @@ import React, { useEffect, useState } from 'react';
 const ManageNovelsPage = () => {
 	const [userOverview, setUserOverview] = useState({});
 	const { data: session } = useSession();
-	const [loading, setLoading] = useState(false);
+	const [loading, setLoading] = useState({
+		loadingNovelSubmit: false,
+		loadingNovelCover: true,
+	});
 	const [newNovel, setNewNovel] = useState({
 		title: '',
 		genre: '',
@@ -20,7 +24,7 @@ const ManageNovelsPage = () => {
 	// const [file, setFile] = useState(null);
 
 	useEffect(() => {
-			fetchUserNovels();
+		fetchUserNovels();
 	}, []);
 
 	const fetchUserNovels = async () => {
@@ -34,7 +38,8 @@ const ManageNovelsPage = () => {
 				}),
 			});
 			const res = await data.json();
-			console.log(res);  
+			// console.log(res);
+			setLoading(prev => ({...prev, loadingNovelCover: false}))
 			setUserOverview(res);
 		} catch (error) {
 			console.log(error);
@@ -43,7 +48,7 @@ const ManageNovelsPage = () => {
 
 	const handleCreateNovel = async (e) => {
 		e.preventDefault();
-		setLoading(true);
+		setLoading((prev) => ({ ...prev, loadingNovelSubmit: true }));
 
 		// console.log(newNovel);
 		if (
@@ -52,8 +57,8 @@ const ManageNovelsPage = () => {
 			!newNovel.summary ||
 			!newNovel.cover
 		) {
-			console.log('all fields are required')
-			setLoading(false);
+			console.log('all fields are required');
+			setLoading((prev) => ({ ...prev, loadingNovelSubmit: false }));
 			return;
 		}
 
@@ -61,7 +66,10 @@ const ManageNovelsPage = () => {
 		try {
 			const res = await fetch('/api/novels/create-novel', {
 				method: 'POST',
-				body: JSON.stringify({ newNovel, user_id: session.user.user_id }),
+				body: JSON.stringify({
+					newNovel,
+					user_id: session.user.user_id,
+				}),
 			});
 
 			console.log(res.data);
@@ -74,7 +82,7 @@ const ManageNovelsPage = () => {
 		} catch (error) {
 			console.log(error);
 		} finally {
-			setLoading(false);
+			setLoading((prev) => ({ ...prev, loadingNovelSubmit: false }));
 		}
 	};
 
@@ -83,7 +91,11 @@ const ManageNovelsPage = () => {
 			<div>
 				<h2 className="my-2 text-base mt-2">My Novels</h2>
 				<div className="p-2 md:p-4 rounded border border-primary/40 grid grid-cols-cards-mobile lg:grid-cols-cards sm:gap-4 md:gap-5 gap-3">
-					{userOverview?.novel?.length === 0 ? (
+					{loading.loadingNovelCover ? (
+						new Array(10)
+							.fill(0)
+							.map((_, i) => <ComicCardSkeleton key={i} />)
+					) : userOverview?.novel?.length === 0 ? (
 						<p>No novels</p>
 					) : (
 						userOverview?.novel?.map((novel) => (
@@ -182,12 +194,12 @@ const ManageNovelsPage = () => {
 							className="flex rounded border-border border-2 p-1.5 focus-within:ring focus-within:ring-primary items-center text-xs gap-x-1 bg-gradient-to-t from-background-secondary/40 from-10% to-transparent space-y-2 before:absolute before:bg-gradient-to-r backdrop-blur-[2px] before:from-transparent before:to-background-secondary/40 before:from-10% before:-z-10 before:inset-0 caret-primary bg-transparent placeholder:text-foreground-secondary focus:outline-none text-foreground flex-1 w-full py-2 flex-grow"
 						/>
 						<button
-							disabled={loading}
+							disabled={loading.loadingNovelSubmit}
 							className={cn(
 								buttonVariants({ className: 'rounded py-3' })
 							)}
 						>
-							{loading ? (
+							{loading.loadingNovelSubmit ? (
 								<Loader2 className="animate-spin" />
 							) : (
 								<>Save Novel</>

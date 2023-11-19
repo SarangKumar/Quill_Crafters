@@ -33,7 +33,7 @@ const ComicContainer = ({ type = 'most-liked' }) => {
 			{/* <p className="text-white text-xs">{JSON.stringify(novels)}</p> */}
 			<div className="grid grid-cols-cards sm:gap-4 md:gap-5 gap-3">
 				{loading
-					? new Array(10)
+					? new Array(6)
 							.fill(0)
 							.map((_, i) => <ComicCardSkeleton key={i} />)
 					: novels?.map((novel) => (
