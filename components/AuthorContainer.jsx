@@ -95,7 +95,7 @@ const AuthorContainer = () => {
 	useEffect(() => {
 		try {
 			(async () => {
-				const res = await fetch('/api/retrieve-user');
+				const res = await fetch('/api/create-user/get-author');
 				const allUsers = await res.json();
 				setPopularAuthors(allUsers);
 			})();
@@ -103,9 +103,6 @@ const AuthorContainer = () => {
 			console.log(error);
 		}
 	}, []);
-	// const res = await fetch('http://localhost:3000/api/retrieve-user');
-	// const allUsers = await res.json();
-	// console.log(allUsers);
 
 	return (
 		<section className="xl:columns-3 columns-1 lg:columns-2 gap-4 mx-auto space-y-4 pb-28">

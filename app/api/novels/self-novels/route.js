@@ -15,6 +15,8 @@ export async function POST(req, res) {
 				},
 				include: {
 					novel: true,
+					// favourite: true,
+					// chapter: true,
 				},
 			});
 			console.log(user);

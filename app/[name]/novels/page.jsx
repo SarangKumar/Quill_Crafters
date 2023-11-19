@@ -5,6 +5,7 @@ import ComicCover from '@/components/ui/ComicCover';
 import { cn } from '@/lib/utils';
 import { Loader2 } from 'lucide-react';
 import { useSession } from 'next-auth/react';
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
 const ManageNovelsPage = () => {
@@ -39,7 +40,7 @@ const ManageNovelsPage = () => {
 			});
 			const res = await data.json();
 			// console.log(res);
-			setLoading(prev => ({...prev, loadingNovelCover: false}))
+			setLoading((prev) => ({ ...prev, loadingNovelCover: false }));
 			setUserOverview(res);
 		} catch (error) {
 			console.log(error);
@@ -86,11 +87,13 @@ const ManageNovelsPage = () => {
 		}
 	};
 
+	if (session){}
+	const username = session?.user?.username.split(' ').join('_').toLowerCase();
 	return (
 		<>
 			<div>
 				<h2 className="my-2 text-base mt-2">My Novels</h2>
-				<div className="p-2 md:p-4 rounded border border-primary/40 grid grid-cols-cards-mobile lg:grid-cols-cards sm:gap-4 md:gap-5 gap-3">
+				<div className="p-4 border border-primary/40 rounded space-y-2 grid grid-cols-cards sm:gap-4 md:gap-5 gap-3">
 					{loading.loadingNovelCover ? (
 						new Array(10)
 							.fill(0)
@@ -99,14 +102,20 @@ const ManageNovelsPage = () => {
 						<p>No novels</p>
 					) : (
 						userOverview?.novel?.map((novel) => (
-							<ComicCover
+							<Link
+								href={`/${username}/novels/${novel.novel_id}`}
 								key={novel.novel_id}
-								novel_id={novel.novel_id}
-								name={novel.title}
-								author={userOverview.username}
-								coverUrl={novel.cover}
-								category={novel.genre}
-							/>
+							>
+								<ComicCover
+									novel_id={novel.novel_id}
+									name={novel.title}
+									// likes={novel.favourite.length}
+									// chapters={novel.chapter.length}
+									author={userOverview.username}
+									coverUrl={novel.cover}
+									category={novel.genre}
+								/>
+							</Link>
 						))
 					)}
 				</div>
