@@ -89,6 +89,7 @@ const ManageNovelsPage = () => {
 						userOverview?.novel?.map((novel) => (
 							<ComicCover
 								key={novel.novel_id}
+								novel_id={novel.novel_id}
 								name={novel.title}
 								author={userOverview.username}
 								coverUrl={novel.cover}
@@ -183,7 +184,7 @@ const ManageNovelsPage = () => {
 						<button
 							disabled={loading}
 							className={cn(
-								buttonVariants({ className: 'rounded py-2' })
+								buttonVariants({ className: 'rounded py-3' })
 							)}
 						>
 							{loading ? (

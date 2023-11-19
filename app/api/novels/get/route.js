@@ -11,6 +11,8 @@ export async function POST(req, res) {
 					likes: 'desc',
 				},
 				include: {
+					favourite: true,
+					chapter: true,
 					author: {
 						select: {
 							username: true, // Include the 'name' field from the related User model
@@ -18,6 +20,8 @@ export async function POST(req, res) {
 					},
 				},
 			});
+
+			
 
 			return NextResponse.json(allNovelsWithAuthors, { status: 200 });
 		} catch (error) {

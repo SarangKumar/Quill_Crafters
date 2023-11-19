@@ -57,26 +57,27 @@ const ProfileNav = ({ trueUsername, plan, isAuthor }) => {
 	return (
 		<nav className="border-b border-primary/40 py-1 flex items-center gap-x-4">
 			<Link
-				className="hover:text-primary"
+				className="hover:text-primary text-[10px] sm:text-xs text-center md:text-sm"
 				href={`/${trueUsername}`}
 			>
 				Overview
 			</Link>
 			<Link
-				className="hover:text-primary"
+				className="hover:text-primary text-[10px] sm:text-xs text-center md:text-sm"
 				href={`/${trueUsername}/plan`}
 			>
 				Manage Plan
 			</Link>
+			<br className="md:hidden" />
 			<Link
-				className="hover:text-primary"
+				className="hover:text-primary text-[10px] sm:text-xs text-center md:text-sm"
 				href={`/${trueUsername}/bookmark`}
 			>
 				Bookmark
 			</Link>
 			{isAuthor && (
 				<Link
-					className="hover:text-primary"
+					className="hover:text-primary text-[10px] sm:text-xs text-center md:text-sm"
 					href={`/${trueUsername}/novels`}
 				>
 					Manage Novels

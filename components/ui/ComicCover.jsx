@@ -7,21 +7,30 @@ import { useSession } from 'next-auth/react';
 import { buttonVariants } from './Button';
 import { cn } from '@/lib/utils';
 
-const handleBookmark = () => {
+const handleBookmark = async (novel_id, user_id) => {
 	console.log('bookmarked');
+	console.log(novel_id, user_id);
+	const data = await fetch('/api/bookmark', {
+		method: 'POST',
+		body: JSON.stringify({ novel_id, user_id }),
+	});
+
+	const res = await data.json();
+	console.log(res);
 };
 
 const ComicCover = ({
 	name = 'Comic Name',
 	author = 'Author Name',
 	coverUrl = '',
-	likes = 100,
-	chapters = 3,
 	category = 'Fantacy',
 	bookmarked = false,
 	status = 'ongoing',
 	createdAt = new Date(),
 	updatedAt = new Date(),
+	chapters = 0,
+	likes = 0 ,
+	novel_id,
 }) => {
 	const { data: session } = useSession();
 
@@ -31,11 +40,13 @@ const ComicCover = ({
 				<Image
 					src={coverUrl}
 					height={450}
+					quality={100}
 					width={300}
 					alt={name}
 					className="object-cover overflow-hidded w-full h-full"
 				/>
 			</button>
+	
 			<div className=" transition-all flex items-cente flex-col text-xs p-2 -gap-1 left-0 right-0 w-full top-0 absolute">
 				<div className="flex items-center -gap-1 justify-between">
 					<div className="space-x-1">
@@ -72,7 +83,7 @@ const ComicCover = ({
 					</div>
 					{session?.user && (
 						<button
-							onClick={handleBookmark}
+							onClick={()=>handleBookmark(novel_id, session.user.user_id)}
 							className={cn(
 								buttonVariants({
 									variant: 'subtle',
@@ -92,7 +103,7 @@ const ComicCover = ({
 						</button>
 					)}
 				</div>
-				<div className="flex items-center gap-x-1">
+				<div className="flex w-[90%] items-center gap-x-1">
 					{category.split(' ').map((cate, i) => (
 						<span
 							className={cn(
@@ -117,6 +128,7 @@ const ComicCover = ({
 						{author}
 					</h3>
 				</div>
+
 				{/* <div className="flex items-center justify-between">
 					<Badge
 						className="text-white text-[10px] h-6"
