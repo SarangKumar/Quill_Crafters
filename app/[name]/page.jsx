@@ -33,6 +33,7 @@ async function ProfilePage({ params }) {
 				<h2 className="my-2 text-base mt-2 pb-1">main main</h2>
 				<div className="p-2 md:p-4 rounded border border-primary/40">
 					content
+					{JSON.stringify(session)}
 				</div>
 			</div>
 			<div>

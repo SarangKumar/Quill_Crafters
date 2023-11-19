@@ -56,6 +56,7 @@ model Novel {
   cover          String?
   publication_at DateTime    @default(now())
   author_id      Int
+  likes          Int         @default(0)
   genre          String
   comment        Comment[]
   favourite      Favourite[]

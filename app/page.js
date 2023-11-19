@@ -15,7 +15,7 @@ import {
 import Link from 'next/link';
 import React from 'react';
 
-const Home = () => {
+const Home = async () => {
 	const novelLikesChapters = sortNovelsByLikesAndChapters(allNovels);
 	const novelChapterLikes = sortNovelsByChaptersAndLikes(allNovels);
 
@@ -63,14 +63,15 @@ const Home = () => {
 					></a>
 					Most Liked
 				</SubHeading>
-				<ComicContainer novels={novelLikesChapters.slice(0, 12)} />
+				<ComicContainer type="most-liked"  />
 			</div>
 			<div>
 				<SubHeading>
 					<a id="quick-reads"></a>
 					Quick Reads
 				</SubHeading>
-				<ComicContainer novels={novelChapterLikes.slice(0, 12)} />
+				<ComicContainer type="most-liked"  />
+				{/* <ComicContainer type="quick-reads"  /> */}
 			</div>
 			<div>
 				<SubHeading>

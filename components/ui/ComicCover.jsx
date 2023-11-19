@@ -86,7 +86,7 @@ const ComicCover = ({
 										? 'text-transparent'
 										: 'text-white'
 								} h-6`}
-								fill={bookmarked && `#D4AF37`}
+								fill={bookmarked ? `#D4AF37` : undefined}
 								size={16}
 							/>
 						</button>
@@ -98,7 +98,7 @@ const ComicCover = ({
 							className={cn(
 								buttonVariants({
 									variant: 'subtle',
-									className: 'text-white h-6 whitespace-wrap',
+									className: 'text-white text-[10px] h-6 whitespace-wrap',
 								})
 							)}
 							key={i}
