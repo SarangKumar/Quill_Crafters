@@ -33,7 +33,7 @@ const ChapterPage = ({ params }) => {
 				}),
 			});
 			const res = await data.json();
-			console.log(res);
+			// console.log(res);
 			setNovel(res.novel);
 			setLoading((prev) => ({ ...prev, loadingChapterCover: false }));
 		} catch (error) {
@@ -125,6 +125,8 @@ const ChapterPage = ({ params }) => {
 							<ChapterCard
 								key={ch.chapter_id}
 								title={novel.title}
+								created_at={ch.created_at}
+								updated_at={ch.updated_at}
 								chapter_number={ch.chapter_number}
 								chapter_title={ch.chapter_title}
 							/>

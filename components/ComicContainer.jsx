@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import ComicCover from './ui/ComicCover';
 import { ComicCardSkeleton } from './Skeleton';
+import Link from 'next/link';
 
 const ComicContainer = ({ type = 'most-liked' }) => {
 	const [novels, setNovels] = useState([]);
@@ -37,16 +38,20 @@ const ComicContainer = ({ type = 'most-liked' }) => {
 							.fill(0)
 							.map((_, i) => <ComicCardSkeleton key={i} />)
 					: novels?.map((novel) => (
-							<ComicCover
+							<Link
 								key={novel.novel_id}
-								novel_id={novel.novel_id}
-								name={novel.title}
-								likes={novel.favourite.length}
-								chapters={novel.chapter.length}
-								author={novel.author.username}
-								coverUrl={novel.cover}
-								category={novel.genre}
-							/>
+								href={`/novel/${novel.novel_id}`}
+							>
+								<ComicCover
+									novel_id={novel.novel_id}
+									name={novel.title}
+									likes={novel.favourite.length}
+									chapters={novel.chapter.length}
+									author={novel.author.username}
+									coverUrl={novel.cover}
+									category={novel.genre}
+								/>
+							</Link>
 					  ))}
 			</div>
 			{process.env.NODE_ENV === 'evelopment' && (
