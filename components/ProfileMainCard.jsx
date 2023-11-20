@@ -33,43 +33,6 @@ const ProfileMainCard = ({ session, trueUsername }) => {
 		}
 	};
 
-	// const planIcon = {profile.plan === 'PREMIUM' ?  (
-	// 					<span
-	// 						className={cn(
-	// 							planVariant({
-	// 								variant: profile.plan.toLowerCase(),
-	// 								size: 'icon',
-	// 							})
-	// 						)}
-	// 					>
-	// 						<Bot size={16} />
-	// 					</span>
-	// 				) : profile.plan === 'PRO' ? (
-	// 					<span
-	// 						className={cn(
-	// 							planVariant({
-	// 								variant: profile.plan.toLowerCase(),
-	// 								size: 'icon',
-	// 							})
-	// 						)}
-	// 					>
-	// 						<BirdIcon size={16} />
-	// 					</span>
-	// 				) : profile.plan === 'BASIC' ? (
-	// 					<span
-	// 						className={cn(
-	// 							planVariant({
-	// 								variant: profile.plan.toLowerCase(),
-	// 								size: 'icon',
-	// 							})
-	// 						)}
-	// 					>
-	// 						<Webhook size={16} />
-	// 					</span>
-	// 				) : (
-	// 					<></>
-	// 				)}
-
 	return (
 		<aside className="p-4 rounded flex flex-col md:flex-row lg:flex-col gap-x-5">
 			<Image

@@ -109,7 +109,7 @@ const ComicCover = ({
 							className={cn(
 								buttonVariants({
 									variant: 'subtle',
-									className: 'text-white text-[10px] h-6 whitespace-wrap',
+									className: 'capitalize text-white text-[10px] h-6 whitespace-wrap',
 								})
 							)}
 							key={i}
