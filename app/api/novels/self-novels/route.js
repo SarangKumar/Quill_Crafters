@@ -8,17 +8,28 @@ export async function POST(req, res) {
 	try {
 		await prisma.$connect();
 		if (type === 'manage-novels') {
-			const user = await prisma.user.findUnique({
+			// const user = await prisma.user.findUnique({
+			// 	where: {
+			// 		user_id: user_id,
+			// 		// email: email,
+			// 	},
+			// 	include: {
+			// 		novel: true,
+			// 		// favourite: true,
+			// 		// chapter: true,
+			// 	},
+			// });
+			const user = await prisma.novel.findMany({
 				where: {
-					user_id: user_id,
-					// email: email,
+					author_id: user_id,
 				},
 				include: {
-					novel: true,
-					// favourite: true,
-					// chapter: true,
-				},
+					chapter: true,
+					author: true,
+					favourite: true,
+				}
 			});
+
 			console.log(user);
 			return NextResponse.json(user, { status: 200 });
 		} else if (type === 'favourite') {
@@ -31,7 +42,7 @@ export async function POST(req, res) {
 					favourite: true,
 				},
 			});
-			console.log(user);
+			// console.log(user);
 			return NextResponse.json(user, { status: 200 });
 		}
 	} catch (error) {

@@ -77,9 +77,10 @@ model Chapter {
   chapter_id     Int      @id @default(autoincrement())
   novel_id       Int
   chapter_number Int
-  chapter_title  String
-  content        String
+  chapter_title  String 
+  content        String @db.LongText
   created_at     DateTime @default(now())
+  updated_at     DateTime @updatedAt
   novel          Novel    @relation(fields: [novel_id], references: [novel_id])
 
   @@index([novel_id])

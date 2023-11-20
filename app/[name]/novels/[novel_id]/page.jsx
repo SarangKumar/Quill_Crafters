@@ -12,11 +12,13 @@ const ChapterPage = ({ params }) => {
 	const [novel, setNovel] = useState({
 		chapter: [],
 	});
+
 	const [newChapter, setNewChapter] = useState({
 		chapter_number: null,
 		chapter_title: '',
 		content: '',
 	});
+
 	const [loading, setLoading] = useState({
 		loadingChapterSubmit: false,
 		loadingChapterCover: true,
@@ -39,8 +41,8 @@ const ChapterPage = ({ params }) => {
 		}
 	};
 
+
 	useEffect(() => {
-		// console.log('params', params);
 		getChaptersAuthor();
 	}, []);
 
@@ -56,8 +58,14 @@ const ChapterPage = ({ params }) => {
 			) {
 				throw new Error('Please fill in all fields');
 			}
+			console.log({
+				novel_id: parseInt(params.novel_id),
+				chapter_number: parseInt(newChapter.chapter_number),
+				chapter_title: newChapter.chapter_title,
+				content: newChapter.content,
+			});
 
-			const response = await fetch('/api/create-chapter', {
+			const response = await fetch('/api/chapters/create', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
@@ -104,8 +112,9 @@ const ChapterPage = ({ params }) => {
 				</div>
 			)}
 
+			<h1 className="my-2 text-lg font-semibold">{novel.title || 'My Novels'}</h1>
 			<div>
-				<h2 className="my-2 text-base">{novel.title || 'My Novels'}</h2>
+				<h2 className="my-2 text-base">Published Chapters</h2>
 				<div className="p-4 border border-primary/40 rounded grid grid-cols-1 md:grid-cols-2  gap-2 sm:gap-4 md:gap-5">
 					{loading.loadingChapterCover ? (
 						new Array(3)

@@ -2,12 +2,11 @@ import prisma from '@/constants/prisma';
 import { NextResponse } from 'next/server';
 
 export async function POST(req, res) {
+	const body = await req.json();
+	const { novel_id, chapter_number, chapter_title, content } = body;
+	
 	try {
-		const body = await req.json();
-		const { novel_id, chapter_number, chapter_title, content } = body;
-
 		await prisma.$connect();
-
 		const newChapter = await prisma.chapter.create({
 			data: {
 				novel_id,

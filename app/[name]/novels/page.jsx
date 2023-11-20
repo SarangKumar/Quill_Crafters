@@ -9,7 +9,8 @@ import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
 const ManageNovelsPage = () => {
-	const [userOverview, setUserOverview] = useState({});
+	// const [userOverview, setUserOverview] = useState({});
+	const [novelDetail, setNovelDetail] = useState([]);
 	const { data: session } = useSession();
 	const [loading, setLoading] = useState({
 		loadingNovelSubmit: false,
@@ -41,7 +42,7 @@ const ManageNovelsPage = () => {
 			const res = await data.json();
 			// console.log(res);
 			setLoading((prev) => ({ ...prev, loadingNovelCover: false }));
-			setUserOverview(res);
+			setNovelDetail(res);
 		} catch (error) {
 			console.log(error);
 		}
@@ -94,15 +95,15 @@ const ManageNovelsPage = () => {
 		<>
 			<div>
 				<h2 className="my-2 text-base mt-2">My Novels</h2>
-				<div className="p-4 border border-primary/40 rounded space-y-2 grid grid-cols-cards sm:gap-4 md:gap-5 gap-3">
+				<div className="p-4 border border-primary/40 rounded space-y-2 grid grid-cols-cards gap-3 sm:gap-4 md:gap-5">
 					{loading.loadingNovelCover ? (
 						new Array(3)
 							.fill(0)
 							.map((_, i) => <ComicCardSkeleton key={i} />)
-					) : userOverview?.novel?.length === 0 ? (
+					) : novelDetail.length === 0 ? (
 						<p>No novels</p>
 					) : (
-						userOverview?.novel?.map((novel) => (
+						novelDetail?.map((novel) => (
 							<Link
 								href={`/${username}/novels/${novel.novel_id}`}
 								key={novel.novel_id}
@@ -110,9 +111,9 @@ const ManageNovelsPage = () => {
 								<ComicCover
 									novel_id={novel.novel_id}
 									name={novel.title}
-									// likes={novel.favourite.length}
-									// chapters={novel.chapter.length}
-									author={userOverview.username}
+									likes={novel.favourite.length}
+									chapters={novel.chapter.length}
+									author={session.user.username}
 									coverUrl={novel.cover}
 									category={novel.genre}
 								/>
@@ -157,7 +158,6 @@ const ManageNovelsPage = () => {
 							className="flex rounded border-border border-2 p-1.5 focus-within:ring focus-within:ring-primary items-center text-xs gap-x-1 bg-gradient-to-t from-background-secondary/40 from-10% to-transparent space-y-2 before:absolute before:bg-gradient-to-r backdrop-blur-[2px] before:from-transparent before:to-background-secondary/40 before:from-10% before:-z-10 before:inset-0 caret-primary bg-transparent placeholder:text-foreground-secondary focus:outline-none text-foreground flex-1 w-full py-2 flex-grow"
 						/>
 						<textarea
-							maxLength={500}
 							placeholder="Summary"
 							onChange={(e) =>
 								setNewNovel((prev) => ({
@@ -217,7 +217,7 @@ const ManageNovelsPage = () => {
 			</div>
 			{process.env.NODE_ENV === 'development' && (
 				<div>
-					{JSON.stringify(userOverview)}
+					{JSON.stringify(novelDetail)}
 					<br />
 					{JSON.stringify(newNovel)}
 					<br />
