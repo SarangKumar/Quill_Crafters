@@ -9,3 +9,13 @@ export function ComicCardSkeleton() {
 		</div>
 	);
 }
+
+export function ChapterCardSkeleton(){
+    return(
+        <div className="shadow-md group border group text-white relative overflow-hidden border-border rounded-lg bg-background-secondary ring-offset-0 transition-colors focus:ring-primary hover:shadow-primary hover:ring-2 hover:ring-primary min-h-[68px]">
+			<div className="h-full w-full flex items-center justify-center animate-pulse">
+				<Loader2 className="animate-spin" />
+			</div>
+		</div>
+    )
+}

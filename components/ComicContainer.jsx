@@ -48,8 +48,6 @@ const ComicContainer = ({ type = 'most-liked' }) => {
 								category={novel.genre}
 							/>
 					  ))}
-
-					{new Array(6).fill(0).map((_, i) => <ComicCardSkeleton key={i} />)}
 			</div>
 			{process.env.NODE_ENV === 'evelopment' && (
 				<p className="text-white text-xs">{JSON.stringify(novels)}</p>

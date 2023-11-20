@@ -5,7 +5,7 @@ export async function POST(req, res) {
 	console.log('api is running')
 	const body = await req.json();
 	const { newNovel, user_id } = body;
-	console.log(body, 'from api')
+	// console.log(body, 'from api')
 
 
 	try {

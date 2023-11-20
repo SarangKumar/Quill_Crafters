@@ -94,17 +94,15 @@ const ManageNovelsPage = () => {
 		<>
 			<div>
 				<h2 className="my-2 text-base mt-2">My Novels</h2>
-				{loading.loadingNovelCover ? (
-					<div className="p-4 border border-primary/40 rounded space-y-2 grid grid-cols-cards sm:gap-4 md:gap-5 gap-3">
-						{new Array(3).fill(0).map((_, i) => (
-							<ComicCardSkeleton key={i} />
-						))}
-					</div>
-				) : userOverview?.novel?.length === 0 ? (
-					<p>No novels</p>
-				) : (
-					<div className="p-4 border border-primary/40 rounded space-y-2 grid grid-cols-cards sm:gap-4 md:gap-5 gap-3">
-						{userOverview?.novel?.map((novel) => (
+				<div className="p-4 border border-primary/40 rounded space-y-2 grid grid-cols-cards sm:gap-4 md:gap-5 gap-3">
+					{loading.loadingNovelCover ? (
+						new Array(3)
+							.fill(0)
+							.map((_, i) => <ComicCardSkeleton key={i} />)
+					) : userOverview?.novel?.length === 0 ? (
+						<p>No novels</p>
+					) : (
+						userOverview?.novel?.map((novel) => (
 							<Link
 								href={`/${username}/novels/${novel.novel_id}`}
 								key={novel.novel_id}
@@ -119,9 +117,9 @@ const ManageNovelsPage = () => {
 									category={novel.genre}
 								/>
 							</Link>
-						))}
-					</div>
-				)}
+						))
+					)}
+				</div>
 			</div>
 
 			<div>
