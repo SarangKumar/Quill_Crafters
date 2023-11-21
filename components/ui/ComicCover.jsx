@@ -105,7 +105,7 @@ const ComicCover = ({
 						</button>
 					)}
 				</div>
-				<div className="flex w-[90%] flex-wrap items-center gap-x-1">
+				<div className="flex w-[90%] flex-wrap items-center gap-0.5">
 					{category.split(' ').map((cate, i) => (
 						<span
 							className={cn(
