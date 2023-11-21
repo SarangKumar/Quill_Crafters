@@ -2,6 +2,7 @@
 import { ComicCardSkeleton } from '@/components/Skeleton';
 import ComicCover from '@/components/ui/ComicCover';
 import { useSession } from 'next-auth/react';
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
 const BookmarkPage = () => {
@@ -33,7 +34,7 @@ const BookmarkPage = () => {
 		<>
 			{process.env.NODE_ENV === 'development' && (
 				<div className="p-4 border border-primary/40 rounded ">
-					bookmark
+					liked
 					{JSON.stringify(likedNovels)}
 				</div>
 			)}
@@ -51,8 +52,12 @@ const BookmarkPage = () => {
 					) : (
 						<>
 							{likedNovels.map((lNovel, i) => (
-								<ComicCover
+								<Link
 									key={lNovel.favorite_id}
+									href={`/novel/${lNovel.novel.novel_id}`}
+								>
+
+								<ComicCover
 									// novel_id={novel.novel_id}
 									name={lNovel.novel.title}
 									// likes={novel.favourite.length}
@@ -61,6 +66,7 @@ const BookmarkPage = () => {
 									coverUrl={lNovel.novel.cover}
 									category={lNovel.novel.genre}
 								/>
+								</Link>
 							))}
 						</>
 					)}

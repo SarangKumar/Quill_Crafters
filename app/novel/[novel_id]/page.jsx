@@ -1,7 +1,7 @@
 'use client';
 import { buttonVariants } from '@/components/ui/Button';
 import Container from '@/components/ui/Container';
-import { cn, timeElasped } from '@/lib/utils';
+import { cn, paraConverter, timeElasped } from '@/lib/utils';
 import { StarIcon } from 'lucide-react';
 import Image from 'next/image';
 import React, { use, useEffect, useState } from 'react';
@@ -66,10 +66,12 @@ const Novel = ({ params }) => {
 							className="aspect-[2/3] rounded h-[300px] sm:w-[200px] w-full lg:w-full"
 						/>
 						<div className="flex-grow space-y-4">
-							<p className="text-xs">
-
-							{novel.summary || 'No summary found'}
-							</p>
+							<div>
+								<h2 className="my-2 text-base">Summary</h2>
+								<p className="text-xs">
+									{novel.summary || 'No summary found'}
+								</p>
+							</div>
 							<div>
 								<h2 className="my-2 text-base">Chapters</h2>
 								<div className="p-4 w-full border border-primary/40 rounded space-y-2">
@@ -149,12 +151,19 @@ const Novel = ({ params }) => {
 									<span className="text-primary ">
 										{currentChapter.chapter_number}
 									</span>
-									<span className="text-foreground">
+									<span className="text-foreground underline">
 										{currentChapter.chapter_title}
 									</span>
 								</h1>
 
-								<p>{currentChapter.content}</p>
+								<div className="text-sm space-y-4 mt-2">
+									{/* {currentChapter.content.} */}
+									{paraConverter(currentChapter.content).map(
+										(para, i) => (
+											<p key={i}>{para}</p>
+										)
+									)}
+								</div>
 							</>
 						) : (
 							<>No chapter found</>
@@ -169,7 +178,13 @@ const Novel = ({ params }) => {
 			</Container>
 		);
 	} else {
-		return <p className="text-foreground">loading</p>;
+		return (
+			<Container>
+				<div className="text-foreground">
+					Loading Novel from the Page
+				</div>
+			</Container>
+		);
 	}
 };
 
