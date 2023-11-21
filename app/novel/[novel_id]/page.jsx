@@ -66,6 +66,10 @@ const Novel = ({ params }) => {
 							className="aspect-[2/3] rounded h-[300px] sm:w-[200px] w-full lg:w-full"
 						/>
 						<div className="flex-grow space-y-4">
+							<p className="text-xs">
+
+							{novel.summary || 'No summary found'}
+							</p>
 							<div>
 								<h2 className="my-2 text-base">Chapters</h2>
 								<div className="p-4 w-full border border-primary/40 rounded space-y-2">

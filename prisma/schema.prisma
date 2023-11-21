@@ -52,7 +52,7 @@ model Favourite {
 model Novel {
   novel_id       Int         @id @default(autoincrement())
   title          String
-  summary        String
+  summary        String      @db.MediumText
   cover          String?
   publication_at DateTime    @default(now())
   author_id      Int
@@ -77,8 +77,8 @@ model Chapter {
   chapter_id     Int      @id @default(autoincrement())
   novel_id       Int
   chapter_number Int
-  chapter_title  String 
-  content        String @db.LongText
+  chapter_title  String
+  content        String   @db.LongText
   created_at     DateTime @default(now())
   updated_at     DateTime @updatedAt
   novel          Novel    @relation(fields: [novel_id], references: [novel_id])
