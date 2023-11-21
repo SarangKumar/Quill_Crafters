@@ -5,7 +5,7 @@ import { buttonVariants } from '@/components/ui/Button';
 import CommentContainer from '@/components/ui/CommentContainer';
 import Container from '@/components/ui/Container';
 import { cn, paraConverter, timeElasped } from '@/lib/utils';
-import { StarIcon } from 'lucide-react';
+import { Loader2, StarIcon } from 'lucide-react';
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
@@ -14,7 +14,10 @@ const Novel = ({ params }) => {
 	const [novel, setNovel] = useState(null);
 	const { data: session } = useSession();
 	const [chapterIndex, setChapterIndex] = useState(0);
-	const [comment, setComment] = useState('');
+	const [feedback, setFeedback] = useState({
+		comment: '',
+		rating: '',
+	});
 	const [loading, setLoading] = useState({
 		loadingChapterSubmit: false,
 	});
@@ -40,7 +43,7 @@ const Novel = ({ params }) => {
 		// console.log(data.chapter.length, 'adfadsfadfasdfsdfa')
 
 		if (data.chapter.length !== 0) {
-			console.log(data.chapter[0].chapter_number);
+			// console.log(data.chapter[0].chapter_number);
 			setChapterIndex(data.chapter[0].chapter_number);
 		}
 	};
@@ -51,16 +54,56 @@ const Novel = ({ params }) => {
 	const handleCommentSubmit = async (e) => {
 		e.preventDefault();
 		setLoading((prev) => ({ ...prev, loadingChapterSubmit: true }));
-		const res = await fetch('/api/comment/create', {
-			method: 'POST',
-			body: JSON.stringify({
-				user_id: session.user.user_id,
-				novel_id: novel.novel_id,
-				comment,
-			}),
-		});
-		const data = await res.json();
-		setComment('');
+
+		try {
+			if (!feedback.comment && !feedback.rating) {
+				setLoading((prev) => ({
+					...prev,
+					loadingChapterSubmit: false,
+				}));
+				return;
+			} else if (!feedback.rating) {
+				const res = await fetch('/api/comment/create', {
+					method: 'POST',
+					body: JSON.stringify({
+						user_id: session.user.user_id,
+						novel_id: novel.novel_id,
+						comment: feedback.comment,
+					}),
+				});
+			} else if (!feedback.comment) {
+				const res = await fetch('/api/rating/create', {
+					method: 'POST',
+					body: JSON.stringify({
+						user_id: session.user.user_id,
+						novel_id: novel.novel_id,
+						rating: feedback.rating,
+					}),
+				});
+			} else {
+				const res = await fetch('/api/comment/create', {
+					method: 'POST',
+					body: JSON.stringify({
+						user_id: session.user.user_id,
+						novel_id: novel.novel_id,
+						comment: feedback.comment,
+					}),
+				});
+				const res2 = await fetch('/api/rating/create', {
+					method: 'POST',
+					body: JSON.stringify({
+						user_id: session.user.user_id,
+						novel_id: novel.novel_id,
+						rating: feedback.rating,
+					}),
+				});
+			}
+			setFeedback({ comment: '', rating: '' });
+		} catch (error) {
+			console.log(error);
+		} finally {
+			setLoading((prev) => ({ ...prev, loadingChapterSubmit: false }));
+		}
 	};
 
 	useEffect(() => {
@@ -262,15 +305,33 @@ const Novel = ({ params }) => {
 										onSubmit={handleCommentSubmit}
 										className="flex flex-col gap-y-4"
 									>
+										<input
+											type="number"
+											onChange={(e) =>
+												setFeedback((prev) => ({
+													...prev,
+													rating: e.target.value,
+												}))
+											}
+											min={1}
+											max={10}
+											value={feedback.rating}
+											placeholder="Rating"
+											name="chapter_number"
+											className="flex rounded border-border border-2 p-1.5 focus-within:ring focus-within:ring-primary items-center text-xs gap-x-1 bg-gradient-to-t from-background-secondary/40 from-10% to-transparent space-y-2 before:absolute before:bg-gradient-to-r backdrop-blur-[2px] before:from-transparent before:to-background-secondary/40 before:from-10% before:-z-10 before:inset-0 caret-primary bg-transparent placeholder:text-foreground-secondary focus:outline-none text-foreground flex-1 w-full py-2 flex-grow"
+										/>{' '}
 										<textarea
+											value={feedback.comment}
 											placeholder="Chapter Content"
 											onChange={(e) =>
-												setComment(e.target.value)
+												setFeedback((prev) => ({
+													...prev,
+													comment: e.target.value,
+												}))
 											}
 											rows={5}
 											className="flex rounded border-border border-2 p-1.5 focus-within:ring focus-within:ring-primary items-center text-xs gap-x-1 bg-gradient-to-t from-background-secondary/40 from-10% to-transparent space-y-2 before:absolute before:bg-gradient-to-r backdrop-blur-[2px] before:from-transparent before:to-background-secondary/40 before:from-10% before:-z-10 before:inset-0 caret-primary bg-transparent placeholder:text-foreground-secondary focus:outline-none text-foreground flex-1 w-full py-2 flex-grow"
 										/>
-
 										<div className="flex justify-end">
 											<button
 												disabled={
@@ -280,12 +341,12 @@ const Novel = ({ params }) => {
 													buttonVariants({
 														variant: 'subtle',
 														className:
-															'text-white h-6 px-3 whitespace-wrap',
+															'text-white h-6 px-3 py-1 whitespace-wrap',
 													})
 												)}
 											>
 												{loading.loadingChapterSubmit
-													? 'Submitting Comment'
+													? <Loader2 className='animate-spin' />
 													: 'Post Comment'}
 											</button>
 										</div>
