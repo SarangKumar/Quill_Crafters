@@ -28,7 +28,7 @@ model Comment {
   comment_id Int      @id @default(autoincrement())
   user_id    Int
   novel_id   Int
-  comment    String
+  comment    String   @db.MediumText
   created_at DateTime @default(now())
   user       User     @relation(fields: [user_id], references: [user_id])
   novel      Novel    @relation(fields: [novel_id], references: [novel_id])

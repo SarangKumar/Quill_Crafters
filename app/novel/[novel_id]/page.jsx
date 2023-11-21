@@ -5,12 +5,15 @@ import CommentContainer from '@/components/ui/CommentContainer';
 import Container from '@/components/ui/Container';
 import { cn, paraConverter, timeElasped } from '@/lib/utils';
 import { StarIcon } from 'lucide-react';
+import { useSession } from 'next-auth/react';
 import Image from 'next/image';
-import React, { use, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Novel = ({ params }) => {
 	const [novel, setNovel] = useState(null);
+	const { data: session } = useSession();
 	const [chapterIndex, setChapterIndex] = useState(0);
+	const [comment, setComment] = useState('');
 	const [currentChapter, setCurrentChapter] = useState({
 		chapter_id: 3,
 		novel_id: 2,
@@ -40,6 +43,19 @@ const Novel = ({ params }) => {
 	useEffect(() => {
 		fetchNovel();
 	}, []);
+
+	const handleCommentSubmit = async (e) => {
+		e.preventDefault();
+		const res = await fetch('/api/comment/create', {
+			method: 'POST',
+			body: JSON.stringify({
+				user_id: session.user.user_id,
+				novel_id: novel.novel_id,
+				comment,
+			}),
+		});
+		const data = await res.json();
+	};
 
 	useEffect(() => {
 		if (novel) {
@@ -152,7 +168,7 @@ const Novel = ({ params }) => {
 						</div>
 					</div>
 
-					<div className="lg:col-span-3 w-full space-y-2">
+					<div className="lg:col-span-3 w-full space-y-10">
 						{chapterIndex !== 0 ? (
 							<>
 								<div className=" p-4 border border-primary/40 rounded">
@@ -179,11 +195,6 @@ const Novel = ({ params }) => {
 						) : (
 							<>No chapter found</>
 						)}
-						{/* {process.env.NODE_ENV === 'development' && (
-							<p className="text-white">
-								{JSON.stringify(novel)}
-							</p>
-						)} */}
 						<div>
 							<h2 className="my-2 text-base">Comments</h2>
 							<div className="text-sm text-foreground space-y-4 mt-2">
@@ -204,6 +215,44 @@ const Novel = ({ params }) => {
 											/>
 										))}
 									</div>
+								)}
+							</div>
+						</div>
+						<div>
+							<h2 className="my-2 text-base">
+								Post Your Comment
+							</h2>
+							<div className="p-4 border border-primary/40 rounded">
+								{session ? (
+									<form
+										onSubmit={handleCommentSubmit}
+										className="flex flex-col gap-y-4"
+									>
+										<textarea
+											placeholder="Chapter Content"
+											onChange={(e) =>
+												setComment(e.target.value)
+											}
+											rows={5}
+											className="flex rounded border-border border-2 p-1.5 focus-within:ring focus-within:ring-primary items-center text-xs gap-x-1 bg-gradient-to-t from-background-secondary/40 from-10% to-transparent space-y-2 before:absolute before:bg-gradient-to-r backdrop-blur-[2px] before:from-transparent before:to-background-secondary/40 before:from-10% before:-z-10 before:inset-0 caret-primary bg-transparent placeholder:text-foreground-secondary focus:outline-none text-foreground flex-1 w-full py-2 flex-grow"
+										/>
+
+										<div className="flex justify-end">
+											<button
+												className={cn(
+													buttonVariants({
+														variant: 'subtle',
+														className:
+															'text-white h-6 whitespace-wrap',
+													})
+												)}
+											>
+												Post Comment
+											</button>
+										</div>
+									</form>
+								) : (
+									<>Sign in to create comment</>
 								)}
 							</div>
 						</div>

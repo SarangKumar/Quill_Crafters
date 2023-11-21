@@ -167,7 +167,7 @@ const ChapterPage = ({ params }) => {
 						/>
 
 						<textarea
-							placeholder="Chapter Content"
+							placeholder="Comment Content"
 							onChange={(e) =>
 								setNewChapter((prev) => ({
 									...prev,
