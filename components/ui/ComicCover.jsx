@@ -36,7 +36,7 @@ const ComicCover = ({
 
 	return (
 		<div className="shadow-md group border group text-white relative overflow-hidden border-border rounded-lg bg-background-secondary ring-offset-0 transition-colors focus:ring-primary hover:shadow-primary hover:ring-2 hover:ring-primary h-full">
-			<button className="group-focus:ring-primary group-focus:ring group-focus:ring-offset-2 h-full w-full bg-green-500">
+			<button className="group-focus:ring-primary group-focus:ring group-focus:ring-offset-2 h-full w-full">
 				<Image
 					src={coverUrl}
 					height={600}

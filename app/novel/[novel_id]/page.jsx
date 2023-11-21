@@ -143,7 +143,7 @@ const Novel = ({ params }) => {
 							<div>
 								<h2 className="my-2 text-base">Chapters</h2>
 								<div className="p-4 w-full border border-primary/40 rounded space-y-2">
-									<div className="flex gap-3">
+									<div className="flex gap-3 flex-wrap">
 										{novel.chapter.length === 0 ? (
 											<p className="text-xs">
 												No Chapters Found
@@ -176,14 +176,14 @@ const Novel = ({ params }) => {
 									</div>
 								</div>
 							</div>
-							<div className="flex gap-2">
+							<div className="flex gap-2 flex-wrap">
 								{novel.genre.split(' ').map((cate, i) => (
 									<span
 										className={cn(
 											buttonVariants({
 												variant: 'subtle',
 												className:
-													'text-white text-[10px] h-6 whitespace-wrap',
+													'text-white text-[10px] h-6 whitespace-nowrap',
 											})
 										)}
 										key={i}
