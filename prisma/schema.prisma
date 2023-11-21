@@ -50,20 +50,21 @@ model Favourite {
 }
 
 model Novel {
-  novel_id       Int         @id @default(autoincrement())
-  title          String
-  summary        String      @db.MediumText
-  cover          String?
-  publication_at DateTime    @default(now())
-  updated_at     DateTime    @updatedAt
-  author_id      Int
-  likes          Int         @default(0)
-  genre          String
-  comment        Comment[]
-  favourite      Favourite[]
-  chapter        Chapter[]
-  rating         Rating[]
-  author         User        @relation(fields: [author_id], references: [user_id])
+  novel_id     Int          @id @default(autoincrement())
+  title        String
+  summary      String       @db.MediumText
+  cover        String?
+  created_at   DateTime     @default(now())
+  updated_at   DateTime     @updatedAt
+  author_id    Int
+  likes        Int          @default(0)
+  novel_status NOVEL_STATUS @default(UPCOMING)
+  genre        String
+  comment      Comment[]
+  favourite    Favourite[]
+  chapter      Chapter[]
+  rating       Rating[]
+  author       User         @relation(fields: [author_id], references: [user_id])
 
   @@index([author_id])
 }
@@ -114,4 +115,14 @@ enum PLAN {
   BASIC
   PRO
   PREMIUM
+}
+
+enum NOVEL_STATUS {
+  ONGOING
+  COMPLETED
+  ABANDONED
+  CANCELED
+  CENSORED
+  HIATUS
+  UPCOMING
 }
