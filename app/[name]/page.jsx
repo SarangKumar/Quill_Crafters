@@ -2,8 +2,10 @@ import ClientWrapper from '@/components/ClientWrapper';
 import ComicCover from '@/components/ui/ComicCover';
 import { bookMark } from '@/constants';
 import { AuthOptions } from '@/lib/utils';
-
 const { getServerSession } = require('next-auth');
+
+
+
 
 async function ProfilePage({ params }) {
 	console.log('Recieved : ', params.name);
@@ -17,6 +19,7 @@ async function ProfilePage({ params }) {
 	// console.log(authorized);
 	return (
 		<>
+		{authorized}
 			<div>
 				<h2 className="my-2 text-base mt-2">main main</h2>
 				<div className="p-2 md:p-4 rounded border border-primary/40">
