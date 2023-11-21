@@ -63,6 +63,7 @@ const BookmarkPage = () => {
 									// likes={novel.favourite.length}
 									// chapters={novel.chapter.length}
 									// author={novel.author.username}
+									bookmarked={true}
 									coverUrl={lNovel.novel.cover}
 									category={lNovel.novel.genre}
 								/>

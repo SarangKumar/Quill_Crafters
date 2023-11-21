@@ -103,16 +103,9 @@ const ChapterPage = ({ params }) => {
 
 	return (
 		<div className="space-y-5 md:col-span-2 lg:col-span-3">
-			{process.env.NODE_ENV === 'development' && (
-				<div>
-					{params.novel_id}
-					<div className="p-4 border border-primary/40 rounded space-y-2">
-						{JSON.stringify(novel)}
-					</div>
-				</div>
-			)}
-
-			<h1 className="my-2 text-lg font-semibold">{novel.title || 'My Novels'}</h1>
+			<h1 className="my-2 text-lg font-semibold">
+				{novel.title || 'My Novels'}
+			</h1>
 			<div>
 				<h2 className="my-2 text-base">Published Chapters</h2>
 				<div className="p-4 border border-primary/40 rounded grid grid-cols-1 md:grid-cols-2  gap-2 sm:gap-4 md:gap-5">
@@ -198,6 +191,16 @@ const ChapterPage = ({ params }) => {
 						</button>
 					</form>
 				</div>
+			</div>
+			<div>
+				{process.env.NODE_ENV === 'development' && (
+					<div>
+						{params.novel_id}
+						<div className="p-4 border border-primary/40 rounded space-y-2">
+							{JSON.stringify(novel)}
+						</div>
+					</div>
+				)}
 			</div>
 		</div>
 	);

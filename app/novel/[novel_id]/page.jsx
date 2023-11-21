@@ -57,13 +57,13 @@ const Novel = ({ params }) => {
 					</h1>
 				</div>
 				<div className="text-foreground grid grid-cols-1 w-full lg:grid-cols-4 gap-3 md:gap-4 lg:gap-5">
-					<div className="flex gap-5 lg:flex-col">
+					<div className="flex gap-5 flex-col sm:flex-row lg:flex-col">
 						<Image
 							src={novel.cover}
 							alt={novel.title}
 							width={800}
 							height={1000}
-							className="aspect-[2/3] rounded h-[300px] sm:w-[200px] w-full lg:w-full"
+							className="aspect-[2/3] rounded h-[300px] xs:w-[200px] w-full lg:w-full"
 						/>
 						<div className="flex-grow space-y-4">
 							<div>
@@ -76,29 +76,33 @@ const Novel = ({ params }) => {
 								<h2 className="my-2 text-base">Chapters</h2>
 								<div className="p-4 w-full border border-primary/40 rounded space-y-2">
 									<div className="flex gap-3">
-										{novel.chapter.map((ch) => (
-											<button
-												key={ch.chapter_id}
-												onClick={() =>
-													setChapterIndex(
-														ch.chapter_number
-													)
-												}
-												className={cn(
-													buttonVariants({
-														size: 'icon',
-														className: `${
-															ch.chapter_number ===
-																chapterIndex &&
-															'border-primary border text-primary font-semibold'
-														}`,
-													})
-												)}
-												variant="icon"
-											>
-												{ch.chapter_number}
-											</button>
-										))}
+										{novel.chapter.length === 0 ? (
+											<p className='text-xs'>No Chapters Found</p>
+										) : (
+											novel.chapter.map((ch) => (
+												<button
+													key={ch.chapter_id}
+													onClick={() =>
+														setChapterIndex(
+															ch.chapter_number
+														)
+													}
+													className={cn(
+														buttonVariants({
+															size: 'icon',
+															className: `${
+																ch.chapter_number ===
+																	chapterIndex &&
+																'border-primary border text-primary font-semibold'
+															}`,
+														})
+													)}
+													variant="icon"
+												>
+													{ch.chapter_number}
+												</button>
+											))
+										)}
 									</div>
 								</div>
 							</div>
@@ -168,11 +172,11 @@ const Novel = ({ params }) => {
 						) : (
 							<>No chapter found</>
 						)}
-						{process.env.NODE_ENV === 'development' && (
+						{/* {process.env.NODE_ENV === 'development' && (
 							<p className="text-white">
 								{JSON.stringify(novel)}
 							</p>
-						)}
+						)} */}
 					</div>
 				</div>
 			</Container>
