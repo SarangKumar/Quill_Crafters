@@ -1,5 +1,6 @@
 'use client';
 import AuthorContainer from '@/components/AuthorContainer';
+import Avatar from '@/components/ui/Avatar';
 import { buttonVariants } from '@/components/ui/Button';
 import CommentContainer from '@/components/ui/CommentContainer';
 import Container from '@/components/ui/Container';
@@ -14,6 +15,9 @@ const Novel = ({ params }) => {
 	const { data: session } = useSession();
 	const [chapterIndex, setChapterIndex] = useState(0);
 	const [comment, setComment] = useState('');
+	const [loading, setLoading] = useState({
+		loadingChapterSubmit: false,
+	});
 	const [currentChapter, setCurrentChapter] = useState({
 		chapter_id: 3,
 		novel_id: 2,
@@ -46,6 +50,7 @@ const Novel = ({ params }) => {
 
 	const handleCommentSubmit = async (e) => {
 		e.preventDefault();
+		setLoading((prev) => ({ ...prev, loadingChapterSubmit: true }));
 		const res = await fetch('/api/comment/create', {
 			method: 'POST',
 			body: JSON.stringify({
@@ -55,6 +60,7 @@ const Novel = ({ params }) => {
 			}),
 		});
 		const data = await res.json();
+		setComment('');
 	};
 
 	useEffect(() => {
@@ -74,14 +80,14 @@ const Novel = ({ params }) => {
 						{novel.title}
 					</h1>
 				</div>
-				<div className="text-foreground grid grid-cols-1 w-full lg:grid-cols-4 gap-3 md:gap-4 lg:gap-5">
+				<div className="text-foreground mb-20 grid grid-cols-1 w-full lg:grid-cols-4 gap-3 md:gap-4 lg:gap-5">
 					<div className="flex gap-5 flex-col sm:flex-row lg:flex-col">
 						<Image
 							src={novel.cover}
 							alt={novel.title}
 							width={800}
 							height={1000}
-							className="aspect-[2/3] rounded h-[300px] xs:w-[200px] w-full lg:w-full"
+							className="aspect-[2/3] rounded h-[300px] w-[200px] md:w-full lg:w-full"
 						/>
 						<div className="flex-grow space-y-4">
 							<div>
@@ -157,6 +163,27 @@ const Novel = ({ params }) => {
 									<span>{novel.favourite.length}</span>
 								</span>
 							</div>
+							<div>
+								{/* {JSON.stringify(novel.author)} */}
+								<h2 className="my-2 text-base">Author</h2>
+
+								<div className="flex gap-2">
+									<Avatar
+										name={novel.author.username}
+										plan={novel.author.plan}
+										isAuthor={novel.author.isAuthor}
+										className="sm:h-9 sm:w-9 md:h-10 md:w-10"
+									/>
+									<div>
+										<h2 className="text-xs font-medium">
+											{novel.author.username}
+										</h2>
+										<p className="text-foreground-secondary text-xs font-medium">
+											{novel.author.email}
+										</p>
+									</div>
+								</div>
+							</div>
 							<div className="text-[10px] divide-x lg:divide-x-0 w-full lg:space-y-2">
 								<span className="pr-1.5 lg:pr-0 lg:block">
 									Created: {timeElasped(novel.created_at)}
@@ -170,13 +197,15 @@ const Novel = ({ params }) => {
 
 					<div className="lg:col-span-3 w-full space-y-10">
 						{chapterIndex !== 0 ? (
-							<>
+							<div>
+								<h2 className="mb-5 text-base">
+									Chapter{'  '}
+									<span className="text-primary font-semibold">
+										#{currentChapter.chapter_number}
+									</span>
+								</h2>
 								<div className=" p-4 border border-primary/40 rounded">
 									<h1 className="text-primary font-medium text-xl space-x-5">
-										#{' '}
-										<span className="text-primary ">
-											{currentChapter.chapter_number}
-										</span>
 										<span className="text-foreground underline">
 											{currentChapter.chapter_title}
 										</span>
@@ -187,11 +216,16 @@ const Novel = ({ params }) => {
 										{paraConverter(
 											currentChapter.content
 										).map((para, i) => (
-											<p key={i}>{para}</p>
+											<p
+												key={i}
+												className="leading-6"
+											>
+												{para}
+											</p>
 										))}
 									</div>
 								</div>
-							</>
+							</div>
 						) : (
 							<>No chapter found</>
 						)}
@@ -239,15 +273,20 @@ const Novel = ({ params }) => {
 
 										<div className="flex justify-end">
 											<button
+												disabled={
+													loading.loadingChapterSubmit
+												}
 												className={cn(
 													buttonVariants({
 														variant: 'subtle',
 														className:
-															'text-white h-6 whitespace-wrap',
+															'text-white h-6 px-3 whitespace-wrap',
 													})
 												)}
 											>
-												Post Comment
+												{loading.loadingChapterSubmit
+													? 'Submitting Comment'
+													: 'Post Comment'}
 											</button>
 										</div>
 									</form>

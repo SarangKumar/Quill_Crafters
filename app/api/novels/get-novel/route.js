@@ -22,9 +22,10 @@ export async function POST(req, res) {
 						user: true, // Include the user details associated with each comment
 					},
 				},
+				author: true,
 				chapter: true,
 				rating: true,
-				favourite: true,
+				favourite: true, // Include the count of favourite relations
 			},
 		});
 		console.log(novel);

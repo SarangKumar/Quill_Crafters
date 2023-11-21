@@ -10,11 +10,6 @@ const CommentContainer = ({
 }) => {
 	return (
 		<div className="transition-all break-inside-avoid border-2 flex flex-col gap-3 relative border-border p-3 rounded-md text-xs text-white backdrop-blur-md after:absolute after:bg-gradient-to-br after:rounded-md after:from-background-secondary after:to-transparent after:backdrop-blur-md after:transition-all after:opacity-50 after:from-10% after:to-80% after:inset-0 after:-z-10 hover:after:from-20%">
-			{/* <div className="flex gap-2">
-				{comment}
-				{username}
-				{JSON.stringify(user)}
-			</div> */}
 
 			<div className="flex gap-2">
 				<Avatar
