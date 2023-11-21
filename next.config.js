@@ -8,7 +8,7 @@ const withPWA = require('next-pwa')({
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	images: {
-		domains: ['lh3.googleusercontent.com', 'images.pexels.com', 'www.pexels.com'],
+		domains: ['lh3.googleusercontent.com', 'images.pexels.com', 'books.google.co.in'],
 	},
 };
 
