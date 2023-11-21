@@ -131,7 +131,7 @@ const Novel = ({ params }) => {
 							alt={novel.title}
 							width={800}
 							height={1000}
-							className="aspect-[2/3] rounded h-[300px] w-[200px] md:w-full lg:w-full"
+							className="aspect-[2/3] rounded w-[200px]  lg:w-full lg:h-auto"
 						/>
 						<div className="flex-grow space-y-4">
 							<div>

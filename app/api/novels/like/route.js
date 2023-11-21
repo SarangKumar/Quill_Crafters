@@ -15,7 +15,7 @@ export async function POST(req, res) {
 				novel: true,
 			},
 		});
-        console.log(favourite_novels)
+        // console.log(favourite_novels)
 		return NextResponse.json(favourite_novels, { status: 200 });
 	} catch (error) {
 		console.log(error);

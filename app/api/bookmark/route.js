@@ -18,7 +18,7 @@ export async function POST(req, res) {
 				user_id,
 			},
 		});
-		console.log(bookmark)
+		// console.log(bookmark)
         return NextResponse.json(bookmark, {status: 200})
 	} catch (error) {
 		console.log(error);

@@ -29,24 +29,24 @@ const ComicCover = ({
 	createdAt = new Date(),
 	updatedAt = new Date(),
 	chapters = 0,
-	likes = 0 ,
+	likes = 0,
 	novel_id,
 }) => {
 	const { data: session } = useSession();
 
 	return (
-		<div className="shadow-md group border group text-white relative overflow-hidden border-border rounded-lg bg-background-secondary ring-offset-0 transition-colors focus:ring-primary hover:shadow-primary hover:ring-2 hover:ring-primary">
-			<button className="group-focus:ring-primary group-focus:ring group-focus:ring-offset-2 h-full w-full">
+		<div className="shadow-md group border group text-white relative overflow-hidden border-border rounded-lg bg-background-secondary ring-offset-0 transition-colors focus:ring-primary hover:shadow-primary hover:ring-2 hover:ring-primary h-full">
+			<button className="group-focus:ring-primary group-focus:ring group-focus:ring-offset-2 h-full w-full bg-green-500">
 				<Image
 					src={coverUrl}
-					height={450}
+					height={600}
 					quality={100}
-					width={300}
+					width={400}
 					alt={name}
-					className="object-cover overflow-hidded w-full h-full"
+					className="object-cover overflow-hidden h-full"
 				/>
 			</button>
-	
+
 			<div className=" transition-all flex items-cente flex-col text-xs p-2 -gap-1 left-0 right-0 w-full top-0 absolute">
 				<div className="flex items-center -gap-1 justify-between">
 					<div className="space-x-1">
@@ -83,7 +83,9 @@ const ComicCover = ({
 					</div>
 					{session?.user && (
 						<button
-							onClick={()=>handleBookmark(novel_id, session.user.user_id)}
+							onClick={() =>
+								handleBookmark(novel_id, session.user.user_id)
+							}
 							className={cn(
 								buttonVariants({
 									variant: 'subtle',
@@ -103,13 +105,14 @@ const ComicCover = ({
 						</button>
 					)}
 				</div>
-				<div className="flex w-[90%] items-center gap-x-1">
+				<div className="flex w-[90%] flex-wrap items-center gap-x-1">
 					{category.split(' ').map((cate, i) => (
 						<span
 							className={cn(
 								buttonVariants({
 									variant: 'subtle',
-									className: 'capitalize text-white text-[10px] h-6 whitespace-wrap',
+									className:
+										'capitalize text-white text-[10px] h-6 whitespace-wrap',
 								})
 							)}
 							key={i}
