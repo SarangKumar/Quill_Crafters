@@ -55,6 +55,7 @@ model Novel {
   summary        String      @db.MediumText
   cover          String?
   publication_at DateTime    @default(now())
+  updated_at     DateTime    @updatedAt
   author_id      Int
   likes          Int         @default(0)
   genre          String

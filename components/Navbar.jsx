@@ -26,16 +26,21 @@ const Navbar = () => {
 	return (
 		<nav className="md:py-5 mb-10 border-b border-primary/40 text-white bg-background/40 z-50 w-full backdrop-blur-[1px] sticky top-0 h-16 flex justify-center items-center ">
 			<Container className="flex items-center justify-between w-full">
-				<h1 className="text-lg font-medium">
+				<h1 className="hidden sm:flex">
 					<Link
 						href="/"
-						className="hidden sm:inline-block"
+						className="text-lg font-medium"
 					>
 						Quill Crafters
 					</Link>
+					<span className="text-primary border-primary text-xs my-auto border rounded px-1 bg-primary/10 font-semibold ml-3">
+						Beta
+					</span>
+				</h1>
+				<h1 className="sm:hidden flex ">
 					<Link
 						href="/"
-						className="inline-block sm:hidden"
+						className="items-center"
 					>
 						<Image
 							src="/quillcrafters.png"
@@ -44,7 +49,6 @@ const Navbar = () => {
 							alt="Quill Crafters"
 						/>
 					</Link>
-
 					<span className="text-primary border-primary text-xs my-auto border rounded px-1 bg-primary/10 font-semibold ml-3">
 						Beta
 					</span>

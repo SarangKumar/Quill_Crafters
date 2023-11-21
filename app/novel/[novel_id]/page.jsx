@@ -39,6 +39,7 @@ const Novel = ({ params }) => {
 			}),
 		});
 		const data = await res.json();
+		console.log(data);
 		setNovel(data);
 		// console.log(data.chapter.length, 'adfadsfadfasdfsdfa')
 
@@ -229,7 +230,7 @@ const Novel = ({ params }) => {
 							</div>
 							<div className="text-[10px] divide-x lg:divide-x-0 w-full lg:space-y-2">
 								<span className="pr-1.5 lg:pr-0 lg:block">
-									Created: {timeElasped(novel.created_at)}
+									Created: {timeElasped(novel.publication_at)}
 								</span>
 								<span className="pl-1.5 lg:pl-0">
 									Updated: {timeElasped(novel.updated_at)}
@@ -345,9 +346,11 @@ const Novel = ({ params }) => {
 													})
 												)}
 											>
-												{loading.loadingChapterSubmit
-													? <Loader2 className='animate-spin' />
-													: 'Post Comment'}
+												{loading.loadingChapterSubmit ? (
+													<Loader2 className="animate-spin" />
+												) : (
+													'Post Comment'
+												)}
 											</button>
 										</div>
 									</form>
