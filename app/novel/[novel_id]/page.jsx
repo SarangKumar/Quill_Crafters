@@ -1,5 +1,7 @@
 'use client';
+import AuthorContainer from '@/components/AuthorContainer';
 import { buttonVariants } from '@/components/ui/Button';
+import CommentContainer from '@/components/ui/CommentContainer';
 import Container from '@/components/ui/Container';
 import { cn, paraConverter, timeElasped } from '@/lib/utils';
 import { StarIcon } from 'lucide-react';
@@ -77,7 +79,9 @@ const Novel = ({ params }) => {
 								<div className="p-4 w-full border border-primary/40 rounded space-y-2">
 									<div className="flex gap-3">
 										{novel.chapter.length === 0 ? (
-											<p className='text-xs'>No Chapters Found</p>
+											<p className="text-xs">
+												No Chapters Found
+											</p>
 										) : (
 											novel.chapter.map((ch) => (
 												<button
@@ -147,26 +151,29 @@ const Novel = ({ params }) => {
 							</div>
 						</div>
 					</div>
-					<div className="lg:col-span-3 p-4 w-full border border-primary/40 rounded space-y-2">
+
+					<div className="lg:col-span-3 w-full space-y-2">
 						{chapterIndex !== 0 ? (
 							<>
-								<h1 className="text-primary font-medium text-xl space-x-5">
-									#{' '}
-									<span className="text-primary ">
-										{currentChapter.chapter_number}
-									</span>
-									<span className="text-foreground underline">
-										{currentChapter.chapter_title}
-									</span>
-								</h1>
+								<div className=" p-4 border border-primary/40 rounded">
+									<h1 className="text-primary font-medium text-xl space-x-5">
+										#{' '}
+										<span className="text-primary ">
+											{currentChapter.chapter_number}
+										</span>
+										<span className="text-foreground underline">
+											{currentChapter.chapter_title}
+										</span>
+									</h1>
 
-								<div className="text-sm space-y-4 mt-2">
-									{/* {currentChapter.content.} */}
-									{paraConverter(currentChapter.content).map(
-										(para, i) => (
+									<div className="text-sm  space-y-4 mt-2">
+										{/* {currentChapter.content.} */}
+										{paraConverter(
+											currentChapter.content
+										).map((para, i) => (
 											<p key={i}>{para}</p>
-										)
-									)}
+										))}
+									</div>
 								</div>
 							</>
 						) : (
@@ -177,6 +184,29 @@ const Novel = ({ params }) => {
 								{JSON.stringify(novel)}
 							</p>
 						)} */}
+						<div>
+							<h2 className="my-2 text-base">Comments</h2>
+							<div className="text-sm text-foreground space-y-4 mt-2">
+								{novel.comment.length === 0 ? (
+									<>
+										No comments
+										{novel.comment}
+									</>
+								) : (
+									<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+										{novel.comment.map((comment) => (
+											<CommentContainer
+												key={comment.comment_id}
+												comment={comment.comment}
+												user={comment.user}
+												created_at={comment.created_at}
+												{...comment}
+											/>
+										))}
+									</div>
+								)}
+							</div>
+						</div>
 					</div>
 				</div>
 			</Container>

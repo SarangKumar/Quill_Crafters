@@ -13,11 +13,15 @@ export async function POST(req, res) {
 	try {
 		prisma.$connect();
 		const novel = await prisma.novel.findUnique({
-            where: {
-                novel_id: parseInt(novel_id),
-            }, 
+			where: {
+				novel_id: parseInt(novel_id),
+			},
 			include: {
-				comment: true,
+				comment: {
+					include: {
+						user: true, // Include the user details associated with each comment
+					},
+				},
 				chapter: true,
 				rating: true,
 				favourite: true,
