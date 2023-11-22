@@ -11,6 +11,14 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
+export const metadata = {
+	title: 'Novel',
+	description: 'Novel page',
+	alternates: {
+		canonical: '/novel'
+	}
+}
+
 const Novel = ({ params }) => {
 	const [novel, setNovel] = useState(null);
 	const { data: session } = useSession();
