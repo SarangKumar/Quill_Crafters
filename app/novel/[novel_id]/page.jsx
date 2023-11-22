@@ -8,7 +8,6 @@ import { cn, paraConverter, timeElasped } from '@/lib/utils';
 import { Loader2, StarIcon } from 'lucide-react';
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
-import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
 export const metadata = {
@@ -140,16 +139,8 @@ const Novel = ({ params }) => {
 							alt={novel.title}
 							width={800}
 							height={1000}
-							className="aspect-[2/3] rounded w-[200px] h-[300px] lg:w-full lg:h-auto"
+							className="aspect-[2/3] rounded w-[200px]  lg:w-full lg:h-auto"
 						/>
-						<div className="text-[10px] divide-x lg:divide-x-0 w-full lg:space-y-2">
-							<span className="pr-1.5 lg:pr-0 lg:block">
-								Created: {timeElasped(novel.created_at)}
-							</span>
-							<span className="pl-1.5 lg:pl-0">
-								Updated: {timeElasped(novel.updated_at)}
-							</span>
-						</div>
 						<div className="flex-grow space-y-4">
 							<div>
 								<h2 className="my-2 text-base">Summary</h2>
@@ -229,16 +220,12 @@ const Novel = ({ params }) => {
 								<h2 className="my-2 text-base">Author</h2>
 
 								<div className="flex gap-2">
-									<Link
-										href={`/${novel.author.username.split(' ').join('_').toLowerCase()}`}
-									>
-										<Avatar
-											name={novel.author.username}
-											plan={novel.author.plan}
-											isAuthor={novel.author.isAuthor}
-											className="sm:h-9 sm:w-9 md:h-10 md:w-10"
-										/>
-									</Link>
+									<Avatar
+										name={novel.author.username}
+										plan={novel.author.plan}
+										isAuthor={novel.author.isAuthor}
+										className="sm:h-9 sm:w-9 md:h-10 md:w-10"
+									/>
 									<div>
 										<h2 className="text-xs font-medium">
 											{novel.author.username}
@@ -248,6 +235,14 @@ const Novel = ({ params }) => {
 										</p>
 									</div>
 								</div>
+							</div>
+							<div className="text-[10px] divide-x lg:divide-x-0 w-full lg:space-y-2">
+								<span className="pr-1.5 lg:pr-0 lg:block">
+									Created: {timeElasped(novel.created_at)}
+								</span>
+								<span className="pl-1.5 lg:pl-0">
+									Updated: {timeElasped(novel.updated_at)}
+								</span>
 							</div>
 						</div>
 					</div>
