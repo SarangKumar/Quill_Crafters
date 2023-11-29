@@ -8,6 +8,7 @@
 # testing
 /coverage
 /app/test
+/app/testing
 
 # pwa
 /public/sw.js
