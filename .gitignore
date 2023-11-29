@@ -27,6 +27,7 @@
 # pages
 /app/demo
 /app/test
+/app/test2
 
 # misc
 .DS_Store
