@@ -7,6 +7,8 @@
 
 # testing
 /coverage
+
+# pages
 /app/test
 /app/testing
 
@@ -24,9 +26,6 @@
 
 # production
 /build
-
-# pages
-/app/test
 
 # misc
 .DS_Store
